@@ -9,7 +9,7 @@ import path from 'node:path';
 import fs from 'node:fs';
 import { Server } from 'socket.io';
 
-import { config } from './config';
+import { config, publicRules } from './config';
 import { errorMiddleware } from './util/http';
 import { authRouter } from './routes/auth.routes';
 import { gameRouter } from './routes/game.routes';
@@ -29,6 +29,11 @@ app.use(express.json({ limit: '5mb' }));
 // Health check.
 app.get('/api/health', (_req, res) => {
   res.json({ ok: true, event: config.eventId });
+});
+
+// Luật chơi + cấu tạo bàn cờ (public, cho màn sảnh).
+app.get('/api/config', (_req, res) => {
+  res.json(publicRules());
 });
 
 // API routers.

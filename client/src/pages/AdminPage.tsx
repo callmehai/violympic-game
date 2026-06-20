@@ -307,6 +307,86 @@ function ImportCard({
   );
 }
 
+// ===================== Thẻ thêm nhanh 1 sinh viên =====================
+function AddStudentCard({ onDone }: { onDone?: () => void }) {
+  const [name, setName] = useState('');
+  const [code, setCode] = useState('');
+  const [klass, setKlass] = useState('');
+  const [busy, setBusy] = useState(false);
+  const [msg, setMsg] = useState<Msg>(null);
+
+  async function add() {
+    const c = code.trim();
+    const n = name.trim();
+    if (!c || !n) {
+      setMsg({ ok: false, text: 'Nhập đủ họ tên và MSSV.' });
+      return;
+    }
+    setBusy(true);
+    setMsg(null);
+    try {
+      const res = await apiFetch<{ student_code: string; full_name: string }>(
+        API.adminStudentsAdd,
+        { method: 'POST', body: { student_code: c, full_name: n, class_name: klass.trim() } },
+      );
+      setMsg({
+        ok: true,
+        text: `Đã thêm ${res.full_name} (${res.student_code}). Mật khẩu = MSSV.`,
+      });
+      setName('');
+      setCode('');
+      setKlass('');
+      onDone?.();
+    } catch (err) {
+      // 409 = MSSV đã tồn tại.
+      setMsg({ ok: false, text: errMsg(err, 'Thêm thất bại.') });
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  return (
+    <section className="panel space-y-3 p-5">
+      <h2 className="text-lg font-bold text-treasure-gold">➕ Thêm nhanh 1 sinh viên</h2>
+      <p className="text-sm text-treasure-gem/80">
+        Nhập tên + MSSV. Nếu MSSV chưa có → tạo tài khoản mới (mật khẩu = MSSV); nếu đã có → báo lỗi.
+      </p>
+      <input
+        className="input"
+        placeholder="Họ và tên"
+        value={name}
+        onChange={(e) => {
+          setName(e.target.value);
+          setMsg(null);
+        }}
+        disabled={busy}
+      />
+      <input
+        className="input"
+        placeholder="Mã sinh viên (MSSV)"
+        value={code}
+        onChange={(e) => {
+          setCode(e.target.value);
+          setMsg(null);
+        }}
+        onKeyDown={(e) => e.key === 'Enter' && void add()}
+        disabled={busy}
+      />
+      <input
+        className="input"
+        placeholder="Lớp (không bắt buộc)"
+        value={klass}
+        onChange={(e) => setKlass(e.target.value)}
+        disabled={busy}
+      />
+      <button type="button" className="btn btn-gold w-full" onClick={() => void add()} disabled={busy}>
+        {busy ? 'Đang thêm…' : '➕ Thêm sinh viên'}
+      </button>
+      {msg && <Feedback ok={msg.ok} msg={msg.text} />}
+    </section>
+  );
+}
+
 // ===================== Thẻ hành động (export / bonus) =====================
 function ActionCard({
   title,
@@ -560,6 +640,8 @@ function Dashboard() {
             }}
             onDone={loadState}
           />
+
+          <AddStudentCard onDone={loadState} />
 
           <ImportCard
             title="Import câu hỏi"

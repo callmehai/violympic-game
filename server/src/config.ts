@@ -82,3 +82,29 @@ export function publicConfig() {
     wrongTimePenaltyS: config.wrongTimePenaltyS,
   };
 }
+
+/** Luật chơi + cấu tạo bàn cờ để hiển thị ở sảnh (public, luôn khớp config). */
+export function publicRules() {
+  const d = config.boardDistribution;
+  const total = config.rows * config.cols;
+  return {
+    rows: config.rows,
+    cols: config.cols,
+    totalCells: total,
+    timeLimitS: config.timeLimitS,
+    fastAnswerMs: config.fastAnswerMs,
+    fastAnswerBonus: config.fastAnswerBonus,
+    difficultyPoints: config.difficultyPoints,
+    board: {
+      chest: d.chest,
+      gems: d.gems,
+      bombs: d.bombs,
+      empty: total - d.chest - d.gems - d.bombs,
+    },
+    values: {
+      gemValues: d.gemValues,
+      chest: d.chestValue,
+      bomb: d.bombValue,
+    },
+  };
+}

@@ -126,8 +126,21 @@ export interface AdminEventState {
   };
 }
 
+export interface RulesDTO {
+  rows: number;
+  cols: number;
+  totalCells: number;
+  timeLimitS: number;
+  fastAnswerMs: number;
+  fastAnswerBonus: number;
+  difficultyPoints: { easy: number; medium: number; hard: number };
+  board: { chest: number; gems: number; bombs: number; empty: number };
+  values: { gemValues: number[]; chest: number; bomb: number };
+}
+
 // ===================== Endpoint paths =====================
 export const API = {
+  config: '/api/config',
   login: '/api/auth/login',
   me: '/api/auth/me',
   adminLogin: '/api/admin/login',
@@ -142,6 +155,7 @@ export const API = {
   leaderboard: '/api/leaderboard',
 
   adminStudentsImport: '/api/admin/students/import',
+  adminStudentsAdd: '/api/admin/students/add',
   adminStudentsExport: '/api/admin/students/export',
   adminQuestionsImport: '/api/admin/questions/import',
   adminEvent: '/api/admin/event',

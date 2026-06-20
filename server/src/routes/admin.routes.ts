@@ -61,6 +61,27 @@ adminRouter.post(
   }),
 );
 
+// ---------- Thêm nhanh 1 SV (nhập tên + MSSV) ----------
+adminRouter.post(
+  '/students/add',
+  asyncHandler((req, res) => {
+    const code = (req.body?.student_code ?? '').toString().trim();
+    const fullName = (req.body?.full_name ?? '').toString().trim();
+    const className = (req.body?.class_name ?? '').toString().trim() || null;
+    if (!code) throw new GameError('BAD_INPUT', 'Thiếu mã sinh viên (MSSV)', 400);
+    if (!fullName) throw new GameError('BAD_INPUT', 'Thiếu họ tên', 400);
+    // Kiểm tra MSSV đã tồn tại chưa.
+    if (getStudentByCode(code)) {
+      throw new GameError('STUDENT_EXISTS', `MSSV "${code}" đã tồn tại`, 409);
+    }
+    // Tạo tài khoản mới: mật khẩu = MSSV (đúng quy ước đăng nhập).
+    db.prepare(
+      'INSERT INTO students (student_code, full_name, class_name, password) VALUES (?, ?, ?, ?)',
+    ).run(code, fullName, className, code);
+    res.json({ ok: true, student_code: code, full_name: fullName });
+  }),
+);
+
 // ---------- Export mã truy cập (CSV) ----------
 adminRouter.get(
   '/students/export',
