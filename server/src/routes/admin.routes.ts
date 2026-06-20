@@ -164,6 +164,24 @@ adminRouter.post(
   }),
 );
 
+// ---------- Reset TẤT CẢ phiên (cho cả lớp chơi lại từ đầu) ----------
+adminRouter.post(
+  '/reset-all',
+  asyncHandler((_req, res) => {
+    const deleted = gameService.resetAllSessions(config.eventId);
+    res.json({ deleted });
+  }),
+);
+
+// ---------- Danh sách người ĐÃ chơi (kèm điểm/trạng thái) để reset nhanh ----------
+adminRouter.get(
+  '/players',
+  asyncHandler((_req, res) => {
+    gameService.sweepExpired(config.eventId);
+    res.json(leaderboardService.fullRanking(config.eventId));
+  }),
+);
+
 // ---------- Export kết quả cuối (CSV) ----------
 adminRouter.get(
   '/results/export',

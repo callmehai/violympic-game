@@ -149,6 +149,8 @@ export const API = {
   adminEventClose: '/api/admin/event/close',
   adminResultsExport: '/api/admin/results/export',
   adminReset: '/api/admin/reset',
+  adminResetAll: '/api/admin/reset-all',
+  adminPlayers: '/api/admin/players',
 } as const;
 
 // ===================== Socket =====================

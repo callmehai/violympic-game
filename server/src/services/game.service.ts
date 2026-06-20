@@ -545,6 +545,12 @@ export const gameService: GameService = {
     notifier(eventId);
   },
 
+  resetAllSessions(eventId: string): number {
+    const info = db.prepare('DELETE FROM sessions WHERE event_id = ?').run(eventId);
+    notifier(eventId);
+    return info.changes;
+  },
+
   sweepExpired(eventId: string): number {
     return sweepExpired(eventId);
   },

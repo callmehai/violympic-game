@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { apiDownload, apiFetch, ApiError } from '../api/client';
-import { API, type AdminEventState } from '../api/contract';
+import { API, type AdminEventState, type LeaderboardEntry } from '../api/contract';
 import { useAuth } from '../store/auth';
 
 /** Tải blob xuống máy bằng thẻ <a> tạm. */
@@ -348,57 +348,154 @@ function ActionCard({
   );
 }
 
-// ===================== Thẻ reset người chơi =====================
-function ResetCard() {
-  const [code, setCode] = useState('');
-  const [busy, setBusy] = useState(false);
-  const [msg, setMsg] = useState<Msg>(null);
+// ===================== Thẻ "Người đã chơi" (reset nhanh) =====================
+const STATUS_VN: Record<string, string> = {
+  finished: 'Đã xong',
+  in_progress: 'Đang chơi',
+  abandoned: 'Bỏ dở',
+};
 
-  async function handleReset() {
-    const sc = code.trim();
-    if (!sc) {
-      setMsg({ ok: false, text: 'Nhập mã sinh viên cần reset.' });
-      return;
+function PlayersCard() {
+  const [players, setPlayers] = useState<LeaderboardEntry[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [busy, setBusy] = useState<string | null>(null); // student_code đang reset, hoặc 'ALL'
+  const [msg, setMsg] = useState<Msg>(null);
+  const [code, setCode] = useState('');
+
+  const load = useCallback(async () => {
+    setLoading(true);
+    try {
+      const res = await apiFetch<LeaderboardEntry[]>(API.adminPlayers);
+      setPlayers(res);
+    } catch (err) {
+      setMsg({ ok: false, text: errMsg(err) });
+    } finally {
+      setLoading(false);
     }
-    setBusy(true);
+  }, []);
+
+  useEffect(() => {
+    void load();
+  }, [load]);
+
+  async function resetOne(sc: string) {
+    setBusy(sc);
     setMsg(null);
     try {
-      const res = await apiFetch<{ ok: boolean; student_code: string; full_name: string }>(
-        API.adminReset,
-        { method: 'POST', body: { student_code: sc } },
-      );
-      setMsg({ ok: true, text: `Đã reset cho ${res.full_name} (${res.student_code}). Bạn ấy đăng nhập lại để chơi mới.` });
-      setCode('');
+      await apiFetch(API.adminReset, { method: 'POST', body: { student_code: sc } });
+      setMsg({ ok: true, text: `Đã reset ${sc}. Bạn ấy đăng nhập lại để chơi mới.` });
+      await load();
     } catch (err) {
       setMsg({ ok: false, text: errMsg(err, 'Reset thất bại.') });
     } finally {
-      setBusy(false);
+      setBusy(null);
     }
+  }
+
+  async function resetAll() {
+    if (
+      !window.confirm(
+        'Reset TẤT CẢ người chơi?\nMọi phiên + điểm hiện tại sẽ bị xoá, cả lớp chơi lại từ đầu.',
+      )
+    )
+      return;
+    setBusy('ALL');
+    setMsg(null);
+    try {
+      const res = await apiFetch<{ deleted: number }>(API.adminResetAll, { method: 'POST' });
+      setMsg({ ok: true, text: `Đã reset tất cả (${res.deleted} phiên). Mọi người chơi lại từ đầu.` });
+      await load();
+    } catch (err) {
+      setMsg({ ok: false, text: errMsg(err, 'Reset thất bại.') });
+    } finally {
+      setBusy(null);
+    }
+  }
+
+  async function resetByInput() {
+    const sc = code.trim();
+    if (!sc) {
+      setMsg({ ok: false, text: 'Nhập mã sinh viên.' });
+      return;
+    }
+    await resetOne(sc);
+    setCode('');
   }
 
   return (
     <section className="panel p-5 space-y-3 md:col-span-2 border-treasure-danger/40">
-      <h2 className="text-lg font-bold text-treasure-gold">♻️ Reset người chơi (cho chơi lại)</h2>
-      <p className="text-sm text-treasure-gem/80">
-        Khi một bạn gặp sự cố (rớt mạng, lỗi giữa chừng…), nhập mã sinh viên để xoá phiên hiện tại.
-        Lần sau đăng nhập, bạn ấy sẽ chơi lại từ đầu.
-      </p>
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <h2 className="text-lg font-bold text-treasure-gold">
+          ♻️ Người đã chơi ({players.length})
+        </h2>
+        <div className="flex gap-2">
+          <button
+            type="button"
+            className="btn btn-ghost text-sm py-1.5"
+            onClick={() => void load()}
+            disabled={loading}
+          >
+            {loading ? 'Đang tải…' : '↻ Làm mới'}
+          </button>
+          <button
+            type="button"
+            className="btn text-sm py-1.5 bg-treasure-danger text-white hover:brightness-110"
+            onClick={() => void resetAll()}
+            disabled={busy === 'ALL' || players.length === 0}
+          >
+            {busy === 'ALL' ? 'Đang reset…' : '🗑️ Reset tất cả'}
+          </button>
+        </div>
+      </div>
+
+      {/* Danh sách người đã chơi + nút reset từng người */}
+      <div className="max-h-72 divide-y divide-white/5 overflow-y-auto rounded-lg border border-white/10">
+        {players.length === 0 ? (
+          <div className="p-4 text-center text-sm text-white/50">Chưa có ai chơi.</div>
+        ) : (
+          players.map((p) => (
+            <div key={p.student_code} className="flex items-center justify-between gap-3 px-3 py-2">
+              <div className="min-w-0">
+                <div className="truncate text-sm font-semibold text-white">{p.name}</div>
+                <div className="text-xs text-treasure-gem/70">
+                  {p.student_code} · {p.total}đ · {STATUS_VN[p.status] ?? p.status}
+                </div>
+              </div>
+              <button
+                type="button"
+                className="btn btn-ghost shrink-0 px-3 py-1 text-xs"
+                onClick={() => void resetOne(p.student_code)}
+                disabled={busy === p.student_code}
+              >
+                {busy === p.student_code ? '…' : 'Reset'}
+              </button>
+            </div>
+          ))
+        )}
+      </div>
+
+      {/* Reset nhanh theo MSSV (nếu người đó chưa có trong danh sách) */}
       <div className="flex flex-col gap-2 sm:flex-row">
         <input
           className="input flex-1"
-          placeholder="Mã sinh viên (vd HA176016)"
+          placeholder="Reset theo MSSV (vd HE190610)"
           value={code}
           onChange={(e) => {
             setCode(e.target.value);
             setMsg(null);
           }}
-          disabled={busy}
-          onKeyDown={(e) => e.key === 'Enter' && handleReset()}
+          onKeyDown={(e) => e.key === 'Enter' && void resetByInput()}
         />
-        <button type="button" className="btn btn-wood sm:w-48" onClick={handleReset} disabled={busy}>
-          {busy ? 'Đang reset…' : '♻️ Reset phiên'}
+        <button
+          type="button"
+          className="btn btn-wood sm:w-40"
+          onClick={() => void resetByInput()}
+          disabled={!!busy}
+        >
+          Reset MSSV
         </button>
       </div>
+
       {msg && <Feedback ok={msg.ok} msg={msg.text} />}
     </section>
   );
@@ -498,7 +595,7 @@ function Dashboard() {
             }}
           />
 
-          <ResetCard />
+          <PlayersCard />
         </div>
       </div>
     </div>

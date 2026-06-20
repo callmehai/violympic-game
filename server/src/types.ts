@@ -287,6 +287,8 @@ export interface GameService {
   finish(student: StudentRow, eventId: string): FinishResponseDTO;
   /** Admin: reset phiên của 1 SV để cho chơi lại (xoá phiên hiện tại). */
   resetSession(studentId: number, eventId: string): void;
+  /** Admin: reset TẤT CẢ phiên của event (cho cả lớp chơi lại). Trả số phiên đã xoá. */
+  resetAllSessions(eventId: string): number;
   /** Quét & tự finish các phiên in_progress đã hết giờ (gọi định kỳ + trước khi đọc leaderboard). */
   sweepExpired(eventId: string): number;
 }
