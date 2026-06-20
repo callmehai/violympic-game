@@ -66,7 +66,7 @@ function AdminLogin() {
     <div className="min-h-screen bg-treasure-bg flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-6">
-          <h1 className="text-3xl font-extrabold text-treasure-gold animate-floatup">
+          <h1 className="text-3xl font-extrabold text-treasure-gold">
             ⛏️ Quản trị kho báu
           </h1>
           <p className="mt-2 text-treasure-gem font-semibold">Đăng nhập bằng admin key 🔑</p>

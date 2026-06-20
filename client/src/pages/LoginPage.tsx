@@ -58,7 +58,7 @@ export default function LoginPage() {
       <div className="w-full max-w-md">
         {/* Hero */}
         <div className="text-center mb-6">
-          <h1 className="text-4xl font-extrabold text-treasure-gold animate-floatup">
+          <h1 className="text-4xl font-extrabold text-treasure-gold">
             ⛏️ Đi tìm kho báu
           </h1>
           <p className="mt-2 text-treasure-gem text-lg font-semibold">Violympic 💎🏆</p>
