@@ -67,6 +67,28 @@ export const config: GameConfig = {
   },
   difficultyPoints,
   bonusTiers,
+
+  // Game 2 "Vượt Ải Trí Tuệ": MÊ CUNG 2D — điều khiển nhân vật đi tới kho báu.
+  // (Đã bỏ cơ chế "mạng": sai câu → cửa thành đá; chỉ THUA khi không còn đường tới đích.)
+  mountain: {
+    // Điểm mỗi câu theo độ khó cửa: dễ 10 · TB 20 · khó 30.
+    difficultyPoints: { easy: 10, medium: 20, hard: 30 } as Record<Difficulty, number>,
+    timeLimitS: num('MOUNTAIN_TIME_LIMIT_S', 300), // 5 phút cho cả hành trình
+    // Kích thước lưới mê cung (ép về số LẺ). braid = số lối vòng đục thêm.
+    mazeRows: num('MOUNTAIN_MAZE_ROWS', 9),
+    mazeCols: num('MOUNTAIN_MAZE_COLS', 9),
+    braid: num('MOUNTAIN_MAZE_BRAID', 4),
+    gateEvery: num('MOUNTAIN_GATE_EVERY', 2), // đặt cổng "?" mỗi N ô trên tuyến chính
+    extraGates: num('MOUNTAIN_EXTRA_GATES', 4), // số cổng rải thêm ở lối khác
+    // Thưởng tốc độ MỖI CÂU: trả lời ngay được tối đa speedBonusMax, giảm dần về 0.
+    speedBonusMax: num('MOUNTAIN_SPEED_BONUS_MAX', 8),
+    // Thưởng VỀ ĐÍCH = base + (%thời gian còn × timeBonus).
+    // Mỗi giây CHƯA về đích → mất finishTimeBonus/timeLimitS điểm (1000/300 ≈ 3,3đ/giây).
+    // Game lai "trả lời giỏi" + "về nhanh" (thưởng đích ~1050 không áp đảo điểm câu cộng dồn).
+    // Muốn tốc độ áp đảo hơn → tăng 2 số này.
+    finishBase: num('MOUNTAIN_FINISH_BASE', 50),
+    finishTimeBonus: num('MOUNTAIN_FINISH_TIME_BONUS', 1000),
+  },
 };
 
 /** Phần config an toàn để lộ cho client. */
@@ -106,5 +128,17 @@ export function publicRules() {
       chest: d.chestValue,
       bomb: d.bombValue,
     },
+  };
+}
+
+/** Luật chơi Game 2 "Vượt Ải" để hiển thị ở sảnh (public). */
+export function publicMountainRules() {
+  return {
+    timeLimitS: config.mountain.timeLimitS,
+    speedWindowMs: config.fastAnswerMs,
+    speedBonusMax: config.mountain.speedBonusMax,
+    finishBase: config.mountain.finishBase,
+    finishTimeBonus: config.mountain.finishTimeBonus,
+    difficultyPoints: config.mountain.difficultyPoints,
   };
 }

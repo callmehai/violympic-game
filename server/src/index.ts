@@ -9,14 +9,17 @@ import path from 'node:path';
 import fs from 'node:fs';
 import { Server } from 'socket.io';
 
-import { config, publicRules } from './config';
+import { config, publicRules, publicMountainRules } from './config';
 import { errorMiddleware } from './util/http';
 import { authRouter } from './routes/auth.routes';
 import { gameRouter } from './routes/game.routes';
+import { mountainRouter } from './routes/mountain.routes';
 import { leaderboardRouter } from './routes/leaderboard.routes';
 import { adminRouter } from './routes/admin.routes';
 import { setupSocket, broadcastLeaderboard } from './socket';
 import { gameService, setLeaderboardNotifier } from './services/game.service';
+import { mountainService, setMountainNotifier } from './services/mountain.service';
+import { GAMES, GAME_MOUNTAIN, scopedEventId } from './games';
 // Import db để bảo đảm schema đã migrate xong trước khi nhận request.
 import { db } from './db';
 
@@ -31,14 +34,25 @@ app.get('/api/health', (_req, res) => {
   res.json({ ok: true, event: config.eventId });
 });
 
-// Luật chơi + cấu tạo bàn cờ (public, cho màn sảnh).
+// Luật chơi + cấu tạo bàn cờ Game 1 (public, cho màn sảnh).
 app.get('/api/config', (_req, res) => {
   res.json(publicRules());
+});
+
+// Luật chơi Game 2 "Vượt Ải" (public).
+app.get('/api/mountain/config', (_req, res) => {
+  res.json(publicMountainRules());
+});
+
+// Danh sách game (cho màn chọn game ở trang chủ).
+app.get('/api/games', (_req, res) => {
+  res.json(GAMES);
 });
 
 // API routers.
 app.use('/api/auth', authRouter);
 app.use('/api/game', gameRouter);
+app.use('/api/mountain', mountainRouter);
 app.use('/api/leaderboard', leaderboardRouter);
 app.use('/api/admin', adminRouter);
 
@@ -59,11 +73,15 @@ const httpServer = http.createServer(app);
 const io = new Server(httpServer, { cors: { origin: true } });
 setupSocket(io);
 setLeaderboardNotifier(broadcastLeaderboard);
+setMountainNotifier(broadcastLeaderboard);
 
-// Quét định kỳ các phiên hết giờ để chốt điểm/đóng phiên.
+const mountainEventId = scopedEventId(GAME_MOUNTAIN);
+
+// Quét định kỳ các phiên hết giờ (cả 2 game) để chốt điểm/đóng phiên.
 setInterval(() => {
   try {
     gameService.sweepExpired(config.eventId);
+    mountainService.sweepExpired(mountainEventId);
   } catch (e) {
     // nuốt lỗi để vòng quét không chết.
   }

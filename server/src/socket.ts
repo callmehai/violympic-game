@@ -1,67 +1,67 @@
+/**
+ * socket.ts — kênh realtime bảng xếp hạng, TÁCH PHÒNG theo từng game.
+ *
+ * Mỗi game có 1 event_id riêng (xem games.ts). Client `subscribe { game }` →
+ * server cho join room `evt:<eventId>` và chỉ nhận cập nhật của đúng game đó.
+ * Throttle ~800ms TÍNH RIÊNG từng event để 2 game không "đè" nhau.
+ */
 import { Server } from 'socket.io';
 import { leaderboardService } from './services/leaderboard.service';
-import { config } from './config';
+import { resolveGame, scopedEventId } from './games';
 
-// Namespace cho kênh realtime bảng xếp hạng
 const NS = '/live';
+const THROTTLE_MS = 800;
 
-// io được gán khi setupSocket chạy; null nếu chưa khởi tạo
 let io: Server | null = null;
 
-// Trạng thái throttle cho broadcast leaderboard
-const THROTTLE_MS = 800;
-let lastEmit = 0; // mốc thời gian emit gần nhất (ms)
-let trailingTimer: NodeJS.Timeout | null = null; // timer cho emit "trailing"
+function roomOf(eventId: string): string {
+  return `evt:${eventId}`;
+}
 
-/**
- * Emit ngay lập tức bảng xếp hạng top 20 tới mọi client trong namespace.
- */
 function emitNow(eventId: string): void {
   if (!io) return;
-  lastEmit = Date.now();
-  const rows = leaderboardService.top(eventId, 20);
-  io.of(NS).emit('leaderboard:update', rows);
+  const state = throttleState.get(eventId);
+  if (state) state.lastEmit = Date.now();
+  io.of(NS).to(roomOf(eventId)).emit('leaderboard:update', leaderboardService.top(eventId, 20));
 }
+
+interface ThrottleEntry {
+  lastEmit: number;
+  timer: NodeJS.Timeout | null;
+}
+const throttleState = new Map<string, ThrottleEntry>();
 
 export function setupSocket(server: Server): void {
   io = server;
   const live = io.of(NS);
 
   live.on('connection', (socket) => {
-    // Client chủ động đăng ký nhận cập nhật → trả về snapshot hiện tại
-    socket.on('subscribe', () => {
-      socket.emit('leaderboard:update', leaderboardService.top(config.eventId, 20));
+    // Client đăng ký nhận cập nhật của 1 game cụ thể.
+    socket.on('subscribe', (msg: { game?: unknown } | undefined) => {
+      const eventId = scopedEventId(resolveGame(msg?.game));
+      socket.join(roomOf(eventId));
+      socket.emit('leaderboard:update', leaderboardService.top(eventId, 20));
     });
-
-    // Gửi luôn snapshot khi vừa kết nối
-    socket.emit('leaderboard:update', leaderboardService.top(config.eventId, 20));
   });
 }
 
-/**
- * Phát bảng xếp hạng cho client với cơ chế throttle ~800ms (leading + trailing).
- * - Nếu đã quá 800ms kể từ lần emit trước: emit ngay (leading edge).
- * - Nếu vừa emit trong vòng 800ms: hẹn 1 lần emit cuối (trailing) để không
- *   bỏ sót cập nhật mới nhất, đồng thời tránh spam khi có nhiều thay đổi dồn dập.
- */
+/** Phát bảng xếp hạng cho room của 1 event với throttle leading + trailing. */
 export function broadcastLeaderboard(eventId: string): void {
-  if (!io) return; // guard: chưa khởi tạo socket thì bỏ qua
+  if (!io) return;
+  let state = throttleState.get(eventId);
+  if (!state) {
+    state = { lastEmit: 0, timer: null };
+    throttleState.set(eventId, state);
+  }
 
-  const now = Date.now();
-  const elapsed = now - lastEmit;
-
+  const elapsed = Date.now() - state.lastEmit;
   if (elapsed >= THROTTLE_MS) {
-    // Đủ thời gian giãn cách → emit ngay
     emitNow(eventId);
     return;
   }
-
-  // Đang trong cửa sổ throttle → đảm bảo có đúng 1 emit trailing ở cuối cửa sổ
-  if (trailingTimer) return; // đã hẹn rồi thì không hẹn thêm
-
-  const wait = THROTTLE_MS - elapsed;
-  trailingTimer = setTimeout(() => {
-    trailingTimer = null;
+  if (state.timer) return;
+  state.timer = setTimeout(() => {
+    if (state) state.timer = null;
     emitNow(eventId);
-  }, wait);
+  }, THROTTLE_MS - elapsed);
 }

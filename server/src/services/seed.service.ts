@@ -4,8 +4,8 @@
  */
 import { db } from '../db';
 import { config } from '../config';
-import type { Subject, Difficulty } from '../types';
-import { SUBJECTS, DIFFICULTIES } from '../types';
+import type { Subject, Difficulty, MountainQuestionType } from '../types';
+import { SUBJECTS, DIFFICULTIES, MOUNTAIN_TYPES } from '../types';
 
 // ===================== CSV parser (chuẩn tối thiểu) =====================
 /**
@@ -290,6 +290,168 @@ export function importQuestionsFromJson(json: string): {
         content,
         options_json: JSON.stringify(options),
         correct_index: ci,
+        points,
+        explanation,
+      });
+      if (existed) updated++;
+      else inserted++;
+    }
+  });
+  run();
+
+  return { inserted, updated, errors };
+}
+
+// ===================== Import câu hỏi Game 2 "Vượt Ải" =====================
+interface RawMountain {
+  id?: unknown;
+  type?: unknown;
+  subject?: unknown;
+  difficulty?: unknown;
+  content?: unknown;
+  points?: unknown;
+  explanation?: unknown;
+  // theo kiểu:
+  options?: unknown; // mcq
+  answer_index?: unknown; // mcq
+  accept?: unknown; // fill
+  suffix?: unknown; // fill (nhãn đơn vị, tuỳ chọn)
+  answer?: unknown; // truefalse (boolean)
+  items?: unknown; // order (đúng thứ tự)
+}
+
+/**
+ * Nạp câu hỏi Game 2 từ JSON. Mỗi câu có `type` quyết định cách validate + chuẩn hoá:
+ *  - mcq:       options[] (>=2) + answer_index trong [0, len-1]
+ *  - fill:      accept[] (>=1 chuỗi không rỗng) + suffix? (nhãn)
+ *  - truefalse: answer là boolean
+ *  - order:     items[] (>=2) — LƯU theo ĐÚNG thứ tự (server tự trộn khi hiển thị)
+ * UPSERT theo ext_id (= q.id).
+ */
+export function importMountainQuestionsFromJson(json: string): {
+  inserted: number;
+  updated: number;
+  errors: string[];
+} {
+  const errors: string[] = [];
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(json);
+  } catch (e) {
+    return { inserted: 0, updated: 0, errors: [`JSON không hợp lệ: ${(e as Error).message}`] };
+  }
+  if (!Array.isArray(parsed)) {
+    return { inserted: 0, updated: 0, errors: ['JSON phải là một mảng câu hỏi'] };
+  }
+
+  const existsStmt = db.prepare('SELECT COUNT(*) AS c FROM mountain_questions WHERE ext_id = ?');
+  const upsertStmt = db.prepare(
+    `INSERT INTO mountain_questions
+       (ext_id, type, subject, difficulty, content, payload_json, answer_json, points, explanation, active)
+     VALUES
+       (@ext_id, @type, @subject, @difficulty, @content, @payload_json, @answer_json, @points, @explanation, 1)
+     ON CONFLICT(ext_id) DO UPDATE SET
+       type         = excluded.type,
+       subject      = excluded.subject,
+       difficulty   = excluded.difficulty,
+       content      = excluded.content,
+       payload_json = excluded.payload_json,
+       answer_json  = excluded.answer_json,
+       points       = excluded.points,
+       explanation  = excluded.explanation,
+       active       = 1`,
+  );
+
+  let inserted = 0;
+  let updated = 0;
+
+  const run = db.transaction(() => {
+    const arr = parsed as RawMountain[];
+    for (let i = 0; i < arr.length; i++) {
+      const q = arr[i];
+      const idLabel =
+        typeof q?.id === 'string' || typeof q?.id === 'number' ? String(q.id) : `#${i}`;
+
+      const type = q?.type as MountainQuestionType;
+      if (!MOUNTAIN_TYPES.includes(type)) {
+        errors.push(`[${idLabel}] type không hợp lệ: ${String(q?.type)}`);
+        continue;
+      }
+      const difficulty = q?.difficulty as Difficulty;
+      if (!DIFFICULTIES.includes(difficulty)) {
+        errors.push(`[${idLabel}] difficulty không hợp lệ: ${String(q?.difficulty)}`);
+        continue;
+      }
+      const content = typeof q?.content === 'string' ? q.content.trim() : '';
+      if (content === '') {
+        errors.push(`[${idLabel}] content rỗng`);
+        continue;
+      }
+
+      // --- validate + chuẩn hoá theo kiểu ---
+      let payload: unknown;
+      let answer: unknown;
+
+      if (type === 'mcq') {
+        if (!Array.isArray(q?.options) || (q.options as unknown[]).length < 2) {
+          errors.push(`[${idLabel}] mcq cần options[] >= 2`);
+          continue;
+        }
+        const options = (q.options as unknown[]).map((o) => String(o));
+        const ai = q?.answer_index;
+        if (typeof ai !== 'number' || !Number.isInteger(ai) || ai < 0 || ai > options.length - 1) {
+          errors.push(`[${idLabel}] mcq answer_index ngoài [0, ${options.length - 1}]`);
+          continue;
+        }
+        payload = { options };
+        answer = { index: ai };
+      } else if (type === 'fill') {
+        if (!Array.isArray(q?.accept) || (q.accept as unknown[]).length < 1) {
+          errors.push(`[${idLabel}] fill cần accept[] >= 1 đáp án`);
+          continue;
+        }
+        const accept = (q.accept as unknown[]).map((a) => String(a).trim()).filter((a) => a !== '');
+        if (accept.length < 1) {
+          errors.push(`[${idLabel}] fill accept[] toàn rỗng`);
+          continue;
+        }
+        const suffix = typeof q?.suffix === 'string' ? q.suffix : '';
+        payload = suffix ? { suffix } : {};
+        answer = { accept };
+      } else if (type === 'truefalse') {
+        if (typeof q?.answer !== 'boolean') {
+          errors.push(`[${idLabel}] truefalse cần answer là true/false`);
+          continue;
+        }
+        payload = {};
+        answer = { value: q.answer };
+      } else {
+        // order
+        if (!Array.isArray(q?.items) || (q.items as unknown[]).length < 2) {
+          errors.push(`[${idLabel}] order cần items[] >= 2 (theo ĐÚNG thứ tự)`);
+          continue;
+        }
+        const items = (q.items as unknown[]).map((it) => String(it));
+        payload = { items };
+        answer = {}; // đúng thứ tự = thứ tự items trong file
+      }
+
+      const points =
+        typeof q?.points === 'number' && Number.isFinite(q.points) && q.points > 0
+          ? Math.round(q.points)
+          : config.difficultyPoints[difficulty];
+      const subject = typeof q?.subject === 'string' ? q.subject : null;
+      const explanation = typeof q?.explanation === 'string' ? q.explanation : null;
+
+      const existed = (existsStmt.get(idLabel) as { c: number }).c > 0;
+      upsertStmt.run({
+        ext_id: idLabel,
+        type,
+        subject,
+        difficulty,
+        content,
+        payload_json: JSON.stringify(payload),
+        answer_json: JSON.stringify(answer),
         points,
         explanation,
       });

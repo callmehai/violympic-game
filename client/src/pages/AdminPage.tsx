@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { apiDownload, apiFetch, ApiError } from '../api/client';
-import { API, type AdminEventState, type LeaderboardEntry } from '../api/contract';
+import { API, type AdminEventState, type GameId, type LeaderboardEntry } from '../api/contract';
 import { useAuth } from '../store/auth';
 
 /** Tải blob xuống máy bằng thẻ <a> tạm. */
@@ -192,9 +192,10 @@ function EventCard({
             <Info label="Mã ngày" value={`${state.config.rows}×${state.config.cols} ô`} />
           </div>
 
-          <div className="grid grid-cols-4 gap-2 text-center">
+          <div className="grid grid-cols-3 gap-2 text-center sm:grid-cols-5">
             <Stat label="Sinh viên" value={state.counts.students} />
-            <Stat label="Câu hỏi" value={state.counts.questions} />
+            <Stat label="Câu Kho báu" value={state.counts.questions} />
+            <Stat label="Câu Vượt Ải" value={state.counts.mountain_questions} />
             <Stat label="Phiên" value={state.counts.sessions} />
             <Stat label="Đã xong" value={state.counts.finished} />
           </div>
@@ -435,17 +436,23 @@ const STATUS_VN: Record<string, string> = {
   abandoned: 'Bỏ dở',
 };
 
+const GAME_TABS: { id: GameId; label: string }[] = [
+  { id: 'treasure', label: '⛏️ Kho báu' },
+  { id: 'mountain', label: '⛰️ Vượt Ải' },
+];
+
 function PlayersCard() {
+  const [game, setGame] = useState<GameId>('treasure');
   const [players, setPlayers] = useState<LeaderboardEntry[]>([]);
   const [loading, setLoading] = useState(false);
   const [busy, setBusy] = useState<string | null>(null); // student_code đang reset, hoặc 'ALL'
   const [msg, setMsg] = useState<Msg>(null);
   const [code, setCode] = useState('');
 
-  const load = useCallback(async () => {
+  const load = useCallback(async (g: GameId) => {
     setLoading(true);
     try {
-      const res = await apiFetch<LeaderboardEntry[]>(API.adminPlayers);
+      const res = await apiFetch<LeaderboardEntry[]>(`${API.adminPlayers}?game=${g}`);
       setPlayers(res);
     } catch (err) {
       setMsg({ ok: false, text: errMsg(err) });
@@ -455,16 +462,16 @@ function PlayersCard() {
   }, []);
 
   useEffect(() => {
-    void load();
-  }, [load]);
+    void load(game);
+  }, [load, game]);
 
   async function resetOne(sc: string) {
     setBusy(sc);
     setMsg(null);
     try {
-      await apiFetch(API.adminReset, { method: 'POST', body: { student_code: sc } });
+      await apiFetch(API.adminReset, { method: 'POST', body: { student_code: sc, game } });
       setMsg({ ok: true, text: `Đã reset ${sc}. Bạn ấy đăng nhập lại để chơi mới.` });
-      await load();
+      await load(game);
     } catch (err) {
       setMsg({ ok: false, text: errMsg(err, 'Reset thất bại.') });
     } finally {
@@ -475,16 +482,19 @@ function PlayersCard() {
   async function resetAll() {
     if (
       !window.confirm(
-        'Reset TẤT CẢ người chơi?\nMọi phiên + điểm hiện tại sẽ bị xoá, cả lớp chơi lại từ đầu.',
+        'Reset TẤT CẢ người chơi của game này?\nMọi phiên + điểm hiện tại sẽ bị xoá, cả lớp chơi lại từ đầu.',
       )
     )
       return;
     setBusy('ALL');
     setMsg(null);
     try {
-      const res = await apiFetch<{ deleted: number }>(API.adminResetAll, { method: 'POST' });
+      const res = await apiFetch<{ deleted: number }>(API.adminResetAll, {
+        method: 'POST',
+        body: { game },
+      });
       setMsg({ ok: true, text: `Đã reset tất cả (${res.deleted} phiên). Mọi người chơi lại từ đầu.` });
-      await load();
+      await load(game);
     } catch (err) {
       setMsg({ ok: false, text: errMsg(err, 'Reset thất bại.') });
     } finally {
@@ -512,7 +522,7 @@ function PlayersCard() {
           <button
             type="button"
             className="btn btn-ghost text-sm py-1.5"
-            onClick={() => void load()}
+            onClick={() => void load(game)}
             disabled={loading}
           >
             {loading ? 'Đang tải…' : '↻ Làm mới'}
@@ -526,6 +536,22 @@ function PlayersCard() {
             {busy === 'ALL' ? 'Đang reset…' : '🗑️ Reset tất cả'}
           </button>
         </div>
+      </div>
+
+      {/* Chọn game để xem/ reset */}
+      <div className="inline-flex rounded-xl bg-black/30 p-1">
+        {GAME_TABS.map((t) => (
+          <button
+            key={t.id}
+            type="button"
+            onClick={() => setGame(t.id)}
+            className={`rounded-lg px-3 py-1.5 text-sm font-bold transition ${
+              game === t.id ? 'bg-treasure-gold text-treasure-bg' : 'text-white/70 hover:text-white'
+            }`}
+          >
+            {t.label}
+          </button>
+        ))}
       </div>
 
       {/* Danh sách người đã chơi + nút reset từng người */}
@@ -644,10 +670,22 @@ function Dashboard() {
           <AddStudentCard onDone={loadState} />
 
           <ImportCard
-            title="Import câu hỏi"
+            title="Import câu hỏi (Kho báu)"
             icon="❓"
             accept=".json,application/json"
             path={API.adminQuestionsImport}
+            formatResult={(res) => {
+              const r = (res ?? {}) as { inserted?: number; updated?: number; errors?: number };
+              return `Thành công · Thêm mới: ${r.inserted ?? 0} · Cập nhật: ${r.updated ?? 0} · Lỗi: ${r.errors ?? 0}`;
+            }}
+            onDone={loadState}
+          />
+
+          <ImportCard
+            title="Import câu hỏi (Vượt Ải)"
+            icon="🧩"
+            accept=".json,application/json"
+            path={API.adminMountainImport}
             formatResult={(res) => {
               const r = (res ?? {}) as { inserted?: number; updated?: number; errors?: number };
               return `Thành công · Thêm mới: ${r.inserted ?? 0} · Cập nhật: ${r.updated ?? 0} · Lỗi: ${r.errors ?? 0}`;
@@ -667,11 +705,22 @@ function Dashboard() {
           />
 
           <ActionCard
-            title="Xuất kết quả (để tự cộng thưởng)"
+            title="Xuất kết quả Kho báu"
             icon="📊"
-            button="Tải file kết quả"
+            button="Tải kết quả Kho báu"
             onRun={async () => {
-              const { blob, filename } = await apiDownload(API.adminResultsExport);
+              const { blob, filename } = await apiDownload(`${API.adminResultsExport}?game=treasure`);
+              download(blob, filename);
+              return `Đã tải xuống: ${filename}`;
+            }}
+          />
+
+          <ActionCard
+            title="Xuất kết quả Vượt Ải"
+            icon="📊"
+            button="Tải kết quả Vượt Ải"
+            onRun={async () => {
+              const { blob, filename } = await apiDownload(`${API.adminResultsExport}?game=mountain`);
               download(blob, filename);
               return `Đã tải xuống: ${filename}`;
             }}

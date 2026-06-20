@@ -85,7 +85,10 @@ export default function LobbyPage() {
       <header className="flex flex-wrap items-center justify-between gap-3 px-6 py-4">
         <h1 className="font-display text-2xl font-extrabold text-treasure-gold">⛏️ Đi tìm kho báu</h1>
         <div className="flex items-center gap-2">
-          <Link to="/leaderboard" className="btn btn-ghost">
+          <Link to="/" className="btn btn-ghost">
+            ← Trang chủ
+          </Link>
+          <Link to="/leaderboard?game=treasure" className="btn btn-ghost">
             🏆 Bảng xếp hạng
           </Link>
           <button type="button" className="btn btn-ghost" onClick={handleLogout}>
@@ -230,6 +233,9 @@ function PrepareCard({
       <section className="space-y-1.5 rounded-xl border border-white/10 bg-black/20 p-4 text-sm text-white/80">
         <div>
           ⏱️ Thời gian: <b className="text-white">{fmtMinutes(timeLimitS)}</b> cho cả lượt.
+        </div>
+        <div className="rounded-lg bg-treasure-gem/15 px-2.5 py-2 font-semibold text-treasure-gem">
+          ⏸️ Lúc xem <b>giải thích đáp án thì đồng hồ TẠM DỪNG</b> — cứ bình tĩnh đọc kỹ, không lo mất thời gian nhé!
         </div>
         <div>❌ Trả lời sai: 0 điểm, không được đào, sang câu kế tiếp.</div>
         <div>

@@ -66,9 +66,25 @@ export function migrate(): void {
       closed_at   TEXT
     );
 
+    -- Ngân hàng câu hỏi Game 2 "Vượt Ải Trí Tuệ" (nhiều KIỂU câu, tách khỏi questions).
+    CREATE TABLE IF NOT EXISTS mountain_questions (
+      id           INTEGER PRIMARY KEY,
+      ext_id       TEXT UNIQUE,
+      type         TEXT NOT NULL,         -- mcq | fill | truefalse | order
+      subject      TEXT,
+      difficulty   TEXT NOT NULL,         -- easy|medium|hard
+      content      TEXT NOT NULL,
+      payload_json TEXT NOT NULL,         -- dữ liệu hiển thị (options/items/suffix)
+      answer_json  TEXT NOT NULL,         -- đáp án đúng (server-only)
+      points       INTEGER NOT NULL DEFAULT 10,
+      explanation  TEXT,
+      active       INTEGER NOT NULL DEFAULT 1
+    );
+
     CREATE INDEX IF NOT EXISTS idx_sessions_event_status ON sessions(event_id, status);
     CREATE INDEX IF NOT EXISTS idx_sessions_event_score  ON sessions(event_id, score DESC);
     CREATE INDEX IF NOT EXISTS idx_questions_active       ON questions(active);
+    CREATE INDEX IF NOT EXISTS idx_mtn_questions_active   ON mountain_questions(active);
   `);
 }
 

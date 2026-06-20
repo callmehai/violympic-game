@@ -298,7 +298,12 @@ export default function GamePage() {
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         {/* Cột trái: timer + câu hỏi + điều khiển */}
         <div className="flex flex-col gap-4">
-          <Timer timeLeftS={state.timeLeftS} totalS={state.timeLimitS} onExpire={handleExpire} />
+          <Timer
+            timeLeftS={state.timeLeftS}
+            totalS={state.timeLimitS}
+            onExpire={handleExpire}
+            paused={!!feedback}
+          />
           {question ? (
             <QuestionCard
               question={question}

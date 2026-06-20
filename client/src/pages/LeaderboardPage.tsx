@@ -1,71 +1,81 @@
 /**
  * LeaderboardPage.tsx — bảng xếp hạng real-time (Socket.IO) có fallback poll.
+ * Có TAB chọn game (Kho báu | Vượt Ải) — mỗi game 1 bảng riêng.
  */
 import { useEffect, useRef, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { apiFetch, ApiError } from '../api/client';
-import { API, type LeaderboardEntry } from '../api/contract';
+import { API, type GameId, type LeaderboardEntry } from '../api/contract';
 import { connectLeaderboard } from '../api/socket';
 import { useAuth } from '../store/auth';
 import RankTable from '../components/RankTable';
 
+const GAME_TABS: { id: GameId; label: string }[] = [
+  { id: 'treasure', label: '⛏️ Kho báu' },
+  { id: 'mountain', label: '⛰️ Vượt Ải' },
+];
+
 export default function LeaderboardPage() {
   const navigate = useNavigate();
+  const [params, setParams] = useSearchParams();
   const isAuthed = useAuth((s) => s.isAuthed);
   const profile = useAuth((s) => s.profile);
   const meCode = profile?.student_code;
+
+  const initial: GameId = params.get('game') === 'mountain' ? 'mountain' : 'treasure';
+  const [game, setGame] = useState<GameId>(initial);
 
   const [rows, setRows] = useState<LeaderboardEntry[]>([]);
   const [connected, setConnected] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
-  // Giữ trạng thái connected mới nhất cho vòng poll mà không cần đăng ký lại effect.
   const connectedRef = useRef(false);
   connectedRef.current = connected;
+  const gameRef = useRef<GameId>(game);
+  gameRef.current = game;
 
-  // Tải bảng xếp hạng 1 lần (auth: true để server gắn cờ is_me nếu đã đăng nhập).
-  async function loadOnce() {
+  async function loadOnce(g: GameId) {
     try {
-      const data = await apiFetch<LeaderboardEntry[]>(API.leaderboard, { auth: true });
-      setRows(data);
-      setError(null);
-    } catch (err) {
-      if (err instanceof ApiError) {
-        setError(err.message || 'Không tải được bảng xếp hạng.');
-      } else {
-        setError('Không kết nối được máy chủ, vui lòng thử lại.');
+      const data = await apiFetch<LeaderboardEntry[]>(`${API.leaderboard}?game=${g}`, { auth: true });
+      if (gameRef.current === g) {
+        setRows(data);
+        setError(null);
       }
+    } catch (err) {
+      setError(err instanceof ApiError ? err.message || 'Không tải được bảng xếp hạng.' : 'Không kết nối được máy chủ.');
     } finally {
       setLoading(false);
     }
   }
 
-  // Lần tải đầu khi mount.
+  // Đổi game → cập nhật URL, reset bảng, tải lại + nối socket mới.
   useEffect(() => {
-    void loadOnce();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    setLoading(true);
+    setRows([]);
+    setParams(game === 'treasure' ? {} : { game }, { replace: true });
+    void loadOnce(game);
 
-  // Kết nối real-time. eventId không biết từ client -> chuỗi rỗng (server broadcast theo event hiện tại).
-  useEffect(() => {
     const cleanup = connectLeaderboard(
-      '',
+      game,
       (next) => {
-        setRows(next);
-        setLoading(false);
-        setError(null);
+        if (gameRef.current === game) {
+          setRows(next);
+          setLoading(false);
+          setError(null);
+        }
       },
       (c) => setConnected(c),
     );
     return cleanup;
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [game]);
 
   // Fallback poll mỗi 3s khi socket chưa connected.
   useEffect(() => {
     if (connected) return;
     const id = window.setInterval(() => {
-      if (!connectedRef.current) void loadOnce();
+      if (!connectedRef.current) void loadOnce(gameRef.current);
     }, 3000);
     return () => window.clearInterval(id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -74,7 +84,6 @@ export default function LeaderboardPage() {
   return (
     <div className="min-h-screen bg-treasure-bg p-4 sm:p-6">
       <div className="mx-auto w-full max-w-3xl">
-        {/* Header */}
         <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
           <div>
             <h1 className="text-3xl font-extrabold text-treasure-gold">🏆 Bảng xếp hạng</h1>
@@ -92,16 +101,32 @@ export default function LeaderboardPage() {
 
           <div className="flex items-center gap-2">
             <Link to="/" className="btn btn-ghost">
-              Về sảnh
+              ← Trang chủ
             </Link>
             <button
               type="button"
               className="btn btn-gold"
               onClick={() => navigate(isAuthed ? '/' : '/login')}
             >
-              ⛏️ Chơi
+              🎮 Chơi
             </button>
           </div>
+        </div>
+
+        {/* Tab chọn game */}
+        <div className="mb-4 inline-flex rounded-xl bg-black/30 p-1">
+          {GAME_TABS.map((t) => (
+            <button
+              key={t.id}
+              type="button"
+              onClick={() => setGame(t.id)}
+              className={`rounded-lg px-4 py-2 text-sm font-bold transition ${
+                game === t.id ? 'bg-treasure-gold text-treasure-bg' : 'text-white/70 hover:text-white'
+              }`}
+            >
+              {t.label}
+            </button>
+          ))}
         </div>
 
         {error && (

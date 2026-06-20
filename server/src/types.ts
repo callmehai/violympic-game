@@ -50,6 +50,8 @@ export interface SessionProgress {
   // Mốc (ms) phát câu hỏi hiện tại LẦN ĐẦU — dùng đo thời gian trả lời cho thưởng tốc độ.
   // Lưu ở server, KHÔNG reset khi client refetch /next-question (chống farm fast-bonus).
   questionShownAt?: number;
+  pausedMs?: number; // tổng thời gian KHÔNG tính giờ (đang xem đáp án)
+  readingSince?: number; // mốc bắt đầu xem đáp án (đồng hồ đang đóng băng)
 }
 
 // ===================== DB row types =====================
@@ -103,7 +105,8 @@ export interface AuthTokenPayload {
 export interface QuestionTokenPayload {
   sid: number; // session id
   qid: number; // question id
-  cur: number; // cursor index lúc phát câu
+  cur: number; // cursor index lúc phát câu (Game 1)
+  cell?: number; // ô cổng mê cung đang hỏi (Game 2)
   iat?: number;
   exp?: number;
 }
@@ -203,6 +206,7 @@ export interface AdminEventState {
   counts: {
     students: number;
     questions: number;
+    mountain_questions: number;
     sessions: number;
     finished: number;
   };
@@ -244,6 +248,19 @@ export interface GameConfig extends PublicGameConfig {
   };
   difficultyPoints: Record<Difficulty, number>;
   bonusTiers: BonusTier[];
+  // Cấu hình Game 2 "Vượt Ải Trí Tuệ" (mê cung 2D).
+  mountain: {
+    difficultyPoints: Record<Difficulty, number>; // điểm mỗi câu theo độ khó (riêng game 2)
+    timeLimitS: number; // giới hạn thời gian cả hành trình
+    mazeRows: number; // (dự phòng nếu sinh mê cung) — bản hiện tại fix cứng map
+    mazeCols: number;
+    braid: number;
+    gateEvery: number;
+    extraGates: number;
+    speedBonusMax: number; // thưởng tốc độ tối đa mỗi câu (giảm dần về 0)
+    finishBase: number; // thưởng nền khi về đích
+    finishTimeBonus: number; // thưởng đích theo % thời gian còn lại
+  };
 }
 
 // ===================== Service interfaces (lock signatures) =====================
@@ -295,3 +312,135 @@ export interface GameService {
 
 /** Hàm thông báo "có thay đổi điểm" để socket layer broadcast leaderboard. */
 export type LeaderboardNotifier = (eventId: string) => void;
+
+// =====================================================================
+// ===================== GAME 2: VƯỢT ẢI TRÍ TUỆ =======================
+// =====================================================================
+
+/** Các kiểu câu hỏi của Game 2 (mỗi ải 1 kiểu). */
+export type MountainQuestionType = 'mcq' | 'fill' | 'truefalse' | 'order';
+export const MOUNTAIN_TYPES: MountainQuestionType[] = ['mcq', 'fill', 'truefalse', 'order'];
+
+/** Bản ghi câu hỏi Game 2 (bảng mountain_questions). answer_json CHỈ ở server. */
+export interface MountainQuestionRow {
+  id: number;
+  ext_id: string | null;
+  type: MountainQuestionType;
+  subject: string | null;
+  difficulty: Difficulty;
+  content: string;
+  payload_json: string; // dữ liệu hiển thị theo kiểu (options/items/suffix...)
+  answer_json: string; // đáp án đúng theo kiểu (KHÔNG gửi xuống client)
+  points: number;
+  explanation: string | null;
+  active: number; // 0|1
+}
+
+/**
+ * Mã hiển thị 1 ô mê cung gửi cho client:
+ * 0 tường · 1 lối đi · 2 cổng (khoá, cần trả lời) · 3 xuất phát · 4 đích
+ * 5 cổng đã mở (đi được) · 6 cổng đã chặn (thành đá do trả lời sai)
+ */
+export type MazeCell = 0 | 1 | 2 | 3 | 4 | 5 | 6;
+export type GateStatus = 'locked' | 'open' | 'blocked';
+
+/** Tiến độ 1 phiên Game 2 (mê cung) — lưu trong sessions.progress_json. */
+export interface MazeProgress {
+  rows: number;
+  cols: number;
+  pos: number; // vị trí nhân vật (index = r*cols + c)
+  gateStatus: Record<number, GateStatus>; // trạng thái từng ô cổng
+  gateQ: Record<number, number>; // ô cổng → mountain_questions.id (gán SẴN lúc start theo độ khó cửa)
+  ver?: number; // phiên bản map; lệch → phiên cũ, tạo lại
+  pending: number | null; // ô cổng đang chờ trả lời (đã bước vào)
+  questionShownAt?: number;
+  pausedMs: number; // tổng thời gian KHÔNG tính giờ (đang xem đáp án)
+  readingSince?: number; // mốc bắt đầu xem đáp án (đồng hồ đang đóng băng)
+  answered: number;
+  correct: number;
+  reached?: boolean; // đã tới đích chưa
+}
+
+/** Trạng thái phiên mê cung trả cho client. */
+export interface MazeStateDTO {
+  session_id: number;
+  status: SessionStatus;
+  score: number;
+  rows: number;
+  cols: number;
+  cells: MazeCell[]; // bản đồ hiển thị (đã gộp tĩnh + trạng thái cổng)
+  gate_levels: Record<number, number>; // ô cổng → mức độ khó 1(dễ)/2(TB)/3(khó) để in số lên cửa
+  pos: number;
+  start: number;
+  exit: number;
+  time_limit_s: number;
+  time_left_s: number;
+  rank: number | null;
+  finished: boolean;
+  reached: boolean;
+  gates_opened: number; // số cổng đã mở (câu đúng)
+}
+
+/** Câu hỏi tại 1 cổng (KHÔNG kèm đáp án đúng). */
+export interface NextChallengeDTO {
+  question_id: number;
+  question_token: string;
+  type: MountainQuestionType;
+  subject: string | null;
+  difficulty: Difficulty;
+  content: string;
+  options?: string[]; // mcq — đã trộn riêng từng người
+  items?: string[]; // order — đã trộn riêng từng người
+  suffix?: string; // fill — nhãn đơn vị
+  points: number; // điểm nếu đúng
+  speed_bonus: number;
+  speed_window_ms: number;
+}
+
+/** Kết quả 1 lần bước (free move) hoặc bước-vào-cổng (kèm câu hỏi). */
+export interface MoveResultDTO {
+  gate: boolean;
+  state?: MazeStateDTO; // khi đi tự do (gate=false)
+  question?: NextChallengeDTO; // khi bước vào cổng khoá (gate=true)
+}
+
+/** Kết quả chấm 1 câu ở cổng (lộ đáp án đúng SAU khi trả lời). */
+export interface MazeAnswerDTO {
+  is_correct: boolean;
+  delta: number;
+  fast_bonus: number;
+  explanation: string | null;
+  correct_index?: number;
+  correct_text?: string;
+  correct_value?: boolean;
+  correct_order?: string[];
+  state: MazeStateDTO; // trạng thái mê cung sau khi chấm
+}
+
+export interface MazeFinishDTO {
+  score: number;
+  reached: boolean;
+  gates_opened: number;
+  time_spent_ms: number;
+  rank: number;
+  status: SessionStatus;
+}
+
+export interface MountainQuestionService {
+  getById(id: number): MountainQuestionRow | undefined;
+  allActiveIds(): number[];
+  count(): number;
+  /** Tất cả câu active kèm difficulty (để xếp thứ tự theo độ khó). */
+  allActive(): { id: number; difficulty: Difficulty }[];
+}
+
+export interface MountainService {
+  startSession(student: StudentRow, eventId: string): MazeStateDTO;
+  getState(student: StudentRow, eventId: string): MazeStateDTO | null;
+  /** Bước nhân vật tới ô (r,c). Nếu là cổng khoá → trả câu hỏi (chưa di chuyển). */
+  move(student: StudentRow, eventId: string, r: number, c: number): MoveResultDTO;
+  /** Chấm câu ở cổng đang chờ. Đúng → mở cổng + bước vào; Sai → chặn cổng (thua nếu kẹt). */
+  answerGate(student: StudentRow, eventId: string, token: string, response: unknown): MazeAnswerDTO;
+  finish(student: StudentRow, eventId: string): MazeFinishDTO;
+  sweepExpired(eventId: string): number;
+}

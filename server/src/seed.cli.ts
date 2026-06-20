@@ -7,7 +7,11 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { db } from './db';
-import { importStudentsFromCsv, importQuestionsFromJson } from './services/seed.service';
+import {
+  importStudentsFromCsv,
+  importQuestionsFromJson,
+  importMountainQuestionsFromJson,
+} from './services/seed.service';
 
 /** Đọc file nếu có; trả null nếu không tồn tại (KHÔNG làm sập tiến trình). */
 function readIfExists(file: string): string | null {
@@ -23,10 +27,13 @@ function main(): void {
     process.argv[2] || path.resolve(process.cwd(), '../seed/accounts.csv');
   const questionsPath =
     process.argv[3] || path.resolve(process.cwd(), '../seed/questions.sample.json');
+  const mountainPath =
+    process.argv[4] || path.resolve(process.cwd(), '../seed/mountain.sample.json');
 
-  console.log('=== Violympic Treasure — Seed dữ liệu ===');
-  console.log(`SV       : ${studentsPath}`);
-  console.log(`Câu hỏi  : ${questionsPath}\n`);
+  console.log('=== Violympic — Seed dữ liệu ===');
+  console.log(`SV         : ${studentsPath}`);
+  console.log(`Câu hỏi G1 : ${questionsPath}`);
+  console.log(`Câu hỏi G2 : ${mountainPath}\n`);
 
   // --- Nạp SV (TÙY CHỌN: file accounts.csv chứa thông tin cá nhân, không kèm trong repo).
   //     Trên server triển khai (vd Render) thường không có file này → bỏ qua, import qua /admin.
@@ -50,6 +57,19 @@ function main(): void {
     }
   } else {
     console.log(`[Câu hỏi]   BỎ QUA — không thấy ${questionsPath}.`);
+  }
+
+  // --- Nạp câu hỏi Game 2 "Vượt Ải" ---
+  const mtnJson = readIfExists(mountainPath);
+  if (mtnJson) {
+    const m = importMountainQuestionsFromJson(mtnJson);
+    console.log(`[Vượt Ải]   thêm mới: ${m.inserted}, cập nhật: ${m.updated}`);
+    if (m.errors.length > 0) {
+      console.log(`[Vượt Ải]   ${m.errors.length} lỗi (đã bỏ qua):`);
+      for (const err of m.errors) console.log(`            - ${err}`);
+    }
+  } else {
+    console.log(`[Vượt Ải]   BỎ QUA — không thấy ${mountainPath}.`);
   }
 
   // --- Bảng kiểm: 10 SV đầu (mã → mật khẩu) + tổng số ---

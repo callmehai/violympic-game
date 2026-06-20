@@ -67,15 +67,20 @@ function elapsedMs(s: SessionRow): number {
   return nowMs() - Date.parse(s.started_at);
 }
 
-/** Thời gian còn lại (giây, làm tròn xuống) sau khi trừ thời gian trôi + phạt. */
+/** Tổng thời gian KHÔNG tính giờ: pausedMs đã cộng + khoảng đang xem đáp án (nếu có). */
+function pausedTotal(prog: SessionProgress): number {
+  return (prog.pausedMs ?? 0) + (prog.readingSince !== undefined ? nowMs() - prog.readingSince : 0);
+}
+
+/** Thời gian còn lại (giây) sau khi trừ thời gian trôi + phạt, CỘNG LẠI phần xem đáp án. */
 function timeLeftS(s: SessionRow, prog: SessionProgress): number {
-  const remainMs = config.timeLimitS * 1000 - elapsedMs(s) - prog.penaltyMs;
+  const remainMs = config.timeLimitS * 1000 - elapsedMs(s) - prog.penaltyMs + pausedTotal(prog);
   return Math.max(0, Math.floor(remainMs / 1000));
 }
 
-/** Phiên đã hết giờ chưa (đã trừ phạt). */
+/** Phiên đã hết giờ chưa (đã trừ phạt + không tính thời gian xem đáp án). */
 function isExpired(s: SessionRow, prog: SessionProgress): boolean {
-  return config.timeLimitS * 1000 - elapsedMs(s) - prog.penaltyMs <= 0;
+  return config.timeLimitS * 1000 - elapsedMs(s) - prog.penaltyMs + pausedTotal(prog) <= 0;
 }
 
 // ===================== Load / parse / save phiên =====================
@@ -210,9 +215,9 @@ function buildState(student: StudentRow, s: SessionRow): GameStateDTO {
  */
 function finishInternal(s: SessionRow, prog: SessionProgress, board: Board): void {
   if (s.status === 'finished') return;
-  // tổng thời gian = thời gian trôi thực + phạt, nhưng không vượt quá giới hạn buổi
-  const elapsed = elapsedMs(s) + prog.penaltyMs;
-  const timeSpent = Math.min(elapsed, config.timeLimitS * 1000);
+  // tổng thời gian = thời gian trôi thực + phạt − thời gian xem đáp án, kẹp trong giới hạn buổi
+  const active = elapsedMs(s) + prog.penaltyMs - pausedTotal(prog);
+  const timeSpent = Math.min(Math.max(0, active), config.timeLimitS * 1000);
   saveSession(s, board, prog, {
     status: 'finished',
     finished_at: nowIso(),
@@ -284,6 +289,7 @@ export const gameService: GameService = {
       correct: 0,
       digsDone: 0,
       penaltyMs: 0,
+      pausedMs: 0,
     };
     const startedAt = nowIso();
     const info = db
@@ -327,6 +333,11 @@ export const gameService: GameService = {
       throw new GameError('NO_SESSION', 'Chưa có phiên đang chơi', 409);
     }
     const prog = parseProgress(s);
+    // Người chơi đã đọc xong đáp án và sang câu kế → cộng dồn thời gian xem, chạy lại đồng hồ.
+    if (prog.readingSince !== undefined) {
+      prog.pausedMs = (prog.pausedMs ?? 0) + (nowMs() - prog.readingSince);
+      prog.readingSince = undefined;
+    }
     if (isExpired(s, prog)) {
       finishInternal(s, prog, parseBoard(s));
       notifier(eventId);
@@ -458,6 +469,8 @@ export const gameService: GameService = {
       prog.cursor++;
       prog.penaltyMs += config.wrongTimePenaltyS * 1000;
     }
+    // Bắt đầu "xem đáp án": đóng băng đồng hồ tới khi người chơi bấm sang câu kế.
+    prog.readingSince = nowMs();
 
     saveSession(s, board, prog, { score });
     notifier(eventId);

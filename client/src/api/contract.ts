@@ -121,6 +121,7 @@ export interface AdminEventState {
   counts: {
     students: number;
     questions: number;
+    mountain_questions: number;
     sessions: number;
     finished: number;
   };
@@ -138,13 +139,98 @@ export interface RulesDTO {
   values: { gemValues: number[]; chest: number; bomb: number };
 }
 
+// ===================== GAME 2: VƯỢT ẢI TRÍ TUỆ =====================
+export type GameId = 'treasure' | 'mountain';
+export interface GameInfo {
+  id: GameId;
+  name: string;
+}
+
+export type MountainQuestionType = 'mcq' | 'fill' | 'truefalse' | 'order';
+
+export interface MountainRulesDTO {
+  timeLimitS: number;
+  speedWindowMs: number;
+  speedBonusMax: number;
+  finishBase: number;
+  finishTimeBonus: number;
+  difficultyPoints: { easy: number; medium: number; hard: number };
+}
+
+/** 0 tường·1 lối·2 cổng khoá·3 xuất phát·4 đích·5 cổng mở·6 cổng chặn */
+export type MazeCell = 0 | 1 | 2 | 3 | 4 | 5 | 6;
+
+export interface MazeStateDTO {
+  session_id: number;
+  status: SessionStatus;
+  score: number;
+  rows: number;
+  cols: number;
+  cells: MazeCell[];
+  gate_levels: Record<number, number>; // ô cổng → 1(dễ)/2(TB)/3(khó) để in số lên cửa
+  pos: number;
+  start: number;
+  exit: number;
+  time_limit_s: number;
+  time_left_s: number;
+  rank: number | null;
+  finished: boolean;
+  reached: boolean;
+  gates_opened: number;
+}
+
+export interface NextChallengeDTO {
+  question_id: number;
+  question_token: string;
+  type: MountainQuestionType;
+  subject: string | null;
+  difficulty: Difficulty;
+  content: string;
+  options?: string[]; // mcq
+  items?: string[]; // order (đã trộn)
+  suffix?: string; // fill
+  points: number;
+  speed_bonus: number;
+  speed_window_ms: number;
+}
+
+export interface MoveResultDTO {
+  gate: boolean;
+  state?: MazeStateDTO; // khi đi tự do
+  question?: NextChallengeDTO; // khi vào cổng khoá
+}
+
+export interface MazeAnswerDTO {
+  is_correct: boolean;
+  delta: number;
+  fast_bonus: number;
+  explanation: string | null;
+  correct_index?: number;
+  correct_text?: string;
+  correct_value?: boolean;
+  correct_order?: string[];
+  state: MazeStateDTO;
+}
+
+export interface MazeFinishDTO {
+  score: number;
+  reached: boolean;
+  gates_opened: number;
+  time_spent_ms: number;
+  rank: number;
+  status: SessionStatus;
+}
+
 // ===================== Endpoint paths =====================
 export const API = {
   config: '/api/config',
+  mountainConfig: '/api/mountain/config',
+  games: '/api/games',
   login: '/api/auth/login',
   me: '/api/auth/me',
   adminLogin: '/api/admin/login',
 
+  // Game 1 — Kho báu
   start: '/api/game/start',
   state: '/api/game/state',
   nextQuestion: '/api/game/next-question',
@@ -152,12 +238,20 @@ export const API = {
   dig: '/api/game/dig',
   finish: '/api/game/finish',
 
+  // Game 2 — Vượt Ải (mê cung)
+  mtnStart: '/api/mountain/start',
+  mtnState: '/api/mountain/state',
+  mtnMove: '/api/mountain/move',
+  mtnAnswer: '/api/mountain/answer',
+  mtnFinish: '/api/mountain/finish',
+
   leaderboard: '/api/leaderboard',
 
   adminStudentsImport: '/api/admin/students/import',
   adminStudentsAdd: '/api/admin/students/add',
   adminStudentsExport: '/api/admin/students/export',
   adminQuestionsImport: '/api/admin/questions/import',
+  adminMountainImport: '/api/admin/mountain-questions/import',
   adminEvent: '/api/admin/event',
   adminEventOpen: '/api/admin/event/open',
   adminEventClose: '/api/admin/event/close',

@@ -1,8 +1,11 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { useAuth } from './store/auth';
 import LoginPage from './pages/LoginPage';
+import HomePage from './pages/HomePage';
 import LobbyPage from './pages/LobbyPage';
 import GamePage from './pages/GamePage';
+import MountainLobbyPage from './pages/MountainLobbyPage';
+import MountainGamePage from './pages/MountainGamePage';
 import LeaderboardPage from './pages/LeaderboardPage';
 import AdminPage from './pages/AdminPage';
 
@@ -21,6 +24,15 @@ export default function App() {
         path="/"
         element={
           <RequirePlayer>
+            <HomePage />
+          </RequirePlayer>
+        }
+      />
+      {/* Game 1 — Kho báu */}
+      <Route
+        path="/treasure"
+        element={
+          <RequirePlayer>
             <LobbyPage />
           </RequirePlayer>
         }
@@ -30,6 +42,23 @@ export default function App() {
         element={
           <RequirePlayer>
             <GamePage />
+          </RequirePlayer>
+        }
+      />
+      {/* Game 2 — Vượt Ải */}
+      <Route
+        path="/mountain"
+        element={
+          <RequirePlayer>
+            <MountainLobbyPage />
+          </RequirePlayer>
+        }
+      />
+      <Route
+        path="/mountain/play"
+        element={
+          <RequirePlayer>
+            <MountainGamePage />
           </RequirePlayer>
         }
       />
