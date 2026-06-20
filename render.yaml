@@ -1,0 +1,40 @@
+# Render Blueprint — deploy 1 Web Service duy nhất (server tự phục vụ luôn giao diện client).
+# Dùng: đẩy repo lên GitHub → Render → New + → Blueprint → chọn repo này.
+# Sau khi tạo, vào tab Environment đặt ADMIN_KEY (vd Vhai2005).
+services:
+  - type: web
+    name: violympic-treasure
+    runtime: node
+    region: singapore        # gần Việt Nam nhất
+    plan: starter            # KHÔNG ngủ; ổn định cho buổi live. Free thì đổi thành "free" (xem ghi chú).
+    branch: main
+    # Cài đủ devDeps (typescript/vite/tsx) để build, rồi build server + client.
+    buildCommand: npm install && npm --prefix server install --include=dev && npm --prefix client install --include=dev && npm run build
+    # Seed (idempotent — chỉ upsert SV/câu hỏi, KHÔNG xoá điểm) rồi chạy server.
+    startCommand: cd server && node dist/seed.cli.js && node dist/index.js
+    healthCheckPath: /api/health
+    autoDeploy: true
+    # Ổ đĩa lưu DB SQLite để điểm KHÔNG mất khi restart/redeploy (cần plan trả phí).
+    disk:
+      name: violympic-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: APP_SECRET          # bí mật ký JWT — Render tự sinh ngẫu nhiên, giữ cố định.
+        generateValue: true
+      - key: ADMIN_KEY           # tự nhập trong dashboard (vd Vhai2005) — không commit vào repo.
+        sync: false
+      - key: EVENT_ID
+        value: violympic-2026-06
+      - key: EVENT_DATE
+        value: "2026-06-25"
+      - key: TIME_LIMIT_S
+        value: "300"
+      - key: FAST_ANSWER_MS
+        value: "10000"
+      - key: FAST_ANSWER_BONUS
+        value: "5"
+      - key: DB_PATH             # nằm trên ổ đĩa bền ở trên.
+        value: /var/data/violympic.db

@@ -1,0 +1,290 @@
+[
+  {
+    "id": "q01",
+    "subject": "Sử",
+    "grade": 8,
+    "difficulty": "medium",
+    "content": "Cách mạng tháng Tám ở Việt Nam diễn ra vào năm nào?",
+    "options": [
+      "1930",
+      "1945",
+      "1954",
+      "1975"
+    ],
+    "correct_index": 1,
+    "points": 20,
+    "explanation": "Cách mạng tháng Tám thành công năm 1945."
+  },
+  {
+    "id": "q02",
+    "subject": "Sử",
+    "grade": 7,
+    "difficulty": "easy",
+    "content": "Chiến thắng Bạch Đằng năm 938 gắn liền với tên tuổi vị anh hùng nào?",
+    "options": [
+      "Lý Thường Kiệt",
+      "Ngô Quyền",
+      "Trần Hưng Đạo",
+      "Lê Lợi"
+    ],
+    "correct_index": 1,
+    "points": 10,
+    "explanation": "Ngô Quyền đánh tan quân Nam Hán trên sông Bạch Đằng năm 938."
+  },
+  {
+    "id": "q03",
+    "subject": "Văn",
+    "grade": 7,
+    "difficulty": "medium",
+    "content": "Tác phẩm 'Truyện Kiều' do ai sáng tác?",
+    "options": [
+      "Hồ Xuân Hương",
+      "Nguyễn Du",
+      "Nguyễn Trãi",
+      "Nguyễn Khuyến"
+    ],
+    "correct_index": 1,
+    "points": 20,
+    "explanation": "'Truyện Kiều' là kiệt tác của đại thi hào Nguyễn Du."
+  },
+  {
+    "id": "q04",
+    "subject": "Sinh",
+    "grade": 6,
+    "difficulty": "easy",
+    "content": "Bộ phận nào của cây thực hiện quá trình quang hợp chủ yếu?",
+    "options": [
+      "Rễ",
+      "Thân",
+      "Lá",
+      "Hoa"
+    ],
+    "correct_index": 2,
+    "points": 10,
+    "explanation": "Lá chứa diệp lục, là nơi diễn ra quang hợp chủ yếu."
+  },
+  {
+    "id": "q05",
+    "subject": "Văn",
+    "grade": 8,
+    "difficulty": "medium",
+    "content": "Biện pháp tu từ trong câu 'Mặt trời xuống biển như hòn lửa' là gì?",
+    "options": [
+      "Ẩn dụ",
+      "Hoán dụ",
+      "So sánh",
+      "Nhân hóa"
+    ],
+    "correct_index": 2,
+    "points": 20,
+    "explanation": "Từ 'như' cho thấy đây là biện pháp so sánh."
+  },
+  {
+    "id": "q06",
+    "subject": "Anh",
+    "grade": 7,
+    "difficulty": "medium",
+    "content": "What is the past tense of 'buy'?",
+    "options": [
+      "buyed",
+      "bought",
+      "buied",
+      "buyt"
+    ],
+    "correct_index": 1,
+    "points": 20,
+    "explanation": "'buy' là động từ bất quy tắc → quá khứ là 'bought'."
+  },
+  {
+    "id": "q07",
+    "subject": "Địa",
+    "grade": 8,
+    "difficulty": "medium",
+    "content": "Con sông nào dài nhất Việt Nam (phần chảy trong lãnh thổ)?",
+    "options": [
+      "Sông Hồng",
+      "Sông Đồng Nai",
+      "Sông Mê Kông",
+      "Sông Mã"
+    ],
+    "correct_index": 1,
+    "points": 20,
+    "explanation": "Sông Đồng Nai là sông nội địa dài nhất Việt Nam."
+  },
+  {
+    "id": "q08",
+    "subject": "Anh",
+    "grade": 6,
+    "difficulty": "easy",
+    "content": "Choose the correct word: 'She ___ to school every day.'",
+    "options": [
+      "go",
+      "goes",
+      "going",
+      "gone"
+    ],
+    "correct_index": 1,
+    "points": 10,
+    "explanation": "Chủ ngữ 'she' ở thì hiện tại đơn → động từ thêm 's' → goes."
+  },
+  {
+    "id": "q09",
+    "subject": "Sinh",
+    "grade": 8,
+    "difficulty": "medium",
+    "content": "Cơ quan nào trong cơ thể người có chức năng bơm máu?",
+    "options": [
+      "Gan",
+      "Tim",
+      "Phổi",
+      "Thận"
+    ],
+    "correct_index": 1,
+    "points": 20,
+    "explanation": "Tim là cơ quan bơm máu đi khắp cơ thể."
+  },
+  {
+    "id": "q10",
+    "subject": "Địa",
+    "grade": 6,
+    "difficulty": "easy",
+    "content": "Việt Nam nằm ở châu lục nào?",
+    "options": [
+      "Châu Âu",
+      "Châu Phi",
+      "Châu Á",
+      "Châu Mỹ"
+    ],
+    "correct_index": 2,
+    "points": 10,
+    "explanation": "Việt Nam thuộc khu vực Đông Nam Á, châu Á."
+  },
+  {
+    "id": "q11",
+    "subject": "Toán",
+    "grade": 6,
+    "difficulty": "medium",
+    "content": "Một hình chữ nhật có chiều dài 8cm, chiều rộng 5cm. Diện tích hình chữ nhật là bao nhiêu?",
+    "options": [
+      "13 cm²",
+      "26 cm²",
+      "40 cm²",
+      "45 cm²"
+    ],
+    "correct_index": 2,
+    "points": 20,
+    "explanation": "Diện tích = dài × rộng = 8 × 5 = 40 cm²."
+  },
+  {
+    "id": "q12",
+    "subject": "Sinh",
+    "grade": 9,
+    "difficulty": "hard",
+    "content": "Đơn vị cơ bản cấu tạo nên cơ thể sống là gì?",
+    "options": [
+      "Mô",
+      "Tế bào",
+      "Cơ quan",
+      "Hệ cơ quan"
+    ],
+    "correct_index": 1,
+    "points": 30,
+    "explanation": "Tế bào là đơn vị cấu trúc và chức năng cơ bản của sự sống."
+  },
+  {
+    "id": "q13",
+    "subject": "Toán",
+    "grade": 7,
+    "difficulty": "hard",
+    "content": "Giá trị của biểu thức 2³ + 3² - 4 là bao nhiêu?",
+    "options": [
+      "11",
+      "12",
+      "13",
+      "14"
+    ],
+    "correct_index": 2,
+    "points": 30,
+    "explanation": "2³ = 8, 3² = 9 → 8 + 9 - 4 = 13."
+  },
+  {
+    "id": "q14",
+    "subject": "Sử",
+    "grade": 9,
+    "difficulty": "hard",
+    "content": "Chiến dịch Điện Biên Phủ kết thúc thắng lợi vào năm nào?",
+    "options": [
+      "1945",
+      "1950",
+      "1954",
+      "1960"
+    ],
+    "correct_index": 2,
+    "points": 30,
+    "explanation": "Chiến dịch Điện Biên Phủ toàn thắng ngày 7/5/1954."
+  },
+  {
+    "id": "q15",
+    "subject": "Địa",
+    "grade": 9,
+    "difficulty": "hard",
+    "content": "Thành phố nào là thủ đô của Việt Nam?",
+    "options": [
+      "TP. Hồ Chí Minh",
+      "Đà Nẵng",
+      "Hà Nội",
+      "Hải Phòng"
+    ],
+    "correct_index": 2,
+    "points": 30,
+    "explanation": "Hà Nội là thủ đô của Việt Nam."
+  },
+  {
+    "id": "q16",
+    "subject": "Anh",
+    "grade": 8,
+    "difficulty": "hard",
+    "content": "Choose the synonym of 'happy':",
+    "options": [
+      "sad",
+      "angry",
+      "joyful",
+      "tired"
+    ],
+    "correct_index": 2,
+    "points": 30,
+    "explanation": "'joyful' đồng nghĩa với 'happy' (vui vẻ)."
+  },
+  {
+    "id": "q17",
+    "subject": "Toán",
+    "grade": 5,
+    "difficulty": "easy",
+    "content": "Hiện nay tuổi của hai anh em cộng lại là 12 tuổi. Hỏi 3 năm nữa tuổi của hai anh em cộng lại là bao nhiêu?",
+    "options": [
+      "14",
+      "16",
+      "18",
+      "20"
+    ],
+    "correct_index": 2,
+    "points": 10,
+    "explanation": "Mỗi người tăng 3 tuổi → tổng tăng 6 → 12 + 6 = 18."
+  },
+  {
+    "id": "q18",
+    "subject": "Văn",
+    "grade": 6,
+    "difficulty": "easy",
+    "content": "Từ nào sau đây là từ láy?",
+    "options": [
+      "bàn ghế",
+      "long lanh",
+      "sách vở",
+      "quần áo"
+    ],
+    "correct_index": 1,
+    "points": 10,
+    "explanation": "'long lanh' là từ láy; các từ còn lại là từ ghép."
+  }
+]

@@ -1,0 +1,14 @@
+node_modules/
+dist/
+build/
+*.log
+.DS_Store
+.env
+server/data/*.db
+server/data/*.db-shm
+server/data/*.db-wal
+
+# Danh sách SV chứa thông tin cá nhân (tên + MSSV) — KHÔNG đẩy lên git.
+# Giữ file ở máy để seed local; trên server thì import qua trang /admin.
+accounts.csv
+seed/accounts.csv
