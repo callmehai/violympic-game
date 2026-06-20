@@ -270,11 +270,12 @@ export const gameService: GameService = {
       throw new GameError('EVENT_CLOSED', 'Sự kiện chưa mở/đã đóng', 403);
     }
 
-    // seed cố định theo (mã SV + event) ⇒ cùng SV luôn có cùng bàn cờ + thứ tự câu.
-    const seed = hashSeed(student.student_code, eventId);
-    const board = genBoard(seed);
+    // RANDOM theo từng PHIÊN: mỗi lần bắt đầu (mỗi người, kể cả chơi lại) ra bàn cờ +
+    // thứ tự câu hỏi KHÁC nhau hoàn toàn. Cả 2 được lưu vào phiên (board_json/progress_json)
+    // nên reload giữa chừng KHÔNG bị xáo lại → resume vẫn đúng.
+    const board = genBoard((Math.random() * 0x100000000) >>> 0);
     const ids = questionService.allActiveIds();
-    const order = seededShuffle(ids, hashSeed(student.student_code, eventId, 'q'));
+    const order = seededShuffle(ids, (Math.random() * 0x100000000) >>> 0);
     const prog: SessionProgress = {
       questionOrder: order,
       cursor: 0,
