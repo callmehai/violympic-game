@@ -3,7 +3,7 @@
  * Chỉ chứa các DTO/enums client cần. Khi server đổi DTO thì sửa cả 2 file.
  */
 
-export type Subject = 'Toán' | 'Văn' | 'Anh' | 'Sinh' | 'Sử' | 'Địa';
+export type Subject = 'Toán' | 'Văn' | 'Anh' | 'Sinh' | 'Sử' | 'Địa' | 'Kinh tế';
 export type Difficulty = 'easy' | 'medium' | 'hard';
 export type CellType = 'gem' | 'bomb' | 'empty' | 'chest';
 export type SessionStatus = 'in_progress' | 'finished' | 'abandoned';
@@ -251,7 +251,9 @@ export const API = {
   adminStudentsAdd: '/api/admin/students/add',
   adminStudentsExport: '/api/admin/students/export',
   adminQuestionsImport: '/api/admin/questions/import',
+  adminQuestionsClear: '/api/admin/questions/clear',
   adminMountainImport: '/api/admin/mountain-questions/import',
+  adminMountainClear: '/api/admin/mountain-questions/clear',
   adminEvent: '/api/admin/event',
   adminEventOpen: '/api/admin/event/open',
   adminEventClose: '/api/admin/event/close',

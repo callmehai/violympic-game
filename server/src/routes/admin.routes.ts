@@ -133,6 +133,15 @@ adminRouter.post(
   }),
 );
 
+// ---------- Xoá toàn bộ câu hỏi Game 1 "Kho báu" ----------
+adminRouter.post(
+  '/questions/clear',
+  asyncHandler((_req, res) => {
+    const result = db.prepare('DELETE FROM questions').run();
+    res.json({ deleted: result.changes });
+  }),
+);
+
 // ---------- Import câu hỏi Game 2 "Vượt Ải" (JSON) ----------
 adminRouter.post(
   '/mountain-questions/import',
@@ -143,6 +152,15 @@ adminRouter.post(
       throw new GameError('NO_DATA', 'Thiếu dữ liệu JSON (file hoặc body.json)', 400);
     }
     res.json(importMountainQuestionsFromJson(json));
+  }),
+);
+
+// ---------- Xoá toàn bộ câu hỏi Game 2 "Vượt Ải" ----------
+adminRouter.post(
+  '/mountain-questions/clear',
+  asyncHandler((_req, res) => {
+    const result = db.prepare('DELETE FROM mountain_questions').run();
+    res.json({ deleted: result.changes });
   }),
 );
 

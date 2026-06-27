@@ -6,8 +6,8 @@
  */
 
 // ===================== Domain enums =====================
-export type Subject = 'Toán' | 'Văn' | 'Anh' | 'Sinh' | 'Sử' | 'Địa';
-export const SUBJECTS: Subject[] = ['Toán', 'Văn', 'Anh', 'Sinh', 'Sử', 'Địa'];
+export type Subject = 'Toán' | 'Văn' | 'Anh' | 'Sinh' | 'Sử' | 'Địa' | 'Kinh tế';
+export const SUBJECTS: Subject[] = ['Toán', 'Văn', 'Anh', 'Sinh', 'Sử', 'Địa', 'Kinh tế'];
 
 export type Difficulty = 'easy' | 'medium' | 'hard';
 export const DIFFICULTIES: Difficulty[] = ['easy', 'medium', 'hard'];

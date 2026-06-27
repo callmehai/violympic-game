@@ -607,6 +607,56 @@ function PlayersCard() {
   );
 }
 
+// ===================== Thẻ xoá toàn bộ câu hỏi (dùng chung 2 game) =====================
+function ClearQuestionsCard({
+  title,
+  confirmText,
+  apiPath,
+  onDone,
+}: {
+  title: string;
+  confirmText: string;
+  apiPath: string;
+  onDone?: () => void;
+}) {
+  const [busy, setBusy] = useState(false);
+  const [msg, setMsg] = useState<Msg>(null);
+
+  async function handleClear() {
+    if (!window.confirm(confirmText)) return;
+    setBusy(true);
+    setMsg(null);
+    try {
+      const res = await apiFetch<{ deleted: number }>(apiPath, { method: 'POST' });
+      setMsg({ ok: true, text: `Đã xoá ${res.deleted} câu hỏi. Import bộ mới để tiếp tục.` });
+      onDone?.();
+    } catch (err) {
+      setMsg({ ok: false, text: errMsg(err, 'Xoá thất bại.') });
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  return (
+    <section className="panel p-5 space-y-3 border-treasure-danger/40">
+      <h2 className="text-lg font-bold text-treasure-gold">🗑️ {title}</h2>
+      <p className="text-sm text-treasure-gem/80">
+        Xoá toàn bộ ngân hàng câu hỏi. Dùng khi cần thay bộ đề mới mà không muốn câu hỏi cũ còn lẫn.
+        Sau khi xoá cần Import lại.
+      </p>
+      <button
+        type="button"
+        className="btn w-full bg-treasure-danger text-white hover:brightness-110"
+        onClick={() => void handleClear()}
+        disabled={busy}
+      >
+        {busy ? 'Đang xoá…' : `🗑️ ${title}`}
+      </button>
+      {msg && <Feedback ok={msg.ok} msg={msg.text} />}
+    </section>
+  );
+}
+
 // ===================== Dashboard =====================
 function Dashboard() {
   const logout = useAuth((s) => s.logout);
@@ -681,6 +731,13 @@ function Dashboard() {
             onDone={loadState}
           />
 
+          <ClearQuestionsCard
+            title="Xoá tất cả câu hỏi Kho báu"
+            confirmText={'Xoá TOÀN BỘ câu hỏi Game 1 (Kho báu)?\nHành động này không thể hoàn tác. Bạn cần import lại bộ câu hỏi mới sau khi xoá.'}
+            apiPath={API.adminQuestionsClear}
+            onDone={loadState}
+          />
+
           <ImportCard
             title="Import câu hỏi (Vượt Ải)"
             icon="🧩"
@@ -690,6 +747,13 @@ function Dashboard() {
               const r = (res ?? {}) as { inserted?: number; updated?: number; errors?: number };
               return `Thành công · Thêm mới: ${r.inserted ?? 0} · Cập nhật: ${r.updated ?? 0} · Lỗi: ${r.errors ?? 0}`;
             }}
+            onDone={loadState}
+          />
+
+          <ClearQuestionsCard
+            title="Xoá tất cả câu hỏi Vượt Ải"
+            confirmText={'Xoá TOÀN BỘ câu hỏi Game 2 (Vượt Ải)?\nHành động này không thể hoàn tác. Bạn cần import lại bộ câu hỏi mới sau khi xoá.'}
+            apiPath={API.adminMountainClear}
             onDone={loadState}
           />
 

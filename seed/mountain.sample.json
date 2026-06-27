@@ -1,229 +1,133 @@
 [
   {
-    "id": "vm-001",
-    "type": "mcq",
-    "subject": "Toán",
-    "difficulty": "easy",
-    "content": "Số nào dưới đây là số nguyên tố?",
-    "options": ["4", "6", "7", "9"],
-    "answer_index": 2,
-    "explanation": "7 chỉ chia hết cho 1 và chính nó nên là số nguyên tố."
-  },
-  {
-    "id": "vm-002",
-    "type": "fill",
-    "subject": "Toán",
-    "difficulty": "easy",
-    "content": "Tính: 12 + 15 = ?",
-    "accept": ["27"],
-    "explanation": "12 + 15 = 27."
-  },
-  {
-    "id": "vm-003",
-    "type": "truefalse",
-    "subject": "Toán",
-    "difficulty": "easy",
-    "content": "Số 0 là số chẵn.",
-    "answer": true,
-    "explanation": "0 chia hết cho 2 nên là số chẵn."
-  },
-  {
-    "id": "vm-004",
+    "id": "kt-001",
     "type": "order",
-    "subject": "Toán",
-    "difficulty": "medium",
-    "content": "Sắp xếp các số theo thứ tự TĂNG DẦN.",
-    "items": ["1", "3", "5", "9"],
-    "explanation": "Thứ tự tăng dần: 1 < 3 < 5 < 9."
-  },
-  {
-    "id": "vm-005",
-    "type": "mcq",
-    "subject": "Văn",
+    "subject": "Kinh tế",
     "difficulty": "easy",
-    "content": "Tác giả của 'Truyện Kiều' là ai?",
-    "options": ["Nguyễn Du", "Hồ Xuân Hương", "Nguyễn Trãi", "Tố Hữu"],
-    "answer_index": 0,
-    "explanation": "'Truyện Kiều' là kiệt tác của đại thi hào Nguyễn Du."
-  },
-  {
-    "id": "vm-006",
-    "type": "fill",
-    "subject": "Văn",
-    "difficulty": "easy",
-    "content": "Điền từ còn thiếu: 'Ăn quả nhớ kẻ ___ cây.'",
-    "accept": ["trồng"],
-    "explanation": "Câu tục ngữ: 'Ăn quả nhớ kẻ trồng cây.'"
-  },
-  {
-    "id": "vm-007",
-    "type": "truefalse",
-    "subject": "Văn",
-    "difficulty": "easy",
-    "content": "Tác phẩm 'Lão Hạc' là của nhà văn Nam Cao.",
-    "answer": true,
-    "explanation": "'Lão Hạc' là truyện ngắn nổi tiếng của Nam Cao."
-  },
-  {
-    "id": "vm-008",
-    "type": "order",
-    "subject": "Văn",
-    "difficulty": "medium",
-    "content": "Sắp xếp các từ thành câu đúng.",
-    "items": ["Em", "đi", "học", "mỗi ngày"],
-    "explanation": "Câu đúng: 'Em đi học mỗi ngày.'"
-  },
-  {
-    "id": "vm-009",
-    "type": "mcq",
-    "subject": "Anh",
-    "difficulty": "easy",
-    "content": "Choose the correct word: 'She ___ to school every day.'",
-    "options": ["go", "goes", "going", "gone"],
-    "answer_index": 1,
-    "explanation": "Chủ ngữ ngôi thứ 3 số ít (She) → động từ thêm -s/-es: goes."
-  },
-  {
-    "id": "vm-010",
-    "type": "fill",
-    "subject": "Anh",
-    "difficulty": "easy",
-    "content": "Write the past tense of the verb 'go'.",
-    "accept": ["went"],
-    "explanation": "'go' là động từ bất quy tắc: go → went."
-  },
-  {
-    "id": "vm-011",
-    "type": "truefalse",
-    "subject": "Anh",
-    "difficulty": "easy",
-    "content": "The word 'apple' means a fruit (quả táo).",
-    "answer": true,
-    "explanation": "'apple' nghĩa là quả táo — một loại trái cây."
-  },
-  {
-    "id": "vm-012",
-    "type": "order",
-    "subject": "Anh",
-    "difficulty": "medium",
-    "content": "Arrange the words into a correct sentence.",
-    "items": ["I", "like", "playing", "football"],
-    "explanation": "Câu đúng: 'I like playing football.'"
-  },
-  {
-    "id": "vm-013",
-    "type": "mcq",
-    "subject": "Sinh",
-    "difficulty": "easy",
-    "content": "Cơ quan nào giúp con người hô hấp (trao đổi khí)?",
-    "options": ["Tim", "Phổi", "Gan", "Thận"],
-    "answer_index": 1,
-    "explanation": "Phổi là cơ quan trao đổi khí trong hệ hô hấp."
-  },
-  {
-    "id": "vm-014",
-    "type": "fill",
-    "subject": "Sinh",
-    "difficulty": "easy",
-    "content": "Con người hít vào loại khí nào để hô hấp? (tên khí)",
-    "accept": ["oxy", "oxi", "ô xy", "ôxy", "khí oxy", "o2"],
-    "explanation": "Con người hít vào khí oxy (O2) và thải ra khí cacbonic (CO2)."
-  },
-  {
-    "id": "vm-015",
-    "type": "truefalse",
-    "subject": "Sinh",
-    "difficulty": "easy",
-    "content": "Cá thở bằng phổi.",
-    "answer": false,
-    "explanation": "Cá thở bằng mang, không phải phổi."
-  },
-  {
-    "id": "vm-016",
-    "type": "order",
-    "subject": "Sinh",
-    "difficulty": "medium",
-    "content": "Sắp xếp các giai đoạn phát triển của con bướm theo đúng thứ tự.",
-    "items": ["Trứng", "Sâu", "Nhộng", "Bướm"],
-    "explanation": "Vòng đời bướm: Trứng → Sâu → Nhộng → Bướm."
-  },
-  {
-    "id": "vm-017",
-    "type": "mcq",
-    "subject": "Sử",
-    "difficulty": "easy",
-    "content": "Bác Hồ đọc bản Tuyên ngôn Độc lập vào năm nào?",
-    "options": ["1930", "1945", "1954", "1975"],
-    "answer_index": 1,
-    "explanation": "Ngày 2/9/1945, Bác Hồ đọc Tuyên ngôn Độc lập khai sinh nước Việt Nam Dân chủ Cộng hoà."
-  },
-  {
-    "id": "vm-018",
-    "type": "fill",
-    "subject": "Sử",
-    "difficulty": "easy",
-    "content": "Chiến thắng Điện Biên Phủ diễn ra vào năm nào? (điền năm)",
-    "accept": ["1954"],
-    "explanation": "Chiến thắng Điện Biên Phủ năm 1954."
-  },
-  {
-    "id": "vm-019",
-    "type": "truefalse",
-    "subject": "Sử",
-    "difficulty": "medium",
-    "content": "Ngô Quyền đánh tan quân Nam Hán trên sông Bạch Đằng năm 938.",
-    "answer": true,
-    "explanation": "Chiến thắng Bạch Đằng năm 938 của Ngô Quyền kết thúc hơn 1000 năm Bắc thuộc."
-  },
-  {
-    "id": "vm-020",
-    "type": "order",
-    "subject": "Sử",
-    "difficulty": "medium",
-    "content": "Sắp xếp các sự kiện lịch sử theo thứ tự thời gian (sớm → muộn).",
+    "content": "Sắp xếp 3 bước để \"Tiền\" biến thành \"Tư bản\" (T→H→T'):",
     "items": [
-      "Khởi nghĩa Hai Bà Trưng",
-      "Ngô Quyền thắng quân Nam Hán trên sông Bạch Đằng",
-      "Lý Thái Tổ dời đô về Thăng Long",
-      "Cách mạng tháng Tám"
+      "Cầm tiền đi mua máy móc, nguyên liệu và thuê công nhân.",
+      "Đưa tất cả vào nhà xưởng để sản xuất ra hàng hóa mới.",
+      "Bán hàng hóa đã làm xong để thu về số tiền lớn hơn ban đầu."
     ],
-    "explanation": "Thứ tự đúng: Hai Bà Trưng (năm 40) → Bạch Đằng (938) → dời đô Thăng Long (1010) → Cách mạng tháng Tám (1945)."
+    "explanation": "Muốn tiền 'đẻ' thêm tiền, trước hết phải đầu tư (mua yếu tố sản xuất), sau đó cho máy móc và người làm việc (sản xuất), cuối cùng mới mang sản phẩm đi bán để lấy lời."
   },
   {
-    "id": "vm-021",
-    "type": "mcq",
-    "subject": "Địa",
-    "difficulty": "easy",
-    "content": "Thủ đô của Việt Nam là thành phố nào?",
-    "options": ["TP. Hồ Chí Minh", "Hà Nội", "Đà Nẵng", "Huế"],
-    "answer_index": 1,
-    "explanation": "Thủ đô của Việt Nam là Hà Nội."
-  },
-  {
-    "id": "vm-022",
-    "type": "fill",
-    "subject": "Địa",
-    "difficulty": "medium",
-    "content": "Đỉnh núi cao nhất Việt Nam tên là gì?",
-    "accept": ["fansipan", "phan xi păng", "phan-xi-păng", "fan xi pang", "fanxipan"],
-    "explanation": "Fansipan (3.143 m) là 'nóc nhà Đông Dương'."
-  },
-  {
-    "id": "vm-023",
-    "type": "truefalse",
-    "subject": "Địa",
-    "difficulty": "easy",
-    "content": "Việt Nam nằm ở châu Á.",
-    "answer": true,
-    "explanation": "Việt Nam thuộc khu vực Đông Nam Á, châu Á."
-  },
-  {
-    "id": "vm-024",
+    "id": "kt-002",
     "type": "order",
-    "subject": "Địa",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Sắp xếp quá trình \"Tích lũy tư bản\" (lấy mỡ nó rán nó) theo đúng thứ tự:",
+    "items": [
+      "Thu được lợi nhuận từ đợt bán hàng đầu tiên.",
+      "Dùng số tiền lãi đó để mua thêm máy mới, thuê thêm người.",
+      "Quy mô xưởng sản xuất ngày càng to hơn, lãi nhiều hơn."
+    ],
+    "explanation": "Tích lũy là dùng lãi để tái đầu tư, làm cho quy mô kinh doanh ngày càng lớn hơn."
+  },
+  {
+    "id": "kt-003",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Công thức nào sau đây dùng để tính tỷ suất lợi nhuận?",
+    "options": [
+      "m' = m / v × 100%",
+      "p' = m / (c + v) × 100%",
+      "W = c + v + m",
+      "M = m × V"
+    ],
+    "answer_index": 1,
+    "explanation": "Công thức tính tỉ suất lợi nhuận là: p' = m / (c + v) × 100%. Trong đó p' là tỷ suất lợi nhuận, m là giá trị thặng dư, c là tư bản bất biến, v là tư bản khả biến."
+  },
+  {
+    "id": "kt-004",
+    "type": "mcq",
+    "subject": "Kinh tế",
     "difficulty": "medium",
-    "content": "Sắp xếp các địa danh theo thứ tự từ BẮC vào NAM.",
-    "items": ["Hà Nội", "Huế", "Đà Nẵng", "Cần Thơ"],
-    "explanation": "Từ Bắc vào Nam: Hà Nội → Huế → Đà Nẵng → Cần Thơ."
+    "content": "Trong các ý sau, ý nào đúng?",
+    "options": [
+      "Nếu giá cả bằng giá trị thì lợi nhuận đúng bằng giá trị thặng dư.",
+      "Nếu giá cả cao hơn giá trị thì lợi nhuận bé hơn giá trị thặng dư.",
+      "Nếu giá cả thấp hơn giá trị thì lợi nhuận lớn hơn giá trị thặng dư.",
+      "Chỉ cần bán được hàng là có lợi nhuận."
+    ],
+    "answer_index": 0,
+    "explanation": "Lợi nhuận là hình thức biểu hiện bên ngoài của giá trị thặng dư. Khi hàng hóa được bán đúng bằng giá trị của nó, phần lợi nhuận mà nhà tư bản thu được sẽ bằng đúng giá trị thặng dư."
+  },
+  {
+    "id": "kt-005",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Vì sao nói lợi nhuận che giấu bản chất của giá trị thặng dư?",
+    "options": [
+      "Vì lợi nhuận làm người ta tưởng toàn bộ tư bản đều sinh ra lời.",
+      "Vì lợi nhuận luôn lớn hơn giá trị thặng dư.",
+      "Vì lợi nhuận không liên quan đến lao động công nhân.",
+      "Vì lợi nhuận chỉ xuất hiện khi bán hàng hóa dưới giá trị."
+    ],
+    "answer_index": 0,
+    "explanation": "Nhìn bề ngoài, lợi nhuận có vẻ như do toàn bộ số vốn ứng trước sinh ra. Nhưng thực chất, nguồn gốc của nó là giá trị thặng dư do lao động của công nhân tạo ra."
+  },
+  {
+    "id": "kt-006",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Câu nào sau đây là SAI?",
+    "options": [
+      "Khi giá cả bằng giá trị, lợi nhuận bằng giá trị thặng dư.",
+      "Khi giá cả cao hơn giá trị, lợi nhuận có thể lớn hơn giá trị thặng dư.",
+      "Khi giá cả thấp hơn giá trị, lợi nhuận có thể nhỏ hơn giá trị thặng dư.",
+      "Trong mọi trường hợp, lợi nhuận luôn bằng giá trị thặng dư."
+    ],
+    "answer_index": 3,
+    "explanation": "Lợi nhuận chỉ bằng giá trị thặng dư khi hàng hóa bán đúng bằng giá trị. Nếu giá cả cao hơn hoặc thấp hơn giá trị, lợi nhuận có thể lớn hơn hoặc nhỏ hơn giá trị thặng dư."
+  },
+  {
+    "id": "kt-007",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "hard",
+    "content": "Nhà tư bản ứng trước 100 triệu đồng, trong đó 70 triệu là tư bản bất biến, 30 triệu là tư bản khả biến. Sau quá trình sản xuất, giá trị thặng dư thu được là 30 triệu. Nếu hàng hóa bán đúng bằng giá trị, lợi nhuận là bao nhiêu?",
+    "options": [
+      "30 triệu đồng",
+      "70 triệu đồng",
+      "100 triệu đồng",
+      "130 triệu đồng"
+    ],
+    "answer_index": 0,
+    "explanation": "Khi hàng hóa bán đúng bằng giá trị, lợi nhuận bằng giá trị thặng dư. Ở đây giá trị thặng dư là 30 triệu đồng, nên lợi nhuận cũng là 30 triệu đồng. Điểm dễ nhầm: 130 triệu là tổng giá trị hàng hóa (c + v + m), không phải lợi nhuận."
+  },
+  {
+    "id": "kt-008",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "hard",
+    "content": "Nhận định nào sau đây đúng nhất?",
+    "options": [
+      "Tư bản bất biến tạo ra giá trị thặng dư vì nó tham gia vào sản xuất.",
+      "Tư bản khả biến tạo ra giá trị thặng dư vì nó dùng để mua sức lao động.",
+      "Tư bản bất biến và tư bản khả biến đều trực tiếp tạo ra giá trị thặng dư như nhau.",
+      "Giá trị thặng dư do sự chênh lệch giá cả trong lưu thông tạo ra."
+    ],
+    "answer_index": 1,
+    "explanation": "Tư bản khả biến dùng để mua sức lao động. Khi được sử dụng trong sản xuất, sức lao động tạo ra giá trị mới lớn hơn giá trị của bản thân nó. Phần dôi ra chính là giá trị thặng dư."
+  },
+  {
+    "id": "kt-009",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "hard",
+    "content": "Trong sản xuất tư bản chủ nghĩa, nếu công nhân chỉ lao động đủ thời gian để tạo ra giá trị bằng tiền lương thì điều gì xảy ra?",
+    "options": [
+      "Nhà tư bản vẫn thu được giá trị thặng dư.",
+      "Không có giá trị thặng dư được tạo ra.",
+      "Lợi nhuận chắc chắn tăng lên.",
+      "Tỷ suất lợi nhuận luôn bằng 100%."
+    ],
+    "answer_index": 1,
+    "explanation": "Nếu công nhân chỉ lao động trong thời gian lao động cần thiết, họ chỉ tạo ra giá trị bù lại tiền lương. Muốn có giá trị thặng dư, công nhân phải lao động thêm trong thời gian lao động thặng dư."
   }
 ]

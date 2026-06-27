@@ -1,290 +1,290 @@
 [
   {
-    "id": "q01",
-    "subject": "Sử",
-    "grade": 8,
+    "id": "kt01",
+    "subject": "Kinh tế",
+    "grade": 10,
     "difficulty": "medium",
-    "content": "Cách mạng tháng Tám ở Việt Nam diễn ra vào năm nào?",
+    "content": "Chủ xưởng nói: 'Ta lời 500 đồng tiền, vậy 500 đồng tiền này là do toàn bộ số vốn 1.000 đồng tiền của ta sinh ra.' Theo lý luận của C. Mác, nhận định nào đúng nhất?",
     "options": [
-      "1930",
-      "1945",
-      "1954",
-      "1975"
-    ],
-    "correct_index": 1,
-    "points": 20,
-    "explanation": "Cách mạng tháng Tám thành công năm 1945."
-  },
-  {
-    "id": "q02",
-    "subject": "Sử",
-    "grade": 7,
-    "difficulty": "easy",
-    "content": "Chiến thắng Bạch Đằng năm 938 gắn liền với tên tuổi vị anh hùng nào?",
-    "options": [
-      "Lý Thường Kiệt",
-      "Ngô Quyền",
-      "Trần Hưng Đạo",
-      "Lê Lợi"
-    ],
-    "correct_index": 1,
-    "points": 10,
-    "explanation": "Ngô Quyền đánh tan quân Nam Hán trên sông Bạch Đằng năm 938."
-  },
-  {
-    "id": "q03",
-    "subject": "Văn",
-    "grade": 7,
-    "difficulty": "medium",
-    "content": "Tác phẩm 'Truyện Kiều' do ai sáng tác?",
-    "options": [
-      "Hồ Xuân Hương",
-      "Nguyễn Du",
-      "Nguyễn Trãi",
-      "Nguyễn Khuyến"
-    ],
-    "correct_index": 1,
-    "points": 20,
-    "explanation": "'Truyện Kiều' là kiệt tác của đại thi hào Nguyễn Du."
-  },
-  {
-    "id": "q04",
-    "subject": "Sinh",
-    "grade": 6,
-    "difficulty": "easy",
-    "content": "Bộ phận nào của cây thực hiện quá trình quang hợp chủ yếu?",
-    "options": [
-      "Rễ",
-      "Thân",
-      "Lá",
-      "Hoa"
-    ],
-    "correct_index": 2,
-    "points": 10,
-    "explanation": "Lá chứa diệp lục, là nơi diễn ra quang hợp chủ yếu."
-  },
-  {
-    "id": "q05",
-    "subject": "Văn",
-    "grade": 8,
-    "difficulty": "medium",
-    "content": "Biện pháp tu từ trong câu 'Mặt trời xuống biển như hòn lửa' là gì?",
-    "options": [
-      "Ẩn dụ",
-      "Hoán dụ",
-      "So sánh",
-      "Nhân hóa"
+      "Đúng, vì cứ bỏ vốn ra thì vốn tự sinh ra lợi nhuận.",
+      "Đúng, vì máy móc và nguyên liệu là nguồn gốc tạo ra 500 đồng tiền.",
+      "Sai, vì nhìn bên ngoài 500 đồng tiền là lợi nhuận, nhưng xét bản chất, nó có nguồn gốc từ giá trị thặng dư do lao động công nhân tạo ra.",
+      "Sai, vì 500 đồng tiền này không liên quan gì đến quá trình sản xuất."
     ],
     "correct_index": 2,
     "points": 20,
-    "explanation": "Từ 'như' cho thấy đây là biện pháp so sánh."
+    "explanation": "Lợi nhuận chỉ là hình thức biểu hiện bên ngoài; bản chất là giá trị thặng dư do lao động của công nhân tạo ra trong thời gian lao động thặng dư."
   },
   {
-    "id": "q06",
-    "subject": "Anh",
-    "grade": 7,
-    "difficulty": "medium",
-    "content": "What is the past tense of 'buy'?",
-    "options": [
-      "buyed",
-      "bought",
-      "buied",
-      "buyt"
-    ],
-    "correct_index": 1,
-    "points": 20,
-    "explanation": "'buy' là động từ bất quy tắc → quá khứ là 'bought'."
-  },
-  {
-    "id": "q07",
-    "subject": "Địa",
-    "grade": 8,
-    "difficulty": "medium",
-    "content": "Con sông nào dài nhất Việt Nam (phần chảy trong lãnh thổ)?",
-    "options": [
-      "Sông Hồng",
-      "Sông Đồng Nai",
-      "Sông Mê Kông",
-      "Sông Mã"
-    ],
-    "correct_index": 1,
-    "points": 20,
-    "explanation": "Sông Đồng Nai là sông nội địa dài nhất Việt Nam."
-  },
-  {
-    "id": "q08",
-    "subject": "Anh",
-    "grade": 6,
+    "id": "kt02",
+    "subject": "Kinh tế",
+    "grade": 10,
     "difficulty": "easy",
-    "content": "Choose the correct word: 'She ___ to school every day.'",
+    "content": "Trong công thức W = c + v + m, ký hiệu (m) là gì?",
     "options": [
-      "go",
-      "goes",
-      "going",
-      "gone"
-    ],
-    "correct_index": 1,
-    "points": 10,
-    "explanation": "Chủ ngữ 'she' ở thì hiện tại đơn → động từ thêm 's' → goes."
-  },
-  {
-    "id": "q09",
-    "subject": "Sinh",
-    "grade": 8,
-    "difficulty": "medium",
-    "content": "Cơ quan nào trong cơ thể người có chức năng bơm máu?",
-    "options": [
-      "Gan",
-      "Tim",
-      "Phổi",
-      "Thận"
-    ],
-    "correct_index": 1,
-    "points": 20,
-    "explanation": "Tim là cơ quan bơm máu đi khắp cơ thể."
-  },
-  {
-    "id": "q10",
-    "subject": "Địa",
-    "grade": 6,
-    "difficulty": "easy",
-    "content": "Việt Nam nằm ở châu lục nào?",
-    "options": [
-      "Châu Âu",
-      "Châu Phi",
-      "Châu Á",
-      "Châu Mỹ"
+      "Tư bản bất biến",
+      "Tư bản khả biến",
+      "Giá trị thặng dư",
+      "Lợi nhuận"
     ],
     "correct_index": 2,
     "points": 10,
-    "explanation": "Việt Nam thuộc khu vực Đông Nam Á, châu Á."
+    "explanation": "m là giá trị thặng dư — phần giá trị mới dôi ra ngoài giá trị sức lao động, do công nhân tạo ra trong thời gian lao động thặng dư và bị nhà tư bản chiếm đoạt."
   },
   {
-    "id": "q11",
-    "subject": "Toán",
-    "grade": 6,
+    "id": "kt03",
+    "subject": "Kinh tế",
+    "grade": 10,
     "difficulty": "medium",
-    "content": "Một hình chữ nhật có chiều dài 8cm, chiều rộng 5cm. Diện tích hình chữ nhật là bao nhiêu?",
+    "content": "Vì sao lợi nhuận dễ làm che giấu nguồn gốc thật của giá trị thặng dư?",
     "options": [
-      "13 cm²",
-      "26 cm²",
-      "40 cm²",
-      "45 cm²"
+      "Vì lợi nhuận xuất hiện như kết quả của toàn bộ tư bản ứng trước",
+      "Vì công nhân không tham gia sản xuất",
+      "Vì máy móc tự tạo ra giá trị mới",
+      "Vì thị trường không cần sản xuất"
     ],
-    "correct_index": 2,
+    "correct_index": 0,
     "points": 20,
-    "explanation": "Diện tích = dài × rộng = 8 × 5 = 40 cm²."
+    "explanation": "Khi giá trị thặng dư biểu hiện thành lợi nhuận, nó có vẻ như do toàn bộ vốn (c+v) sinh ra, chứ không còn hiện rõ nguồn gốc từ lao động thặng dư của công nhân."
   },
   {
-    "id": "q12",
-    "subject": "Sinh",
-    "grade": 9,
+    "id": "kt04",
+    "subject": "Kinh tế",
+    "grade": 10,
+    "difficulty": "medium",
+    "content": "Bộ phận tư bản tồn tại dưới hình thái tư liệu sản xuất, giá trị của nó được lao động cụ thể bảo tồn và chuyển nguyên vẹn vào giá trị sản phẩm, C. Mác gọi là gì?",
+    "options": [
+      "Tư bản khả biến",
+      "Tư bản bất biến",
+      "Giá trị thặng dư",
+      "Lợi nhuận"
+    ],
+    "correct_index": 1,
+    "points": 20,
+    "explanation": "Tư bản bất biến (c) gồm máy móc, nguyên liệu, nhà xưởng. Nó không tạo ra giá trị mới mà chỉ chuyển giá trị cũ của mình vào sản phẩm."
+  },
+  {
+    "id": "kt05",
+    "subject": "Kinh tế",
+    "grade": 10,
+    "difficulty": "medium",
+    "content": "Trong các nhận định dưới đây về lợi nhuận và giá trị thặng dư, nhận định nào đúng?",
+    "options": [
+      "Bản chất của lợi nhuận là giá trị thặng dư",
+      "Lợi nhuận và giá trị thặng dư luôn luôn bằng nhau",
+      "Lợi nhuận và giá trị thặng dư phụ thuộc vào quan hệ cung cầu",
+      "Cả A, B và C"
+    ],
+    "correct_index": 0,
+    "points": 20,
+    "explanation": "Theo C. Mác, lợi nhuận là hình thức biểu hiện bên ngoài của giá trị thặng dư — xét bản chất, lợi nhuận có nguồn gốc từ giá trị thặng dư."
+  },
+  {
+    "id": "kt06",
+    "subject": "Kinh tế",
+    "grade": 10,
+    "difficulty": "easy",
+    "content": "Tuần hoàn của tư bản là sự vận động lần lượt qua 3 giai đoạn dưới 3 hình thái kế tiếp nhau. Ba hình thái đó là gì?",
+    "options": [
+      "Tư bản tiền tệ, tư bản sản xuất, tư bản hàng hóa",
+      "Tư bản bất biến, tư bản khả biến, giá trị thặng dư",
+      "Tiền lương, lợi nhuận, địa tô",
+      "Hàng hóa, tiền tệ, thị trường"
+    ],
+    "correct_index": 0,
+    "points": 10,
+    "explanation": "Tư bản tuần hoàn qua 3 hình thái: T (tư bản tiền tệ) → SX (tư bản sản xuất) → H' (tư bản hàng hóa) → T'."
+  },
+  {
+    "id": "kt07",
+    "subject": "Kinh tế",
+    "grade": 10,
     "difficulty": "hard",
-    "content": "Đơn vị cơ bản cấu tạo nên cơ thể sống là gì?",
+    "content": "Một doanh nghiệp có lợi nhuận cao. Có thể kết luận ngay rằng giá trị thặng dư cũng cao hơn mọi doanh nghiệp khác không?",
     "options": [
-      "Mô",
-      "Tế bào",
-      "Cơ quan",
-      "Hệ cơ quan"
+      "Có, vì lợi nhuận cao luôn đồng nghĩa với giá trị thặng dư cao",
+      "Không chắc, vì còn phải xét quy mô tư bản ứng trước, chi phí, giá bán và cách lợi nhuận biểu hiện trên thị trường",
+      "Có, vì lợi nhuận và giá trị thặng dư không khác nhau",
+      "Không, vì lợi nhuận không liên quan đến giá trị thặng dư"
     ],
     "correct_index": 1,
     "points": 30,
-    "explanation": "Tế bào là đơn vị cấu trúc và chức năng cơ bản của sự sống."
+    "explanation": "Lợi nhuận là hình thức biểu hiện của GTTD nhưng còn chịu ảnh hưởng bởi chi phí, quy mô tư bản và điều kiện thị trường — không thể kết luận trực tiếp."
   },
   {
-    "id": "q13",
-    "subject": "Toán",
-    "grade": 7,
-    "difficulty": "hard",
-    "content": "Giá trị của biểu thức 2³ + 3² - 4 là bao nhiêu?",
+    "id": "kt08",
+    "subject": "Kinh tế",
+    "grade": 10,
+    "difficulty": "medium",
+    "content": "Bản chất của tiền công trong nền kinh tế thị trường tư bản chủ nghĩa theo quan điểm của C. Mác là gì?",
     "options": [
-      "11",
-      "12",
-      "13",
-      "14"
+      "Là giá cả của lao động mà nhà tư bản trả cho công nhân vì đã làm việc.",
+      "Là phần thưởng cho sự đóng góp trí tuệ của người lao động vào sản phẩm.",
+      "Là hình thái biểu hiện bằng tiền của giá trị hàng hóa sức lao động.",
+      "Là khoản lợi nhuận mà nhà tư bản chia sẻ cho công nhân để duy trì sản xuất."
+    ],
+    "correct_index": 2,
+    "points": 20,
+    "explanation": "Tiền công không phải giá cả của 'lao động' mà là giá cả của hàng hóa 'sức lao động' — phần giá trị bù đắp giá trị sức lao động mà công nhân đã hao phí."
+  },
+  {
+    "id": "kt09",
+    "subject": "Kinh tế",
+    "grade": 10,
+    "difficulty": "hard",
+    "content": "Tại sao tiền công dễ gây ra ngộ nhận rằng nhà tư bản trả công cho toàn bộ thời gian lao động của công nhân?",
+    "options": [
+      "Vì công nhân chỉ nhận tiền sau khi đã hoàn thành công việc theo thời gian đã thỏa thuận.",
+      "Vì mức tiền công luôn tương đương với tổng giá trị hàng hóa mà công nhân làm ra.",
+      "Vì tiền công phản ánh đúng giá trị sử dụng của sức lao động trong quá trình sản xuất.",
+      "Vì nhà tư bản và công nhân luôn ký hợp đồng lao động theo nguyên tắc ngang giá."
+    ],
+    "correct_index": 0,
+    "points": 30,
+    "explanation": "Bề ngoài, công nhân làm xong mới nhận tiền tạo ảo giác được trả cho 'lao động'. Thực chất tiền công chỉ tương ứng thời gian lao động tất yếu; phần lao động thặng dư bị nhà tư bản chiếm đoạt không công."
+  },
+  {
+    "id": "kt10",
+    "subject": "Kinh tế",
+    "grade": 10,
+    "difficulty": "hard",
+    "content": "Trong các bộ phận sau, bộ phận nào thuộc về cả 'Tư bản bất biến' (c) và 'Tư bản lưu động'?",
+    "options": [
+      "Máy móc, nhà xưởng và thiết bị hiện đại.",
+      "Sức lao động của công nhân làm thuê.",
+      "Nguyên nhiên vật liệu, vật liệu phụ dùng trong sản xuất.",
+      "Các khoản tiền mặt dự trữ trong quỹ khấu hao của doanh nghiệp."
     ],
     "correct_index": 2,
     "points": 30,
-    "explanation": "2³ = 8, 3² = 9 → 8 + 9 - 4 = 13."
+    "explanation": "Nguyên vật liệu là tư bản bất biến (c) vì chuyển giá trị vào sản phẩm, đồng thời là tư bản lưu động vì giá trị chuyển toàn phần trong một chu kỳ sản xuất. Máy móc là tư bản cố định; sức lao động là tư bản khả biến."
   },
   {
-    "id": "q14",
-    "subject": "Sử",
-    "grade": 9,
-    "difficulty": "hard",
-    "content": "Chiến dịch Điện Biên Phủ kết thúc thắng lợi vào năm nào?",
+    "id": "kt11",
+    "subject": "Kinh tế",
+    "grade": 10,
+    "difficulty": "medium",
+    "content": "Vì sao sức lao động được xem là một loại hàng hóa đặc biệt?",
     "options": [
-      "1945",
-      "1950",
-      "1954",
-      "1960"
+      "Vì sức lao động có thể mua bán như các hàng hóa thông thường.",
+      "Vì khi sử dụng nó thì tạo ra được một giá trị mới lớn hơn giá trị bản thân nó.",
+      "Vì sức lao động không cần tư liệu sản xuất vẫn có thể tạo ra sản phẩm.",
+      "Vì sức lao động chỉ tồn tại trong xã hội tư bản chủ nghĩa."
+    ],
+    "correct_index": 1,
+    "points": 20,
+    "explanation": "Sức lao động đặc biệt vì khi được sử dụng trong sản xuất, nó không chỉ tạo ra phần giá trị bù tiền lương mà còn tạo thêm giá trị thặng dư cho nhà tư bản."
+  },
+  {
+    "id": "kt12",
+    "subject": "Kinh tế",
+    "grade": 10,
+    "difficulty": "medium",
+    "content": "Điểm giống nhau giữa công thức H - T - H và T - H - T' là gì?",
+    "options": [
+      "Đều có mục đích cuối cùng là thu được lợi nhuận.",
+      "Đều phản ánh sự vận động của sản xuất hàng hóa.",
+      "Đều bắt đầu bằng tiền và kết thúc bằng tiền.",
+      "Đều chỉ xuất hiện trong nền sản xuất tư bản chủ nghĩa."
+    ],
+    "correct_index": 1,
+    "points": 20,
+    "explanation": "Cả hai công thức đều thể hiện sự vận động của hàng hóa và tiền trong lưu thông — đều gồm hai yếu tố hàng hóa + tiền và hai hành vi mua + bán."
+  },
+  {
+    "id": "kt13",
+    "subject": "Kinh tế",
+    "grade": 10,
+    "difficulty": "medium",
+    "content": "Nhận định sau đây đúng hay sai? 'Nguồn gốc của giá trị thặng dư là do quá trình lưu thông đơn thuần tạo ra.'",
+    "options": [
+      "Đúng, vì hàng hóa được mua rẻ và bán đắt trong lưu thông.",
+      "Đúng, vì tiền có thể tự sinh ra giá trị thặng dư trong quá trình trao đổi.",
+      "Sai, vì quá trình lưu thông đơn thuần không tạo ra giá trị thặng dư.",
+      "Sai, vì giá trị thặng dư chỉ xuất hiện khi hàng hóa không được đem ra trao đổi."
     ],
     "correct_index": 2,
-    "points": 30,
-    "explanation": "Chiến dịch Điện Biên Phủ toàn thắng ngày 7/5/1954."
+    "points": 20,
+    "explanation": "Lưu thông chỉ làm thay đổi hình thái của giá trị (hàng → tiền → hàng), không tạo ra giá trị mới. Giá trị thặng dư chỉ có thể xuất hiện trong lĩnh vực sản xuất."
   },
   {
-    "id": "q15",
-    "subject": "Địa",
-    "grade": 9,
-    "difficulty": "hard",
-    "content": "Thành phố nào là thủ đô của Việt Nam?",
-    "options": [
-      "TP. Hồ Chí Minh",
-      "Đà Nẵng",
-      "Hà Nội",
-      "Hải Phòng"
-    ],
-    "correct_index": 2,
-    "points": 30,
-    "explanation": "Hà Nội là thủ đô của Việt Nam."
-  },
-  {
-    "id": "q16",
-    "subject": "Anh",
-    "grade": 8,
-    "difficulty": "hard",
-    "content": "Choose the synonym of 'happy':",
-    "options": [
-      "sad",
-      "angry",
-      "joyful",
-      "tired"
-    ],
-    "correct_index": 2,
-    "points": 30,
-    "explanation": "'joyful' đồng nghĩa với 'happy' (vui vẻ)."
-  },
-  {
-    "id": "q17",
-    "subject": "Toán",
-    "grade": 5,
+    "id": "kt14",
+    "subject": "Kinh tế",
+    "grade": 10,
     "difficulty": "easy",
-    "content": "Hiện nay tuổi của hai anh em cộng lại là 12 tuổi. Hỏi 3 năm nữa tuổi của hai anh em cộng lại là bao nhiêu?",
+    "content": "Sức lao động tạo ra một giá trị mới lớn hơn giá trị bản thân của nó. Phần giá trị dôi ra này chính là gì?",
     "options": [
-      "14",
-      "16",
-      "18",
-      "20"
+      "Tiền lương",
+      "Giá trị sử dụng",
+      "Giá trị thặng dư",
+      "Tư liệu sản xuất"
     ],
     "correct_index": 2,
     "points": 10,
-    "explanation": "Mỗi người tăng 3 tuổi → tổng tăng 6 → 12 + 6 = 18."
+    "explanation": "Phần giá trị mới mà công nhân tạo ra vượt quá tiền lương chính là giá trị thặng dư (m) — bị nhà tư bản chiếm đoạt không công."
   },
   {
-    "id": "q18",
-    "subject": "Văn",
-    "grade": 6,
+    "id": "kt15",
+    "subject": "Kinh tế",
+    "grade": 10,
     "difficulty": "easy",
-    "content": "Từ nào sau đây là từ láy?",
+    "content": "Ngày lao động của công nhân được chia thành hai phần là gì?",
     "options": [
-      "bàn ghế",
-      "long lanh",
-      "sách vở",
-      "quần áo"
+      "Thời gian sản xuất và thời gian lưu thông",
+      "Thời gian lao động giản đơn và thời gian lao động phức tạp",
+      "Thời gian lao động cần thiết và thời gian lao động thặng dư",
+      "Thời gian nghỉ ngơi và thời gian làm việc"
+    ],
+    "correct_index": 2,
+    "points": 10,
+    "explanation": "Thời gian lao động cần thiết: công nhân tạo ra giá trị bằng tiền lương. Thời gian lao động thặng dư: công nhân tiếp tục làm việc, giá trị tạo ra thuộc về nhà tư bản."
+  },
+  {
+    "id": "kt16",
+    "subject": "Kinh tế",
+    "grade": 10,
+    "difficulty": "easy",
+    "content": "Công thức m' = m / v × 100% dùng để tính đại lượng nào?",
+    "options": [
+      "Khối lượng giá trị thặng dư",
+      "Tỷ suất giá trị thặng dư",
+      "Tỷ suất lợi nhuận",
+      "Giá trị sức lao động"
     ],
     "correct_index": 1,
     "points": 10,
-    "explanation": "'long lanh' là từ láy; các từ còn lại là từ ghép."
+    "explanation": "m' là tỷ suất giá trị thặng dư — tỷ lệ giữa giá trị thặng dư (m) và tư bản khả biến (v). Nó phản ánh trình độ bóc lột sức lao động của nhà tư bản."
+  },
+  {
+    "id": "kt17",
+    "subject": "Kinh tế",
+    "grade": 10,
+    "difficulty": "hard",
+    "content": "Tại sao lợi nhuận (p) lại che giấu đi bản chất bóc lột của giá trị thặng dư (m)?",
+    "options": [
+      "Vì lợi nhuận luôn bằng chính xác số lượng giá trị thặng dư tạo ra trong sản xuất.",
+      "Vì lợi nhuận được xem là 'con đẻ' của toàn bộ tư bản ứng trước (c+v), chứ không phải chỉ riêng tư bản khả biến (v).",
+      "Vì lợi nhuận chỉ xuất hiện khi nhà tư bản bán hàng hóa cao hơn giá trị thực tế.",
+      "Vì lợi nhuận phản ánh trình độ bóc lột sức lao động của nhà tư bản một cách công khai."
+    ],
+    "correct_index": 1,
+    "points": 30,
+    "explanation": "GTTD (m) thực chất chỉ do v tạo ra. Khi biểu hiện thành lợi nhuận (p), người ta coi p là kết quả của toàn bộ vốn (c+v), làm nguồn gốc từ sức lao động bị che lấp hoàn toàn."
+  },
+  {
+    "id": "kt18",
+    "subject": "Kinh tế",
+    "grade": 10,
+    "difficulty": "medium",
+    "content": "Bộ phận tư bản dùng để mua sức lao động, giá trị của nó biến đổi trong quá trình sản xuất (tạo ra giá trị thặng dư), C. Mác gọi là gì?",
+    "options": [
+      "Tư bản bất biến",
+      "Tư bản cố định",
+      "Tư bản lưu động",
+      "Tư bản khả biến"
+    ],
+    "correct_index": 3,
+    "points": 20,
+    "explanation": "Tư bản khả biến (v) là phần tư bản mua sức lao động. Khác với tư bản bất biến (c) chỉ chuyển giá trị cũ vào sản phẩm, tư bản khả biến được sử dụng và tạo ra giá trị thặng dư — nên gọi là 'khả biến' (có thể sinh ra giá trị mới)."
   }
 ]
