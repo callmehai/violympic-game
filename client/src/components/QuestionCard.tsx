@@ -45,13 +45,16 @@ export default function QuestionCard({
   const answered = !!feedback;
 
   // ----- Đếm ngược cửa sổ thưởng tốc độ (neo theo wall-clock, reset mỗi câu) -----
-  const [speedMsLeft, setSpeedMsLeft] = useState(question.speed_window_ms);
-  const endAtRef = useRef(0);
+  // speed_elapsed_ms = thời gian đã trôi tính từ server (chính xác kể cả sau reload).
+  const remaining0 = Math.max(0, question.speed_window_ms - (question.speed_elapsed_ms ?? 0));
+  const [speedMsLeft, setSpeedMsLeft] = useState(remaining0);
+  const endAtRef = useRef(Date.now() + remaining0);
 
   useEffect(() => {
-    endAtRef.current = Date.now() + question.speed_window_ms;
-    setSpeedMsLeft(question.speed_window_ms);
-  }, [question.question_id, question.speed_window_ms]);
+    const rem = Math.max(0, question.speed_window_ms - (question.speed_elapsed_ms ?? 0));
+    endAtRef.current = Date.now() + rem;
+    setSpeedMsLeft(rem);
+  }, [question.question_id, question.speed_window_ms, question.speed_elapsed_ms]);
 
   useEffect(() => {
     if (answered) return; // đã trả lời → khóa đồng hồ thưởng

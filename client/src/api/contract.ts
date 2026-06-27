@@ -58,6 +58,7 @@ export interface NextQuestionDTO {
   points: number;
   speed_bonus: number;
   speed_window_ms: number;
+  speed_elapsed_ms: number;
 }
 
 export interface AnswerResponseDTO {
@@ -177,6 +178,7 @@ export interface MazeStateDTO {
   finished: boolean;
   reached: boolean;
   gates_opened: number;
+  pending_challenge?: NextChallengeDTO; // câu đang chờ tại cổng — để FE restore sau reload
 }
 
 export interface NextChallengeDTO {
@@ -192,6 +194,7 @@ export interface NextChallengeDTO {
   points: number;
   speed_bonus: number;
   speed_window_ms: number;
+  speed_elapsed_ms: number;
 }
 
 export interface MoveResultDTO {

@@ -6,12 +6,12 @@
     "difficulty": "medium",
     "content": "Chủ xưởng nói: 'Ta lời 500 đồng tiền, vậy 500 đồng tiền này là do toàn bộ số vốn 1.000 đồng tiền của ta sinh ra.' Theo lý luận của C. Mác, nhận định nào đúng nhất?",
     "options": [
-      "Đúng, vì cứ bỏ vốn ra thì vốn tự sinh ra lợi nhuận.",
-      "Đúng, vì máy móc và nguyên liệu là nguồn gốc tạo ra 500 đồng tiền.",
-      "Sai, vì nhìn bên ngoài 500 đồng tiền là lợi nhuận, nhưng xét bản chất, nó có nguồn gốc từ giá trị thặng dư do lao động công nhân tạo ra.",
-      "Sai, vì 500 đồng tiền này không liên quan gì đến quá trình sản xuất."
+      "Đúng, vì nhà tư bản bỏ vốn ra thì toàn bộ số vốn đó sinh ra lợi nhuận.",
+      "Sai, vì 500 đồng là giá trị thặng dư từ lao động công nhân, không do vốn tự sinh ra.",
+      "Đúng, vì máy móc và nguyên liệu trong sản xuất là nguồn gốc tạo ra 500 đồng tiền.",
+      "Sai, vì khoản 500 đồng lời này hoàn toàn không liên quan đến quá trình sản xuất."
     ],
-    "correct_index": 2,
+    "correct_index": 1,
     "points": 20,
     "explanation": "Lợi nhuận chỉ là hình thức biểu hiện bên ngoài; bản chất là giá trị thặng dư do lao động của công nhân tạo ra trong thời gian lao động thặng dư."
   },
@@ -39,9 +39,9 @@
     "content": "Vì sao lợi nhuận dễ làm che giấu nguồn gốc thật của giá trị thặng dư?",
     "options": [
       "Vì lợi nhuận xuất hiện như kết quả của toàn bộ tư bản ứng trước",
-      "Vì công nhân không tham gia sản xuất",
-      "Vì máy móc tự tạo ra giá trị mới",
-      "Vì thị trường không cần sản xuất"
+      "Vì trong sản xuất, máy móc và thiết bị tự tạo ra giá trị mới cho sản phẩm",
+      "Vì công nhân thực ra không trực tiếp tham gia vào quá trình tạo ra giá trị",
+      "Vì thị trường có thể phân phối và tạo ra giá trị mà không cần sản xuất"
     ],
     "correct_index": 0,
     "points": 20,
@@ -73,7 +73,7 @@
       "Bản chất của lợi nhuận là giá trị thặng dư",
       "Lợi nhuận và giá trị thặng dư luôn luôn bằng nhau",
       "Lợi nhuận và giá trị thặng dư phụ thuộc vào quan hệ cung cầu",
-      "Cả A, B và C"
+      "Cả A, B và C đều đúng"
     ],
     "correct_index": 0,
     "points": 20,
@@ -100,16 +100,16 @@
     "subject": "Kinh tế",
     "grade": 10,
     "difficulty": "hard",
-    "content": "Một doanh nghiệp có lợi nhuận cao. Có thể kết luận ngay rằng giá trị thặng dư cũng cao hơn mọi doanh nghiệp khác không?",
+    "content": "Lợi tức trong chủ nghĩa tư bản là gì?",
     "options": [
-      "Có, vì lợi nhuận cao luôn đồng nghĩa với giá trị thặng dư cao",
-      "Không chắc, vì còn phải xét quy mô tư bản ứng trước, chi phí, giá bán và cách lợi nhuận biểu hiện trên thị trường",
-      "Có, vì lợi nhuận và giá trị thặng dư không khác nhau",
-      "Không, vì lợi nhuận không liên quan đến giá trị thặng dư"
+      "Là một phần của giá trị thặng dư mà nhà tư bản đi vay phải trả cho nhà tư bản cho vay.",
+      "Là một phần của lợi nhuận siêu ngạch mà nhà tư bản đi vay phải trả cho nhà tư bản cho vay.",
+      "Là một phần của lợi nhuận mà nhà tư bản đi vay phải trả cho nhà tư bản cho vay.",
+      "Là một phần của lợi nhuận bình quân mà nhà tư bản đi vay phải trả cho nhà tư bản cho vay."
     ],
-    "correct_index": 1,
+    "correct_index": 3,
     "points": 30,
-    "explanation": "Lợi nhuận là hình thức biểu hiện của GTTD nhưng còn chịu ảnh hưởng bởi chi phí, quy mô tư bản và điều kiện thị trường — không thể kết luận trực tiếp."
+    "explanation": "Sau cạnh tranh, giá trị thặng dư chuyển hóa thành lợi nhuận bình quân. Lợi tức là một phần của lợi nhuận bình quân mà nhà tư bản đi vay trả cho nhà tư bản cho vay để được sử dụng tư bản vay."
   },
   {
     "id": "kt08",
@@ -134,12 +134,12 @@
     "difficulty": "hard",
     "content": "Tại sao tiền công dễ gây ra ngộ nhận rằng nhà tư bản trả công cho toàn bộ thời gian lao động của công nhân?",
     "options": [
-      "Vì công nhân chỉ nhận tiền sau khi đã hoàn thành công việc theo thời gian đã thỏa thuận.",
       "Vì mức tiền công luôn tương đương với tổng giá trị hàng hóa mà công nhân làm ra.",
       "Vì tiền công phản ánh đúng giá trị sử dụng của sức lao động trong quá trình sản xuất.",
+      "Vì công nhân chỉ nhận tiền sau khi hoàn thành công việc theo thời gian đã thỏa thuận.",
       "Vì nhà tư bản và công nhân luôn ký hợp đồng lao động theo nguyên tắc ngang giá."
     ],
-    "correct_index": 0,
+    "correct_index": 2,
     "points": 30,
     "explanation": "Bề ngoài, công nhân làm xong mới nhận tiền tạo ảo giác được trả cho 'lao động'. Thực chất tiền công chỉ tương ứng thời gian lao động tất yếu; phần lao động thặng dư bị nhà tư bản chiếm đoạt không công."
   },
@@ -166,10 +166,10 @@
     "difficulty": "medium",
     "content": "Vì sao sức lao động được xem là một loại hàng hóa đặc biệt?",
     "options": [
-      "Vì sức lao động có thể mua bán như các hàng hóa thông thường.",
-      "Vì khi sử dụng nó thì tạo ra được một giá trị mới lớn hơn giá trị bản thân nó.",
-      "Vì sức lao động không cần tư liệu sản xuất vẫn có thể tạo ra sản phẩm.",
-      "Vì sức lao động chỉ tồn tại trong xã hội tư bản chủ nghĩa."
+      "Vì sức lao động có thể mua bán như mọi hàng hóa thông thường trên thị trường.",
+      "Vì khi sử dụng nó tạo ra giá trị mới lớn hơn giá trị bản thân nó.",
+      "Vì sức lao động không cần tư liệu sản xuất vẫn tự tạo ra sản phẩm hàng hóa.",
+      "Vì sức lao động chỉ tồn tại và xuất hiện duy nhất trong xã hội tư bản chủ nghĩa."
     ],
     "correct_index": 1,
     "points": 20,
@@ -260,16 +260,16 @@
     "subject": "Kinh tế",
     "grade": 10,
     "difficulty": "hard",
-    "content": "Tại sao lợi nhuận (p) lại che giấu đi bản chất bóc lột của giá trị thặng dư (m)?",
+    "content": "Phạm trù lợi nhuận trong chủ nghĩa tư bản phản ánh quan hệ gì?",
     "options": [
-      "Vì lợi nhuận luôn bằng chính xác số lượng giá trị thặng dư tạo ra trong sản xuất.",
-      "Vì lợi nhuận được xem là 'con đẻ' của toàn bộ tư bản ứng trước (c+v), chứ không phải chỉ riêng tư bản khả biến (v).",
-      "Vì lợi nhuận chỉ xuất hiện khi nhà tư bản bán hàng hóa cao hơn giá trị thực tế.",
-      "Vì lợi nhuận phản ánh trình độ bóc lột sức lao động của nhà tư bản một cách công khai."
+      "Phản ánh đúng bản chất quan hệ bóc lột của nhà tư bản đối với người công nhân làm thuê.",
+      "Phản ánh trình độ hay mức độ bóc lột của nhà tư bản đối với người công nhân làm thuê.",
+      "Cả hai phương án A và B đều đúng.",
+      "Phản ánh sai lệch bản chất quan hệ giữa nhà tư bản và người công nhân làm thuê."
     ],
-    "correct_index": 1,
+    "correct_index": 3,
     "points": 30,
-    "explanation": "GTTD (m) thực chất chỉ do v tạo ra. Khi biểu hiện thành lợi nhuận (p), người ta coi p là kết quả của toàn bộ vốn (c+v), làm nguồn gốc từ sức lao động bị che lấp hoàn toàn."
+    "explanation": "Lợi nhuận là hình thức chuyển hóa của giá trị thặng dư, khiến người ta tưởng lợi nhuận do toàn bộ tư bản sinh ra. Do đó, nó che giấu bản chất bóc lột — phản ánh sai lệch bản chất của quan hệ này."
   },
   {
     "id": "kt18",

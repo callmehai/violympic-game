@@ -73,6 +73,11 @@ export default function MountainGamePage() {
           return;
         }
         setMaze(st);
+        // Nếu reload lúc đang ở cổng chờ trả lời → restore câu hỏi để player không bị mất progress.
+        if (st.pending_challenge) {
+          setGateQ(st.pending_challenge);
+          setGateA(null);
+        }
       } catch (err) {
         if (!alive) return;
         showToast(err instanceof ApiError ? err.message : 'Không tải được trạng thái.');
@@ -104,6 +109,13 @@ export default function MountainGamePage() {
         }
       } catch (err) {
         if (err instanceof ApiError && err.status === 409) {
+          const code = (err.body as { code?: string } | null)?.code;
+          // AWAITING_ANSWER = cổng đang chờ trả lời (không phải kết thúc game).
+          // Trường hợp này chỉ xảy ra nếu gateQ chưa được restore đúng — hiển thị toast, không finish.
+          if (code === 'AWAITING_ANSWER') {
+            showToast('Hãy trả lời câu hỏi ở cổng trước.');
+            return;
+          }
           await doFinish();
           return;
         }
@@ -136,6 +148,12 @@ export default function MountainGamePage() {
         if (res.delta !== 0) setDelta({ value: res.delta, key: keyRef.current });
       } catch (err) {
         if (err instanceof ApiError && err.status === 409) {
+          const code = (err.body as { code?: string } | null)?.code;
+          // BAD_TOKEN 409 = token hết hạn (reload lâu) → hiển thị lỗi, không force-finish.
+          if (code === 'BAD_TOKEN') {
+            showToast('Token câu hỏi hết hạn. Tải lại trang để tiếp tục.');
+            return;
+          }
           await doFinish();
           return;
         }

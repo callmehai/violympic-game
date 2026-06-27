@@ -154,6 +154,7 @@ export interface NextQuestionDTO {
   points: number; // điểm cơ bản nếu trả lời đúng (để client hiển thị "được mấy điểm")
   speed_bonus: number; // điểm thưởng tốc độ nếu trả lời kịp
   speed_window_ms: number; // cửa sổ thời gian (ms) còn được thưởng tốc độ
+  speed_elapsed_ms: number; // thời gian đã trôi kể từ khi câu được phát (để client resume đúng sau reload)
 }
 
 export interface AnswerResponseDTO {
@@ -379,6 +380,7 @@ export interface MazeStateDTO {
   finished: boolean;
   reached: boolean;
   gates_opened: number; // số cổng đã mở (câu đúng)
+  pending_challenge?: NextChallengeDTO; // câu đang chờ tại cổng — gửi khi reload để FE restore
 }
 
 /** Câu hỏi tại 1 cổng (KHÔNG kèm đáp án đúng). */
@@ -395,6 +397,7 @@ export interface NextChallengeDTO {
   points: number; // điểm nếu đúng
   speed_bonus: number;
   speed_window_ms: number;
+  speed_elapsed_ms: number; // thời gian đã trôi kể từ khi câu được phát (để resume đúng sau reload)
 }
 
 /** Kết quả 1 lần bước (free move) hoặc bước-vào-cổng (kèm câu hỏi). */

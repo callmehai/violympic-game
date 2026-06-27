@@ -263,6 +263,44 @@ function assignGates(): Record<number, number> {
 }
 
 // ===================== Build DTO =====================
+/** Xây challenge DTO cho cổng đang pending — dùng để phát lần đầu (move) và restore sau reload (getState). */
+function buildChallengeDTO(
+  student: StudentRow,
+  s: SessionRow,
+  prog: MazeProgress,
+  cell: number,
+  eventId: string,
+): import('../types').NextChallengeDTO | undefined {
+  const qid = prog.gateQ[cell];
+  if (qid === undefined) return undefined;
+  const q = mountainQuestionService.getById(qid);
+  if (!q) return undefined;
+  const pl = JSON.parse(q.payload_json) as { options?: string[]; items?: string[]; suffix?: string };
+  const elapsed = prog.questionShownAt !== undefined ? nowMs() - prog.questionShownAt : 0;
+  const dto: import('../types').NextChallengeDTO = {
+    question_id: qid,
+    question_token: signQuestionToken({ sid: s.id, qid, cur: 0, cell }, timeLeftS(s, prog)),
+    type: q.type,
+    subject: q.subject,
+    difficulty: q.difficulty,
+    content: q.content,
+    points: pointsOf(q),
+    speed_bonus: config.mountain.speedBonusMax,
+    speed_window_ms: config.fastAnswerMs,
+    speed_elapsed_ms: elapsed,
+  };
+  if (q.type === 'mcq' && pl.options) {
+    const perm = displayPerm(student.student_code, eventId, qid, pl.options.length);
+    dto.options = perm.map((o) => pl.options![o]);
+  } else if (q.type === 'order' && pl.items) {
+    const perm = displayPerm(student.student_code, eventId, qid, pl.items.length);
+    dto.items = perm.map((o) => pl.items![o]);
+  } else if (q.type === 'fill') {
+    dto.suffix = pl.suffix;
+  }
+  return dto;
+}
+
 function buildState(student: StudentRow, s: SessionRow, eventId: string): MazeStateDTO {
   const prog = parseProgress(s);
   const cells: MazeCell[] = MAZE.base.slice();
@@ -270,7 +308,7 @@ function buildState(student: StudentRow, s: SessionRow, eventId: string): MazeSt
     const st = gateStatusOf(prog, g);
     cells[g] = st === 'open' ? 5 : st === 'blocked' ? 6 : 2; // 5 mở, 6 chặn, 2 khoá
   }
-  return {
+  const state: MazeStateDTO = {
     session_id: s.id,
     status: s.status,
     score: s.score,
@@ -288,6 +326,11 @@ function buildState(student: StudentRow, s: SessionRow, eventId: string): MazeSt
     reached: !!prog.reached,
     gates_opened: prog.correct,
   };
+  // Khi có cổng đang chờ trả lời, đính kèm câu hỏi để FE có thể restore sau reload.
+  if (s.status === 'in_progress' && prog.pending !== null) {
+    state.pending_challenge = buildChallengeDTO(student, s, prog, prog.pending, eventId);
+  }
+  return state;
 }
 
 function finishInternal(s: SessionRow, prog: MazeProgress): void {
@@ -488,8 +531,8 @@ export const mountainService: MountainService = {
       prog.questionShownAt = nowMs();
       saveSession(s, prog);
 
-      const q = mountainQuestionService.getById(qid);
-      if (!q) {
+      const dto = buildChallengeDTO(student, s, prog, target, eventId);
+      if (!dto) {
         // câu biến mất → tự mở cổng cho khỏi kẹt
         prog.gateStatus[target] = 'open';
         prog.pending = null;
@@ -497,30 +540,6 @@ export const mountainService: MountainService = {
         saveSession(s, prog);
         notifier(eventId);
         return { gate: false, state: buildState(student, s, eventId) };
-      }
-      const pl = JSON.parse(q.payload_json) as { options?: string[]; items?: string[]; suffix?: string };
-      const dto = {
-        question_id: qid,
-        question_token: signQuestionToken(
-          { sid: s.id, qid, cur: 0, cell: target },
-          timeLeftS(s, prog),
-        ),
-        type: q.type,
-        subject: q.subject,
-        difficulty: q.difficulty,
-        content: q.content,
-        points: pointsOf(q),
-        speed_bonus: config.mountain.speedBonusMax,
-        speed_window_ms: config.fastAnswerMs,
-      } as MoveResultDTO['question'];
-      if (q.type === 'mcq' && pl.options && dto) {
-        const perm = displayPerm(student.student_code, eventId, qid, pl.options.length);
-        dto.options = perm.map((o) => pl.options![o]);
-      } else if (q.type === 'order' && pl.items && dto) {
-        const perm = displayPerm(student.student_code, eventId, qid, pl.items.length);
-        dto.items = perm.map((o) => pl.items![o]);
-      } else if (q.type === 'fill' && dto) {
-        dto.suffix = pl.suffix;
       }
       return { gate: true, question: dto };
     }

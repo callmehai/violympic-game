@@ -390,6 +390,7 @@ export const gameService: GameService = {
       points: scoringService.questionPoints(q),
       speed_bonus: config.fastAnswerBonus,
       speed_window_ms: config.fastAnswerMs,
+      speed_elapsed_ms: prog.questionShownAt !== undefined ? nowMs() - prog.questionShownAt : 0,
     };
   },
 

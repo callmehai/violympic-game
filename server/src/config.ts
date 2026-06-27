@@ -62,7 +62,7 @@ export const config: GameConfig = {
     bombs: 6,
     gems: 14,
     gemValues: [20], // mỗi kim cương cố định +20 điểm
-    bombValue: -15,
+    bombValue: -5,
     chestValue: 100,
   },
   difficultyPoints,

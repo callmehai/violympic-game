@@ -51,6 +51,7 @@ export default function ChallengeCard({ challenge, feedback, disabled, onAnswer 
 
       <SpeedBar
         windowMs={challenge.speed_window_ms}
+        elapsedMs={challenge.speed_elapsed_ms ?? 0}
         maxBonus={challenge.speed_bonus}
         frozen={!!feedback}
       />
@@ -91,21 +92,24 @@ export default function ChallengeCard({ challenge, feedback, disabled, onAnswer 
 /* ===================== Thanh đếm ngược thưởng tốc độ ===================== */
 function SpeedBar({
   windowMs,
+  elapsedMs,
   maxBonus,
   frozen,
 }: {
   windowMs: number;
+  elapsedMs: number;
   maxBonus: number;
   frozen: boolean;
 }) {
-  const [frac, setFrac] = useState(1);
-  const start = useRef<number>(Date.now());
+  // Neo mốc kết thúc theo server elapsed để countdown đúng kể cả sau reload.
+  const endAt = useRef<number>(Date.now() + Math.max(0, windowMs - elapsedMs));
+  const [frac, setFrac] = useState(() => Math.max(0, (windowMs - elapsedMs) / windowMs));
 
   useEffect(() => {
     if (frozen) return;
     let raf = 0;
     const tick = () => {
-      const f = Math.max(0, 1 - (Date.now() - start.current) / windowMs);
+      const f = Math.max(0, (endAt.current - Date.now()) / windowMs);
       setFrac(f);
       if (f > 0) raf = requestAnimationFrame(tick);
     };
