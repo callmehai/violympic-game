@@ -251,102 +251,57 @@ function FillInput({ challenge, feedback, disabled, onAnswer }: Props) {
   );
 }
 
-/* ===================== ORDER (kéo–thả) ===================== */
+/* ===================== ORDER (tap chọn thứ tự) ===================== */
 function OrderInput({ challenge, feedback, disabled, onAnswer }: Props) {
-  // order theo CHỈ SỐ HIỂN THỊ: bắt đầu [0,1,2,...]; người chơi kéo đổi vị trí.
+  // Người chơi TAP lần lượt các ô theo thứ tự 1→n. `picked` giữ danh sách
+  // CHỈ SỐ HIỂN THỊ đã chọn (đúng thứ tự tap). Chọn đủ hết → nút Trả lời sáng.
   const items = challenge.items ?? [];
-  const [order, setOrder] = useState<number[]>(items.map((_, i) => i));
-  const [dragPos, setDragPos] = useState<number | null>(null);
-  const [dragDy, setDragDy] = useState(0);
-  const startY = useRef(0);
-  const rowH = useRef(0);
+  const [picked, setPicked] = useState<number[]>([]);
   const locked = disabled || !!feedback;
+  const allPicked = picked.length === items.length;
 
-  function onDown(pos: number, e: React.PointerEvent<HTMLDivElement>) {
+  function toggle(displayIdx: number) {
     if (locked) return;
-    const el = e.currentTarget;
-    rowH.current = el.getBoundingClientRect().height + 8; // + khoảng cách space-y-2
-    startY.current = e.clientY;
-    setDragPos(pos);
-    setDragDy(0);
-    try {
-      el.setPointerCapture(e.pointerId);
-    } catch {
-      /* bỏ qua nếu trình duyệt không hỗ trợ */
-    }
-  }
-
-  function onMove(e: React.PointerEvent<HTMLDivElement>) {
-    if (dragPos === null) return;
-    let dy = e.clientY - startY.current;
-    let pos = dragPos;
-    const arr = order.slice();
-    let changed = false;
-    const h = rowH.current || 56;
-    while (dy > h / 2 && pos < arr.length - 1) {
-      [arr[pos], arr[pos + 1]] = [arr[pos + 1], arr[pos]];
-      pos++;
-      startY.current += h;
-      dy -= h;
-      changed = true;
-    }
-    while (dy < -h / 2 && pos > 0) {
-      [arr[pos], arr[pos - 1]] = [arr[pos - 1], arr[pos]];
-      pos--;
-      startY.current -= h;
-      dy += h;
-      changed = true;
-    }
-    if (changed) {
-      setOrder(arr);
-      setDragPos(pos);
-    }
-    setDragDy(dy);
-  }
-
-  function onUp(e: React.PointerEvent<HTMLDivElement>) {
-    if (dragPos === null) return;
-    setDragPos(null);
-    setDragDy(0);
-    try {
-      e.currentTarget.releasePointerCapture(e.pointerId);
-    } catch {
-      /* noop */
-    }
+    setPicked((prev) =>
+      prev.includes(displayIdx)
+        ? prev.filter((x) => x !== displayIdx) // tap lại để bỏ chọn
+        : [...prev, displayIdx],
+    );
   }
 
   return (
     <div className="space-y-3">
-      <p className="text-xs text-white/50">🖐️ Kéo các ô về đúng thứ tự rồi bấm Trả lời.</p>
+      <p className="text-xs text-white/50">
+        👆 Chạm lần lượt các ô theo đúng thứ tự (1 → {items.length}). Chạm lại để bỏ chọn.
+      </p>
       <div className="space-y-2">
-        {order.map((displayIdx, pos) => {
-          const dragging = pos === dragPos;
+        {items.map((label, displayIdx) => {
+          const order = picked.indexOf(displayIdx); // -1 nếu chưa chọn
+          const isPicked = order !== -1;
           return (
-            <div
+            <button
               key={displayIdx}
-              onPointerDown={(e) => onDown(pos, e)}
-              onPointerMove={onMove}
-              onPointerUp={onUp}
-              style={{
-                touchAction: 'none',
-                transform: dragging ? `translateY(${dragDy}px) scale(1.02)` : undefined,
-                position: dragging ? 'relative' : undefined,
-                zIndex: dragging ? 30 : undefined,
-              }}
-              className={`flex select-none items-center gap-3 rounded-xl border px-3 py-2.5 ${
-                locked ? 'border-white/15 bg-black/30' : 'cursor-grab active:cursor-grabbing'
-              } ${
-                dragging
-                  ? 'border-treasure-gold bg-black/60 shadow-2xl ring-2 ring-treasure-gold/50'
-                  : 'border-white/15 bg-black/30'
+              type="button"
+              disabled={locked}
+              onClick={() => toggle(displayIdx)}
+              style={{ touchAction: 'manipulation' }}
+              className={`flex w-full select-none items-center gap-3 rounded-xl border px-3 py-3 text-left font-semibold transition active:scale-[0.99] disabled:cursor-not-allowed ${
+                isPicked
+                  ? 'border-treasure-gold bg-treasure-gold/15 text-white'
+                  : 'border-white/15 bg-black/30 hover:border-treasure-gold hover:bg-black/40'
               }`}
             >
-              <span className="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-treasure-gold/20 text-sm font-bold text-treasure-gold">
-                {pos + 1}
+              <span
+                className={`grid h-8 w-8 shrink-0 place-items-center rounded-lg text-sm font-bold ${
+                  isPicked
+                    ? 'bg-treasure-gold text-black'
+                    : 'bg-white/10 text-white/50'
+                }`}
+              >
+                {isPicked ? order + 1 : '•'}
               </span>
-              <span className="flex-1 font-semibold">{items[displayIdx]}</span>
-              {!locked && <span className="shrink-0 text-lg text-white/40">⠿</span>}
-            </div>
+              <span className="flex-1">{label}</span>
+            </button>
           );
         })}
       </div>
@@ -354,10 +309,10 @@ function OrderInput({ challenge, feedback, disabled, onAnswer }: Props) {
         <button
           type="button"
           className="btn-gold w-full py-3"
-          disabled={disabled}
-          onClick={() => onAnswer(order)}
+          disabled={disabled || !allPicked}
+          onClick={() => onAnswer(picked)}
         >
-          Trả lời
+          {allPicked ? 'Trả lời' : `Còn ${items.length - picked.length} ô chưa chọn`}
         </button>
       )}
       {feedback && !feedback.is_correct && feedback.correct_order && (
