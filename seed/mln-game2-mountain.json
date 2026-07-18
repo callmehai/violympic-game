@@ -1,0 +1,1862 @@
+[
+  {
+    "id": "mln-c1-02",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Môn MLN122 giúp sinh viên chủ yếu phát triển năng lực nào?",
+    "options": [
+      "Tư duy sáng tạo nghệ thuật",
+      "Tư duy khoa học và lý luận",
+      "Kỹ năng thực hành nghề nghiệp",
+      "Kỹ năng giao tiếp xã hội"
+    ],
+    "answer_index": 1,
+    "explanation": "Môn học cung cấp nền tảng lý luận, giúp sinh viên có tư duy khoa học để phân tích các vấn đề xã hội."
+  },
+  {
+    "id": "mln-c1-04",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Mục tiêu của môn MLN122 là gì?",
+    "options": [
+      "Trang bị kỹ năng nghề nghiệp",
+      "Trang bị kiến thức lý luận nền tảng",
+      "Trang bị kỹ năng giao tiếp",
+      "Trang bị kiến thức lịch sử"
+    ],
+    "answer_index": 1,
+    "explanation": "Môn học giúp sinh viên nắm vững nền tảng lý luận Mác – Lênin để vận dụng vào thực tiễn."
+  },
+  {
+    "id": "mln-c1-06",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Triết học Mác – Lênin được xây dựng trên cơ sở nào?",
+    "options": [
+      "Chủ nghĩa duy tâm",
+      "Chủ nghĩa duy vật biện chứng",
+      "Chủ nghĩa duy tâm siêu hình",
+      "Chủ nghĩa kinh nghiệm"
+    ],
+    "answer_index": 1,
+    "explanation": "Dựa trên chủ nghĩa duy vật biện chứng, coi vật chất là cái có trước và quyết định ý thức."
+  },
+  {
+    "id": "mln-c1-08",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Môn MLN122 thuộc nhóm môn nào trong chương trình đào tạo?",
+    "options": [
+      "Môn cơ sở ngành",
+      "Môn chuyên ngành",
+      "Môn lý luận chính trị",
+      "Môn tự chọn"
+    ],
+    "answer_index": 2,
+    "explanation": "Đây là môn lý luận chính trị bắt buộc trong chương trình đại học."
+  },
+  {
+    "id": "mln-c1-10",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Triết học Mác – Lênin khẳng định mối quan hệ giữa vật chất và ý thức như thế nào?",
+    "options": [
+      "Ý thức quyết định vật chất",
+      "Vật chất quyết định ý thức",
+      "Ý thức và vật chất tồn tại độc lập",
+      "Ý thức và vật chất không liên quan"
+    ],
+    "answer_index": 1,
+    "explanation": "Vật chất có trước, quyết định ý thức; ý thức có tính độc lập tương đối và tác động trở lại vật chất."
+  },
+  {
+    "id": "mln-c1-12",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Triết học Mác – Lênin có vai trò gì đối với khoa học?",
+    "options": [
+      "Làm cơ sở phương pháp luận cho khoa học",
+      "Thay thế các ngành khoa học cụ thể",
+      "Chỉ nghiên cứu lịch sử",
+      "Không liên quan đến khoa học"
+    ],
+    "answer_index": 0,
+    "explanation": "Cung cấp phương pháp luận duy vật biện chứng cho các ngành khoa học."
+  },
+  {
+    "id": "mln-c1-14",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Triết học Mác – Lênin khẳng định sự phát triển của thế giới diễn ra theo quy luật nào?",
+    "options": [
+      "Quy luật siêu hình",
+      "Quy luật duy tâm",
+      "Quy luật biện chứng",
+      "Quy luật ngẫu nhiên"
+    ],
+    "answer_index": 2,
+    "explanation": "Thế giới phát triển theo quy luật biện chứng, vận động và biến đổi không ngừng."
+  },
+  {
+    "id": "mln-c1-16",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Triết học Mác – Lênin có mấy bộ phận cấu thành?",
+    "options": [
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "answer_index": 1,
+    "explanation": "Gồm 3 bộ phận: Triết học, Kinh tế chính trị học, Chủ nghĩa xã hội khoa học."
+  },
+  {
+    "id": "mln-c1-18",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Triết học Mác – Lênin coi sự phát triển xã hội là kết quả của gì?",
+    "options": [
+      "Ý chí cá nhân",
+      "Quy luật khách quan",
+      "Niềm tin tôn giáo",
+      "Ngẫu nhiên"
+    ],
+    "answer_index": 1,
+    "explanation": "Sự phát triển xã hội diễn ra theo quy luật khách quan, không phụ thuộc ý chí cá nhân."
+  },
+  {
+    "id": "mln-c1-20",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Triết học Mác – Lênin khẳng định sự tồn tại của thế giới vật chất như thế nào?",
+    "options": [
+      "Do ý thức tạo ra",
+      "Tồn tại khách quan, độc lập với ý thức",
+      "Do thần linh tạo ra",
+      "Do ngẫu nhiên"
+    ],
+    "answer_index": 1,
+    "explanation": "Vật chất tồn tại khách quan, không phụ thuộc vào ý thức."
+  },
+  {
+    "id": "mln-c1-22",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Triết học Mác – Lênin khẳng định sự phát triển của xã hội loài người trải qua mấy hình thái kinh tế – xã hội cơ bản?",
+    "options": [
+      "3",
+      "4",
+      "5",
+      "6"
+    ],
+    "answer_index": 2,
+    "explanation": "Có 5 hình thái: cộng sản nguyên thủy, chiếm hữu nô lệ, phong kiến, tư bản chủ nghĩa, cộng sản chủ nghĩa."
+  },
+  {
+    "id": "mln-c1-24",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Triết học Mác – Lênin coi chủ nghĩa xã hội là gì?",
+    "options": [
+      "Một lý tưởng không tưởng",
+      "Một hình thái kinh tế – xã hội tất yếu",
+      "Một phong trào tôn giáo",
+      "Một hệ tư tưởng cá nhân"
+    ],
+    "answer_index": 1,
+    "explanation": "Chủ nghĩa xã hội là hình thái kinh tế – xã hội tất yếu sau chủ nghĩa tư bản."
+  },
+  {
+    "id": "mln-c1-27",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Theo triết học Mác – Lênin, nguồn gốc của tri thức là gì?",
+    "options": [
+      "Cảm xúc",
+      "Trực giác",
+      "Thực tiễn",
+      "Tôn giáo"
+    ],
+    "answer_index": 2,
+    "explanation": "Thực tiễn là nguồn gốc của tri thức."
+  },
+  {
+    "id": "mln-c1-29",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Triết học Mác – Lênin coi ý thức là gì?",
+    "options": [
+      "Sản phẩm của vật chất",
+      "Sản phẩm của thần linh",
+      "Sản phẩm của cảm xúc",
+      "Sản phẩm của ngẫu nhiên"
+    ],
+    "answer_index": 0,
+    "explanation": "Ý thức là sản phẩm của vật chất có tổ chức cao – bộ não con người."
+  },
+  {
+    "id": "mln-c1-31",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Triết học Mác – Lênin coi sự phát triển là gì?",
+    "options": [
+      "Sự thay đổi ngẫu nhiên",
+      "Sự vận động theo quy luật biện chứng",
+      "Sự biến mất của vật chất",
+      "Sự lặp lại đơn thuần"
+    ],
+    "answer_index": 1,
+    "explanation": "Sự phát triển là quá trình vận động theo quy luật biện chứng, từ thấp đến cao."
+  },
+  {
+    "id": "mln-c1-33",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Theo triết học Mác – Lênin, vật chất là gì?",
+    "options": [
+      "Thực thể tinh thần",
+      "Thực thể tồn tại khách quan, độc lập với ý thức",
+      "Thực thể do ý thức tạo ra",
+      "Thực thể siêu hình"
+    ],
+    "answer_index": 1,
+    "explanation": "Vật chất tồn tại khách quan, không phụ thuộc vào ý thức."
+  },
+  {
+    "id": "mln-c1-35",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Triết học Mác – Lênin khẳng định sự thống nhất giữa lý luận và thực tiễn thể hiện ở đâu?",
+    "options": [
+      "Trong hoạt động nhận thức và cải tạo thế giới",
+      "Trong hoạt động nghệ thuật",
+      "Trong hoạt động tôn giáo",
+      "Trong hoạt động cá nhân"
+    ],
+    "answer_index": 0,
+    "explanation": "Lý luận và thực tiễn thống nhất trong hoạt động nhận thức và cải tạo thế giới."
+  },
+  {
+    "id": "mln-c1-37",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Triết học Mác – Lênin coi phủ định biện chứng là gì?",
+    "options": [
+      "Sự phủ định sạch trơn",
+      "Sự phủ định có kế thừa",
+      "Sự phủ định ngẫu nhiên",
+      "Sự phủ định cảm tính"
+    ],
+    "answer_index": 1,
+    "explanation": "Phủ định biện chứng là sự phủ định có kế thừa, tạo điều kiện cho sự phát triển."
+  },
+  {
+    "id": "mln-c1-39",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Triết học Mác – Lênin coi vai trò của con người trong lịch sử là gì?",
+    "options": [
+      "Là chủ thể sáng tạo lịch sử",
+      "Là đối tượng bị chi phối",
+      "Là yếu tố phụ",
+      "Là sản phẩm của tự nhiên"
+    ],
+    "answer_index": 0,
+    "explanation": "Con người là chủ thể sáng tạo lịch sử thông qua hoạt động thực tiễn."
+  },
+  {
+    "id": "mln-c1-41",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Triết học Mác – Lênin coi vai trò của triết học trong đời sống xã hội là gì?",
+    "options": [
+      "Là công cụ nhận thức và cải tạo thế giới",
+      "Là công cụ giải trí",
+      "Là công cụ tôn giáo",
+      "Là công cụ chính trị"
+    ],
+    "answer_index": 0,
+    "explanation": "Triết học giúp con người nhận thức và cải tạo thế giới."
+  },
+  {
+    "id": "mln-c1-43",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Triết học Mác – Lênin coi nhận thức là quá trình gì?",
+    "options": [
+      "Phản ánh thụ động",
+      "Phản ánh sáng tạo, tích cực",
+      "Phản ánh cảm tính",
+      "Phản ánh ngẫu nhiên"
+    ],
+    "answer_index": 1,
+    "explanation": "Nhận thức là quá trình phản ánh sáng tạo, tích cực của con người về thế giới."
+  },
+  {
+    "id": "mln-c1-45",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Theo triết học Mác – Lênin, ý thức có tính chất gì?",
+    "options": [
+      "Tính thụ động",
+      "Tính sáng tạo và độc lập tương đối",
+      "Tính phụ thuộc hoàn toàn vào vật chất",
+      "Tính ngẫu nhiên"
+    ],
+    "answer_index": 1,
+    "explanation": "Ý thức có tính sáng tạo và độc lập tương đối, tác động trở lại vật chất qua thực tiễn."
+  },
+  {
+    "id": "mln-c1-47",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Triết học Mác – Lênin khẳng định vai trò của lý luận đối với thực tiễn là gì?",
+    "options": [
+      "Chỉ có giá trị lý thuyết",
+      "Định hướng cho hoạt động thực tiễn",
+      "Không liên quan đến thực tiễn",
+      "Phụ thuộc hoàn toàn vào cảm xúc"
+    ],
+    "answer_index": 1,
+    "explanation": "Lý luận định hướng cho hoạt động thực tiễn, giúp con người hành động đúng quy luật."
+  },
+  {
+    "id": "mln-c1-49",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Triết học Mác – Lênin coi vai trò của triết học trong đời sống tinh thần là gì?",
+    "options": [
+      "Là cơ sở thế giới quan và phương pháp luận khoa học",
+      "Là công cụ tuyên truyền",
+      "Là hoạt động nghệ thuật",
+      "Là hoạt động tôn giáo"
+    ],
+    "answer_index": 0,
+    "explanation": "Là cơ sở thế giới quan và phương pháp luận khoa học cho mọi hoạt động nhận thức và thực tiễn."
+  },
+  {
+    "id": "mln-c2d-01",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Hai điều kiện ra đời của sản xuất hàng hóa theo lý luận của C. Mác là gì?",
+    "options": [
+      "Phân công lao động xã hội và tính chất tư nhân của sản xuất",
+      "Sự phát triển của khoa học kỹ thuật và nhu cầu tiêu dùng cá nhân",
+      "Sự ra đời của tiền tệ và ngân hàng",
+      "Chính sách của nhà nước và quy định của pháp luật"
+    ],
+    "answer_index": 0,
+    "explanation": "Sản xuất hàng hóa ra đời khi có phân công lao động xã hội và tính chất tư nhân của sản xuất."
+  },
+  {
+    "id": "mln-c2d-03",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Trong ví dụ \"áo len bà đan tặng cháu\", vì sao chiếc áo này KHÔNG được xem là hàng hóa?",
+    "options": [
+      "Vì áo len không có giá trị sử dụng",
+      "Vì sản phẩm được làm ra để tặng (tiêu dùng trực tiếp trong quan hệ cá nhân), không phải để bán trên thị trường",
+      "Vì áo len không được sản xuất bằng máy móc",
+      "Vì áo len không có giá trị"
+    ],
+    "answer_index": 1,
+    "explanation": "Áo len làm ra để tặng, không nhằm trao đổi trên thị trường nên không mang hình thái hàng hóa."
+  },
+  {
+    "id": "mln-c2d-05",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Giá trị của hàng hóa là phạm trù lịch sử vì lý do gì?",
+    "options": [
+      "Giá trị luôn tồn tại vĩnh viễn trong mọi hình thái xã hội",
+      "Giá trị chỉ tồn tại và biểu hiện quan hệ kinh tế giữa những người sản xuất hàng hóa trong nền sản xuất hàng hóa",
+      "Giá trị không liên quan đến hao phí sức lao động",
+      "Giá trị được xác định bởi công dụng vật chất của sản phẩm"
+    ],
+    "answer_index": 1,
+    "explanation": "Giá trị chỉ xuất hiện trong nền sản xuất hàng hóa nên là phạm trù lịch sử."
+  },
+  {
+    "id": "mln-c2d-07",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Lao động cụ thể phản ánh tính chất nào của sản xuất hàng hóa, còn lao động trừu tượng phản ánh tính chất nào?",
+    "options": [
+      "Lao động cụ thể phản ánh tính xã hội; lao động trừu tượng phản ánh tính tư nhân",
+      "Lao động cụ thể phản ánh tính tư nhân; lao động trừu tượng phản ánh tính xã hội",
+      "Cả hai đều chỉ phản ánh tính tư nhân",
+      "Cả hai đều chỉ phản ánh tính xã hội"
+    ],
+    "answer_index": 1,
+    "explanation": "Lao động cụ thể gắn với tính tư nhân; lao động trừu tượng gắn với tính xã hội."
+  },
+  {
+    "id": "mln-c2d-09",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "\"Điều kiện lao động trung bình\" trong việc xác định thời gian lao động xã hội cần thiết bao gồm yếu tố nào?",
+    "options": [
+      "Chỉ tính trình độ kỹ thuật của người sản xuất giỏi nhất",
+      "Trình độ kỹ thuật, sự khéo léo và cường độ lao động trung bình của xã hội",
+      "Chi phí nguyên vật liệu trung bình trên thị trường thế giới",
+      "Mức lương trung bình của công nhân trong ngành"
+    ],
+    "answer_index": 1,
+    "explanation": "Là trình độ kỹ thuật, sự khéo léo và cường độ lao động trung bình của xã hội."
+  },
+  {
+    "id": "mln-c2d-11",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "hard",
+    "content": "Vì sao khi tăng cường độ lao động, lượng giá trị của MỘT ĐƠN VỊ hàng hóa lại không thay đổi (khác với khi tăng năng suất lao động)?",
+    "options": [
+      "Vì tăng cường độ lao động không làm tăng hao phí sức lao động",
+      "Vì tăng cường độ lao động giống như kéo dài thời gian lao động — số lượng sản phẩm và tổng hao phí lao động tăng theo cùng tỷ lệ",
+      "Vì cường độ lao động chỉ ảnh hưởng đến chất lượng sản phẩm",
+      "Vì cường độ lao động chỉ áp dụng cho lao động phức tạp"
+    ],
+    "answer_index": 1,
+    "explanation": "Số lượng sản phẩm và tổng hao phí tăng cùng tỷ lệ nên giá trị mỗi đơn vị không đổi."
+  },
+  {
+    "id": "mln-c2d-13",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Trong bốn hình thái phát triển của giá trị, hình thái nào có đặc điểm là \"giá trị của mọi hàng hóa đều được biểu hiện ở giá trị sử dụng của MỘT hàng hóa đóng vai trò vật ngang giá chung\"?",
+    "options": [
+      "Hình thái giản đơn (ngẫu nhiên)",
+      "Hình thái mở rộng (đầy đủ)",
+      "Hình thái chung",
+      "Hình thái tiền tệ"
+    ],
+    "answer_index": 2,
+    "explanation": "Hình thái giá trị chung: mọi hàng hóa quy về một vật ngang giá chung."
+  },
+  {
+    "id": "mln-c2d-15",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Chức năng nào của tiền tệ được thực hiện thông qua quá trình H–T–H, đóng vai trò môi giới trung gian trong trao đổi hàng hóa?",
+    "options": [
+      "Thước đo giá trị",
+      "Phương tiện lưu thông",
+      "Phương tiện cất trữ",
+      "Phương tiện thanh toán"
+    ],
+    "answer_index": 1,
+    "explanation": "Chức năng phương tiện lưu thông được thực hiện qua công thức H–T–H."
+  },
+  {
+    "id": "mln-c2d-17",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Dịch vụ được xem là một loại hàng hóa đặc biệt vì lý do gì?",
+    "options": [
+      "Dịch vụ không có giá trị sử dụng",
+      "Dịch vụ là hàng hóa vô hình, không tồn tại dưới dạng vật thể nhưng vẫn phải hao phí sức lao động để tạo ra và có giá trị sử dụng thể hiện qua lợi ích người tiêu dùng nhận được",
+      "Dịch vụ chỉ có giá trị sử dụng mà không có giá trị",
+      "Dịch vụ không thể mua bán, trao đổi trên thị trường"
+    ],
+    "answer_index": 1,
+    "explanation": "Dịch vụ là hàng hóa vô hình, vẫn hao phí sức lao động và có giá trị sử dụng."
+  },
+  {
+    "id": "mln-c2d-19",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Khái niệm thị trường theo bài học được định nghĩa là gì?",
+    "options": [
+      "Một địa điểm vật lý cố định để mua bán hàng hóa",
+      "Tổng hòa những quan hệ kinh tế trong đó nhu cầu của các chủ thể được đáp ứng thông qua trao đổi, mua bán với sự xác định giá cả và số lượng hàng hóa, dịch vụ",
+      "Cơ quan quản lý nhà nước về giá cả",
+      "Tổng số lượng hàng hóa được sản xuất ra trong một quốc gia"
+    ],
+    "answer_index": 1,
+    "explanation": "Thị trường là tổng hòa các quan hệ kinh tế trao đổi, mua bán, không chỉ là một địa điểm vật lý."
+  },
+  {
+    "id": "mln-c2d-21",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Vai trò nào của thị trường thể hiện qua việc chuyển hàng hóa từ người sản xuất đến người tiêu dùng?",
+    "options": [
+      "Kích thích sáng tạo",
+      "Thực hiện giá trị hàng hóa",
+      "Gắn kết kinh tế",
+      "Phân bổ nguồn lực"
+    ],
+    "answer_index": 1,
+    "explanation": "Thị trường là nơi thực hiện giá trị hàng hóa, hiện thực hóa giá trị bằng tiền."
+  },
+  {
+    "id": "mln-c2d-23",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Khuyết tật nào sau đây được xem là hạn chế cố hữu mà nền kinh tế thị trường không tự khắc phục được?",
+    "options": [
+      "Thiếu động lực sáng tạo cho doanh nghiệp",
+      "Rủi ro khủng hoảng kinh tế, cạn kiệt tài nguyên/suy thoái môi trường, và phân hóa giàu nghèo",
+      "Không thể thỏa mãn nhu cầu đa dạng của người tiêu dùng",
+      "Không thể phát huy tiềm năng của các vùng miền"
+    ],
+    "answer_index": 1,
+    "explanation": "Ba khuyết tật: khủng hoảng, cạn kiệt tài nguyên/suy thoái môi trường, phân hóa giàu nghèo."
+  },
+  {
+    "id": "mln-c2d-25",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "hard",
+    "content": "Trong công thức tính số lượng tiền cần thiết cho lưu thông M = P.Q/V, ký hiệu V đại diện cho yếu tố nào?",
+    "options": [
+      "Tổng giá cả hàng hóa bán chịu",
+      "Khối lượng hàng hóa, dịch vụ đưa ra lưu thông",
+      "Số vòng lưu thông (quay) trung bình của đồng tiền",
+      "Mức giá cả của hàng hóa"
+    ],
+    "answer_index": 2,
+    "explanation": "V là số vòng lưu thông (quay) trung bình của đồng tiền trong một thời kỳ."
+  },
+  {
+    "id": "mln-c2t-02",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Khi năng suất lao động tăng lên, giá trị của một đơn vị hàng hóa và tổng số giá trị hàng hóa sản xuất ra trong một đơn vị thời gian thay đổi như thế nào?",
+    "options": [
+      "Giá trị một đơn vị hàng hóa giảm; tổng số giá trị không đổi.",
+      "Giá trị một đơn vị hàng hóa tăng; tổng số giá trị tăng.",
+      "Giá trị một đơn vị hàng hóa không đổi; tổng số giá trị tăng.",
+      "Giá trị một đơn vị hàng hóa giảm; tổng số giá trị giảm."
+    ],
+    "answer_index": 0,
+    "explanation": "Tăng năng suất làm giảm giá trị một đơn vị, nhưng tổng giá trị tạo ra trong một giờ không đổi."
+  },
+  {
+    "id": "mln-c2t-04",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Bản chất của \"Lao động trừu tượng\" trong lý luận của C.Mác là gì?",
+    "options": [
+      "Là sự hao phí sức lao động của người sản xuất hàng hóa nói chung, không kể hình thức cụ thể.",
+      "Là lao động của những người có trình độ chuyên môn cao và trừu tượng.",
+      "Là lao động tạo ra giá trị sử dụng của hàng hóa.",
+      "Là lao động diễn ra trong môi trường ảo hoặc số hóa."
+    ],
+    "answer_index": 0,
+    "explanation": "Lao động trừu tượng là hao phí sức lực nói chung của con người, tạo ra giá trị hàng hóa."
+  },
+  {
+    "id": "mln-c2t-06",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Khi cường độ lao động tăng lên, điều gì sẽ xảy ra?",
+    "options": [
+      "Lượng giá trị của một đơn vị hàng hóa giảm xuống.",
+      "Số lượng sản phẩm tăng lên và lượng giá trị của một đơn vị hàng hóa không đổi.",
+      "Tổng giá trị của hàng hóa được tạo ra trong một đơn vị thời gian không đổi.",
+      "Lượng giá trị của một đơn vị hàng hóa tăng lên."
+    ],
+    "answer_index": 1,
+    "explanation": "Tăng cường độ giống kéo dài thời gian làm việc; sản phẩm tăng, giá trị 1 đơn vị không đổi."
+  },
+  {
+    "id": "mln-c2t-08",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Bản chất của \"Lao động phức tạp\" so với \"Lao động giản đơn\" là gì?",
+    "options": [
+      "Là lao động giản đơn được nhân lên hoặc nhân bội lên trong một đơn vị thời gian.",
+      "Là lao động của người công nhân phải làm nhiều công đoạn cùng lúc.",
+      "Là lao động không thể đo lường bằng thời gian.",
+      "Là lao động của người quản lý cấp cao."
+    ],
+    "answer_index": 0,
+    "explanation": "Lao động phức tạp là lao động có đào tạo, trong cùng thời gian tạo ra nhiều giá trị hơn lao động giản đơn."
+  },
+  {
+    "id": "mln-c2t-10",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Khi tiền tệ thực hiện chức năng \"Thước đo giá trị\", điều kiện bắt buộc là gì?",
+    "options": [
+      "Phải là tiền mặt hoặc tiền xu lưu thông thực tế.",
+      "Phải là tiền vàng nguyên chất 100%.",
+      "Chỉ cần là tiền trong ý niệm (tưởng tượng) dựa trên một lượng vàng nhất định.",
+      "Phải có sự chứng thực của ngân hàng quốc tế."
+    ],
+    "answer_index": 2,
+    "explanation": "Đo lường giá trị chỉ cần tiền trong ý niệm vì tiền chỉ biểu hiện giá trị qua giá cả."
+  },
+  {
+    "id": "mln-c2t-12",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "hard",
+    "content": "Theo quy luật lưu thông tiền tệ của C.Mác, nếu tốc độ lưu thông của tiền tăng lên 2 lần (trong điều kiện các yếu tố khác không đổi) thì khối lượng tiền cần thiết cho lưu thông sẽ:",
+    "options": [
+      "Tăng lên 2 lần.",
+      "Giảm đi 2 lần.",
+      "Không thay đổi.",
+      "Tăng lên gấp 4 lần."
+    ],
+    "answer_index": 1,
+    "explanation": "Khối lượng tiền = Tổng giá cả / Tốc độ lưu thông; tốc độ tăng 2 lần thì lượng tiền giảm 2 lần."
+  },
+  {
+    "id": "mln-c2t-14",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Quy luật giá trị yêu cầu việc sản xuất và trao đổi hàng hóa phải được tiến hành dựa trên cơ sở nào?",
+    "options": [
+      "Hao phí thời gian lao động cá biệt của người sản xuất.",
+      "Hao phí thời gian lao động xã hội cần thiết.",
+      "Sự thỏa thuận cảm tính giữa người mua và người bán.",
+      "Mức giá trần do Nhà nước quy định."
+    ],
+    "answer_index": 1,
+    "explanation": "Quy luật giá trị buộc sản xuất và trao đổi phải theo thời gian lao động xã hội cần thiết."
+  },
+  {
+    "id": "mln-c2t-16",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Tác động nào sau đây của quy luật giá trị dẫn đến hiện tượng \"thương trường như chiến trường\" và phân hóa giàu nghèo?",
+    "options": [
+      "Điều tiết sản xuất và lưu thông hàng hóa.",
+      "Kích thích cải tiến kỹ thuật, tăng năng suất lao động.",
+      "Phân hóa những người sản xuất hàng hóa thành người giàu, người nghèo.",
+      "Tạo ra sự cân bằng cung cầu tuyệt đối."
+    ],
+    "answer_index": 2,
+    "explanation": "Ai có hao phí cá biệt thấp hơn xã hội sẽ giàu lên, ai cao hơn sẽ thua lỗ và phá sản."
+  },
+  {
+    "id": "mln-c2t-18",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Nhân tố nào sau đây đóng vai trò là \"động lực trực tiếp\" thúc đẩy các chủ thể kinh tế cải tiến kỹ thuật và cạnh tranh lành mạnh trên thị trường?",
+    "options": [
+      "Lợi ích kinh tế.",
+      "Mệnh lệnh của cấp trên.",
+      "Tình yêu lao động thuần túy.",
+      "Các hoạt động từ thiện xã hội."
+    ],
+    "answer_index": 0,
+    "explanation": "Lợi ích kinh tế (doanh thu, lợi nhuận) là động lực trực tiếp nhất thúc đẩy hành vi các chủ thể."
+  },
+  {
+    "id": "mln-c2t-20",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Hình thức cạnh tranh giữa các doanh nghiệp trong cùng một ngành sản xuất nhằm giành giật điều kiện sản xuất và tiêu thụ thuận lợi hơn gọi là gì?",
+    "options": [
+      "Cạnh tranh nội bộ ngành.",
+      "Cạnh tranh giữa các ngành.",
+      "Cạnh tranh độc quyền.",
+      "Cạnh tranh hoàn hảo."
+    ],
+    "answer_index": 0,
+    "explanation": "Cạnh tranh giữa các doanh nghiệp cùng sản xuất một loại mặt hàng là cạnh tranh nội bộ ngành."
+  },
+  {
+    "id": "mln-c2t-22",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Chủ thể nào trong nền kinh tế thị trường đóng vai trò là cầu nối trung gian giữa sản xuất và tiêu dùng, giúp hàng hóa lưu thông thông suốt?",
+    "options": [
+      "Chủ thể sản xuất.",
+      "Chủ thể tiêu dùng.",
+      "Các chủ thể trung gian (thương nhân, môi giới, ngân hàng).",
+      "Nhà nước."
+    ],
+    "answer_index": 2,
+    "explanation": "Thương nhân, sàn thương mại, môi giới... đóng vai trò kết nối sản xuất với người tiêu dùng."
+  },
+  {
+    "id": "mln-c2t-24",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Trong nền kinh tế thị trường định hướng xã hội chủ nghĩa, \"Nhà nước\" tham gia với vai trò chủ yếu nào để khắc phục các \"thất bại của thị trường\"?",
+    "options": [
+      "Quản lý, điều tiết vĩ mô, tạo môi trường pháp lý và phân phối lại thu nhập.",
+      "Trực tiếp sản xuất và phân phối mọi loại nhu yếu phẩm cho người dân.",
+      "Cấm đoán hoàn toàn các hoạt động cạnh tranh tự do.",
+      "Định giá cố định cho toàn bộ các loại hàng hóa trên thị trường."
+    ],
+    "answer_index": 0,
+    "explanation": "Nhà nước quản lý vĩ mô để sửa chữa các khuyết tật của thị trường."
+  },
+  {
+    "id": "mln-c3a-01",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Chi phí sản xuất tư bản chủ nghĩa (K) được tính theo công thức nào?",
+    "options": [
+      "K = C + V + m",
+      "K = C + V",
+      "K = V + m",
+      "K = C – V"
+    ],
+    "answer_index": 1,
+    "explanation": "Chi phí sản xuất K = C + V (tư bản bất biến cộng tư bản khả biến); giá trị hàng hóa G = C + V + m."
+  },
+  {
+    "id": "mln-c3a-03",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Tỷ suất lợi nhuận (p') phản ánh điều gì?",
+    "options": [
+      "Trình độ bóc lột sức lao động của nhà tư bản",
+      "Mức doanh lợi của việc đầu tư tư bản",
+      "Tốc độ chu chuyển của tư bản",
+      "Quy mô bóc lột giá trị thặng dư"
+    ],
+    "answer_index": 1,
+    "explanation": "p' = P/(C+V) × 100%, phản ánh mức doanh lợi của việc đầu tư tư bản."
+  },
+  {
+    "id": "mln-c3a-05",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Địa tô tư bản chủ nghĩa được định nghĩa là gì?",
+    "options": [
+      "Toàn bộ lợi nhuận mà nhà tư bản nông nghiệp thu được từ sản xuất",
+      "Phần lợi nhuận siêu ngạch dôi ra ngoài lợi nhuận bình quân mà nhà tư bản nông nghiệp trả cho địa chủ",
+      "Phần chi phí thuê nhân công trong nông nghiệp",
+      "Khoản tiền địa chủ đầu tư vào cải tạo đất đai"
+    ],
+    "answer_index": 1,
+    "explanation": "Địa tô là phần lợi nhuận siêu ngạch dôi ra ngoài lợi nhuận bình quân mà nhà tư bản nông nghiệp trả cho địa chủ."
+  },
+  {
+    "id": "mln-c3a-07",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Tư bản thương nghiệp có nguồn gốc hình thành như thế nào?",
+    "options": [
+      "Là tư bản hoàn toàn độc lập, không liên quan đến tư bản công nghiệp",
+      "Là một bộ phận của tư bản công nghiệp tách rời ra khi phân công lao động xã hội phát triển",
+      "Là phần vốn vay của ngân hàng dành riêng cho thương nhân",
+      "Là tư bản do nhà nước cấp cho các thương nhân"
+    ],
+    "answer_index": 1,
+    "explanation": "Khâu lưu thông tách khỏi tư bản công nghiệp giao cho thương nhân, hình thành tư bản thương nghiệp."
+  },
+  {
+    "id": "mln-c3a-09",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Vì sao lợi nhuận thường bị lầm tưởng là do toàn bộ tư bản ứng trước sinh ra, chứ không phải chỉ do tư bản khả biến?",
+    "options": [
+      "Vì chi phí sản xuất (K=C+V) che lấp nguồn gốc thực của giá trị thặng dư, khiến khoản chênh lệch (P) dường như do cả C lẫn V tạo ra",
+      "Vì tư bản bất biến thực sự tạo ra giá trị mới trong quá trình sản xuất",
+      "Vì pháp luật quy định lợi nhuận phải được chia đều cho C và V",
+      "Vì máy móc thiết bị luôn tạo ra nhiều giá trị hơn sức lao động"
+    ],
+    "answer_index": 0,
+    "explanation": "Lợi nhuận được so với toàn bộ K nên che giấu bản chất chỉ có sức lao động (V) tạo ra giá trị mới."
+  },
+  {
+    "id": "mln-c3a-11",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Cấu tạo hữu cơ của tư bản (tỷ lệ C/V) ảnh hưởng đến tỷ suất lợi nhuận theo chiều hướng nào?",
+    "options": [
+      "Đồng biến: C/V tăng thì p' tăng",
+      "Không có mối liên hệ nào giữa hai đại lượng này",
+      "Nghịch biến: C/V tăng thì p' giảm, vì tổng tư bản ứng trước (C+V) tăng nhanh hơn trong khi m không đổi tương ứng",
+      "C/V chỉ ảnh hưởng đến m' chứ không ảnh hưởng đến p'"
+    ],
+    "answer_index": 2,
+    "explanation": "C/V tăng thì (C+V) tăng trong khi m không tăng tương ứng nên p' giảm — cơ sở của quy luật p' giảm dần."
+  },
+  {
+    "id": "mln-c3a-13",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Cơ chế nào giúp hình thành lợi nhuận bình quân giữa các ngành sản xuất có cấu tạo hữu cơ tư bản khác nhau?",
+    "options": [
+      "Sự can thiệp trực tiếp của nhà nước ấn định mức lợi nhuận",
+      "Cạnh tranh giữa các ngành (cạnh tranh liên ngành), khi tư bản di chuyển từ ngành có tỷ suất lợi nhuận thấp sang ngành có tỷ suất lợi nhuận cao",
+      "Thỏa thuận tự nguyện giữa các chủ doanh nghiệp",
+      "Sự phân bổ giá trị thặng dư đồng đều ngay từ khâu sản xuất"
+    ],
+    "answer_index": 1,
+    "explanation": "Cạnh tranh giữa các ngành làm tư bản di chuyển, dần san bằng tỷ suất lợi nhuận thành lợi nhuận bình quân."
+  },
+  {
+    "id": "mln-c3a-15",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Lợi nhuận thương nghiệp có phải do bản thân tư bản thương nghiệp trực tiếp tạo ra hay không?",
+    "options": [
+      "Có, vì hoạt động mua bán tự nó tạo ra giá trị mới",
+      "Không, đó là một phần giá trị thặng dư được tạo ra trong sản xuất, do nhà tư bản công nghiệp \"nhường\" lại cho nhà tư bản thương nghiệp",
+      "Có, vì thương nhân bỏ vốn ra kinh doanh nên đương nhiên tạo ra lợi nhuận riêng",
+      "Không, vì thương nghiệp hoàn toàn không có lợi nhuận"
+    ],
+    "answer_index": 1,
+    "explanation": "Lưu thông không tạo ra giá trị mới; lợi nhuận thương nghiệp là phần m do sản xuất tạo ra, được nhường lại."
+  },
+  {
+    "id": "mln-c3a-17",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Tỷ suất lợi tức có đặc điểm gì so với tỷ suất lợi nhuận bình quân?",
+    "options": [
+      "Tỷ suất lợi tức luôn cao hơn tỷ suất lợi nhuận bình quân",
+      "Hai tỷ suất này luôn bằng nhau",
+      "Tỷ suất lợi tức luôn nhỏ hơn tỷ suất lợi nhuận bình quân, vì lợi tức chỉ là một phần của lợi nhuận bình quân",
+      "Tỷ suất lợi tức không có giới hạn trên hay dưới nào cả"
+    ],
+    "answer_index": 2,
+    "explanation": "Lợi tức chỉ là một phần của lợi nhuận bình quân nên tỷ suất lợi tức luôn nhỏ hơn tỷ suất lợi nhuận bình quân."
+  },
+  {
+    "id": "mln-c3a-19",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "hard",
+    "content": "Dựa theo ví dụ 3 ngành sản xuất trước khi hình thành lợi nhuận bình quân — Cơ khí (80c+20v, m=20), Dệt (70c+30v, m=30), Da (60c+40v, m=40) — ngành nào có tỷ suất lợi nhuận cá biệt cao nhất?",
+    "options": [
+      "Cơ khí",
+      "Dệt",
+      "Da",
+      "Cả ba ngành bằng nhau"
+    ],
+    "answer_index": 2,
+    "explanation": "Da có p'=40/100=40% cao nhất do cấu tạo hữu cơ thấp nhất (60c+40v)."
+  },
+  {
+    "id": "mln-c3a-21",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "hard",
+    "content": "Một nhà tư bản vay 500 triệu đồng để kinh doanh, thu về lợi nhuận bình quân 250 triệu đồng/năm trên toàn bộ vốn đầu tư 1 tỷ đồng, trong đó phải trả lợi tức 100 triệu đồng cho khoản vay 500 triệu. Tỷ suất lợi tức và phần lợi nhuận doanh nghiệp còn lại là bao nhiêu?",
+    "options": [
+      "Tỷ suất lợi tức = 20%/năm; lợi nhuận doanh nghiệp còn lại = 150 triệu đồng",
+      "Tỷ suất lợi tức = 10%/năm; lợi nhuận doanh nghiệp còn lại = 200 triệu đồng",
+      "Tỷ suất lợi tức = 25%/năm; lợi nhuận doanh nghiệp còn lại = 100 triệu đồng",
+      "Tỷ suất lợi tức = 40%/năm; lợi nhuận doanh nghiệp còn lại = 50 triệu đồng"
+    ],
+    "answer_index": 0,
+    "explanation": "Tỷ suất lợi tức = 100/500 = 20%/năm; lợi nhuận doanh nghiệp = 250 – 100 = 150 triệu đồng."
+  },
+  {
+    "id": "mln-c3a-23",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "hard",
+    "content": "Nếu một doanh nghiệp tăng đầu tư vào máy móc, thiết bị (làm C tăng) trong khi V và m giữ nguyên, tỷ suất lợi nhuận p' sẽ thay đổi như thế nào?",
+    "options": [
+      "p' sẽ tăng lên vì tổng tư bản ứng trước tăng",
+      "p' sẽ giảm xuống, vì mẫu số (C+V) tăng lên trong khi tử số m không đổi",
+      "p' không đổi vì m và V vẫn giữ nguyên",
+      "p' sẽ tăng gấp đôi tương ứng với mức tăng của C"
+    ],
+    "answer_index": 1,
+    "explanation": "p' = m/(C+V); C tăng làm mẫu số tăng còn m không đổi nên p' giảm."
+  },
+  {
+    "id": "mln-c3a-25",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "hard",
+    "content": "Vì sao C. Mác cho rằng \"tỷ suất lợi nhuận có xu hướng ngày càng giảm xuống\" trong chủ nghĩa tư bản, dù khối lượng lợi nhuận tuyệt đối vẫn có thể tăng lên?",
+    "options": [
+      "Vì cạnh tranh và tích lũy tư bản thúc đẩy đổi mới công nghệ, làm cấu tạo hữu cơ tư bản (C/V) tăng nhanh hơn tốc độ tăng của tỷ suất giá trị thặng dư (m'), mà C/V và p' có quan hệ nghịch biến",
+      "Vì giá cả hàng hóa trên thị trường luôn có xu hướng giảm theo thời gian",
+      "Vì số lượng công nhân trên thế giới ngày càng giảm",
+      "Vì nhà nước luôn đánh thuế ngày càng cao vào lợi nhuận của nhà tư bản"
+    ],
+    "answer_index": 0,
+    "explanation": "C/V tăng nhanh hơn m' làm p' giảm dần, nhưng quy mô tư bản lớn nên khối lượng lợi nhuận tuyệt đối vẫn tăng."
+  },
+  {
+    "id": "mln-c3b-02",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Điểm khác biệt bản chất giữa tiền thông thường và tiền tư bản là?",
+    "options": [
+      "Đều có mua bán",
+      "Đều dùng tiền",
+      "Tiền tư bản tạo ra giá trị thặng dư",
+      "Đều dùng hàng hóa"
+    ],
+    "answer_index": 2,
+    "explanation": "Tiền tư bản được sử dụng để tạo ra giá trị thặng dư thông qua sản xuất."
+  },
+  {
+    "id": "mln-c3b-04",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Điều kiện để sức lao động trở thành hàng hóa?",
+    "options": [
+      "Có vốn",
+      "Có máy móc",
+      "Tự do về thân thể và không có tư liệu sản xuất",
+      "Có kỹ năng"
+    ],
+    "answer_index": 2,
+    "explanation": "Người lao động phải tự do bán sức lao động và không sở hữu tư liệu sản xuất."
+  },
+  {
+    "id": "mln-c3b-06",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Giá trị thặng dư là?",
+    "options": [
+      "Chi phí",
+      "Phần giá trị mới vượt giá trị sức lao động",
+      "Lợi nhuận",
+      "Tiền công"
+    ],
+    "answer_index": 1,
+    "explanation": "Giá trị thặng dư là phần giá trị mới do công nhân tạo ra vượt quá giá trị sức lao động."
+  },
+  {
+    "id": "mln-c3b-08",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Tư bản khả biến là?",
+    "options": [
+      "Máy móc",
+      "Nguyên liệu",
+      "Tiền mua sức lao động",
+      "Nhà xưởng"
+    ],
+    "answer_index": 2,
+    "explanation": "Tư bản khả biến là phần tư bản dùng mua sức lao động, có khả năng tạo ra giá trị thặng dư."
+  },
+  {
+    "id": "mln-c3b-10",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Tỷ suất giá trị thặng dư phản ánh?",
+    "options": [
+      "Doanh thu",
+      "Trình độ bóc lột",
+      "Chi phí",
+      "Giá bán"
+    ],
+    "answer_index": 1,
+    "explanation": "Tỷ suất giá trị thặng dư phản ánh mức độ bóc lột lao động làm thuê."
+  },
+  {
+    "id": "mln-c3b-12",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Sản xuất giá trị thặng dư tuyệt đối bằng cách nào?",
+    "options": [
+      "Tăng năng suất lao động",
+      "Kéo dài ngày lao động",
+      "Giảm lương",
+      "Tăng giá"
+    ],
+    "answer_index": 1,
+    "explanation": "Giá trị thặng dư tuyệt đối thu được bằng cách kéo dài thời gian lao động hoặc tăng cường độ lao động."
+  },
+  {
+    "id": "mln-c3b-14",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Giá trị thặng dư siêu ngạch xuất hiện khi nào?",
+    "options": [
+      "Giá trị cá biệt nhỏ hơn giá trị xã hội",
+      "Giá trị cá biệt lớn hơn giá trị xã hội",
+      "Giá trị cá biệt bằng giá trị xã hội",
+      "Giá tăng"
+    ],
+    "answer_index": 0,
+    "explanation": "Do doanh nghiệp có năng suất cao hơn xã hội nên giá trị cá biệt thấp hơn giá trị xã hội."
+  },
+  {
+    "id": "mln-c3b-16",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Hình thức tái sản xuất điển hình của chủ nghĩa tư bản là?",
+    "options": [
+      "Giản đơn",
+      "Mở rộng",
+      "Thu hẹp",
+      "Tự cấp"
+    ],
+    "answer_index": 1,
+    "explanation": "Chủ nghĩa tư bản đặc trưng bởi tái sản xuất mở rộng."
+  },
+  {
+    "id": "mln-c3b-18",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Hệ quả của tích lũy tư bản là?",
+    "options": [
+      "Giảm chênh lệch",
+      "Tăng cấu tạo hữu cơ của tư bản",
+      "Giảm cạnh tranh",
+      "Giảm vốn"
+    ],
+    "answer_index": 1,
+    "explanation": "Tích lũy làm tăng cấu tạo hữu cơ của tư bản và chênh lệch giàu nghèo."
+  },
+  {
+    "id": "mln-c3b-20",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Chi phí sản xuất bằng?",
+    "options": [
+      "C + V",
+      "C + V + m",
+      "m + V",
+      "C + m"
+    ],
+    "answer_index": 0,
+    "explanation": "Chi phí sản xuất tư bản chủ nghĩa chỉ gồm tư bản bất biến và khả biến (C + V)."
+  },
+  {
+    "id": "mln-c3b-22",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Yếu tố nào làm tăng tỷ suất lợi nhuận?",
+    "options": [
+      "Tăng tốc độ chu chuyển",
+      "Tăng C/V",
+      "Giảm năng suất lao động",
+      "Tăng lương"
+    ],
+    "answer_index": 0,
+    "explanation": "Chu chuyển càng nhanh thì cùng lượng vốn tạo nhiều lợi nhuận hơn."
+  },
+  {
+    "id": "mln-c3b-24",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Lợi tức là gì?",
+    "options": [
+      "Toàn bộ lợi nhuận",
+      "Phần lợi nhuận trả cho người cho vay",
+      "Tiền công",
+      "Thuế"
+    ],
+    "answer_index": 1,
+    "explanation": "Lợi tức là phần lợi nhuận bình quân mà người vay trả cho người cho vay."
+  },
+  {
+    "id": "mln-c4k-01",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Bản chất của kinh tế thị trường định hướng xã hội chủ nghĩa ở Việt Nam là gì?",
+    "options": [
+      "Là nền kinh tế thị trường tư bản chủ nghĩa có sự can thiệp của Nhà nước.",
+      "Là nền kinh tế hàng hóa nhiều thành phần, vận hành theo cơ chế thị trường, có sự quản lý của Nhà nước pháp quyền XHCN do Đảng Cộng sản Việt Nam lãnh đạo.",
+      "Là nền kinh tế kế hoạch hóa tập trung bao cấp được hiện đại hóa.",
+      "Là nền kinh tế thị trường tự do hoàn toàn, không có sự can thiệp của chính phủ."
+    ],
+    "answer_index": 1,
+    "explanation": "Là nền kinh tế hàng hóa nhiều thành phần, có sự quản lý của Nhà nước pháp quyền XHCN do Đảng lãnh đạo."
+  },
+  {
+    "id": "mln-c4k-03",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Động lực quan trọng của nền kinh tế thị trường định hướng XHCN được xác định là thành phần kinh tế nào?",
+    "options": [
+      "Kinh tế nhà nước.",
+      "Kinh tế tư nhân.",
+      "Kinh tế tập thể.",
+      "Kinh tế cá thể, tiểu chủ."
+    ],
+    "answer_index": 1,
+    "explanation": "Kinh tế tư nhân là một động lực quan trọng của nền kinh tế thị trường định hướng XHCN."
+  },
+  {
+    "id": "mln-c4k-05",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Trong nền kinh tế thị trường định hướng XHCN, quan hệ phân phối nào giữ vai trò chủ đạo?",
+    "options": [
+      "Phân phối theo vốn đóng góp.",
+      "Phân phối theo phúc lợi xã hội.",
+      "Phân phối theo kết quả lao động và hiệu quả kinh tế, đồng thời theo mức đóng góp vốn và các nguồn lực khác.",
+      "Phân phối bình quân, cào bằng giữa mọi thành viên."
+    ],
+    "answer_index": 2,
+    "explanation": "Phân phối theo kết quả lao động và hiệu quả kinh tế, kết hợp mức đóng góp vốn và nguồn lực khác."
+  },
+  {
+    "id": "mln-c4k-07",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Điểm khác biệt căn bản giữa kinh tế thị trường định hướng XHCN với kinh tế thị trường tư bản chủ nghĩa là gì?",
+    "options": [
+      "Có sử dụng tiền tệ và giá cả làm công cụ điều tiết.",
+      "Có sự xuất hiện của các doanh nghiệp tư nhân.",
+      "Gắn kết chặt chẽ giữa phát triển kinh tế với thực hiện tiến bộ và công bằng xã hội ngay trong từng bước, từng chính sách phát triển.",
+      "Có sự tham gia của các tổ chức tài chính quốc tế."
+    ],
+    "answer_index": 2,
+    "explanation": "Việt Nam thực hiện tiến bộ và công bằng xã hội ngay trong từng bước, từng chính sách phát triển."
+  },
+  {
+    "id": "mln-c4k-09",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Hệ thống các quan hệ lợi ích kinh tế cơ bản trong nền kinh tế thị trường bao gồm:",
+    "options": [
+      "Lợi ích cá nhân, lợi ích nhóm, lợi ích cục bộ.",
+      "Lợi ích người lao động, lợi ích người sử dụng lao động, lợi ích doanh nghiệp, lợi ích xã hội.",
+      "Lợi ích cá nhân, lợi ích tập thể và lợi ích xã hội.",
+      "Lợi ích ngắn hạn và lợi ích dài hạn."
+    ],
+    "answer_index": 2,
+    "explanation": "Trục cốt lõi: lợi ích cá nhân, lợi ích tập thể và lợi ích xã hội."
+  },
+  {
+    "id": "mln-c4k-11",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Công cụ nào là quan trọng nhất để Nhà nước định hướng và điều tiết nền kinh tế thị trường định hướng XHCN?",
+    "options": [
+      "Hệ thống pháp luật, chiến lược, quy hoạch, kế hoạch và các chính sách vĩ mô kèm theo nguồn lực kinh tế của Nhà nước.",
+      "Mệnh lệnh hành chính mang tính chủ quan của cơ quan quản lý.",
+      "Ý chí tự phát của các doanh nghiệp tư nhân.",
+      "Các quy định và áp lực từ thị trường nước ngoài."
+    ],
+    "answer_index": 0,
+    "explanation": "Nhà nước quản lý bằng pháp luật, chiến lược, quy hoạch, kế hoạch, chính sách vĩ mô và nguồn lực kinh tế."
+  },
+  {
+    "id": "mln-c4k-13",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Xu hướng dịch chuyển cơ cấu các thành phần kinh tế ở Việt Nam hiện nay là:",
+    "options": [
+      "Thu hẹp khu vực kinh tế tư nhân, mở rộng khu vực kinh tế tập trung.",
+      "Khuyến khích sự phát triển mạnh mẽ của kinh tế tư nhân và thu hút FDI có chọn lọc, nâng cao hiệu quả hoạt động của kinh tế nhà nước.",
+      "Quốc hữu hóa toàn bộ các doanh nghiệp có vốn đầu tư nước ngoài.",
+      "Chỉ tập trung phát triển kinh tế cá thể hộ gia đình."
+    ],
+    "answer_index": 1,
+    "explanation": "Phát huy nội lực khối tư nhân, thu hút FDI có chọn lọc, nâng cao chất lượng khối kinh tế nhà nước."
+  },
+  {
+    "id": "mln-c4k-15",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Mối quan hệ giữa tăng trưởng kinh tế và công bằng xã hội ở nước ta được giải quyết theo nguyên tắc nào?",
+    "options": [
+      "Tăng trưởng kinh tế trước, giải quyết công bằng xã hội sau.",
+      "Chỉ tập trung công bằng xã hội, không cần tăng trưởng kinh tế.",
+      "Không chờ đến khi kinh tế đạt trình độ phát triển cao mới thực hiện tiến bộ và công bằng xã hội; không \"hy sinh\" tiến bộ và công bằng xã hội để chạy theo tăng trưởng kinh tế đơn thuần.",
+      "Thực hiện công bằng theo kiểu bình quân, cào bằng để hạn chế tăng trưởng kinh tế."
+    ],
+    "answer_index": 2,
+    "explanation": "Phát triển bền vững, không đánh đổi công bằng xã hội để chạy theo tăng trưởng đơn thuần."
+  },
+  {
+    "id": "mln-c4k-17",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Biện pháp nào dưới đây KHÔNG phải là phương thức để giải quyết hài hòa các quan hệ lợi ích kinh tế của Nhà nước?",
+    "options": [
+      "Hoàn thiện thể chế kinh tế thị trường.",
+      "Xây dựng và thực hiện các chính sách phân phối, điều tiết thu nhập (thuế thu nhập cá nhân, trợ cấp...).",
+      "Sử dụng các biện pháp bạo lực để ép buộc các doanh nghiệp thua lỗ phải chia sẻ lợi nhuận.",
+      "Phát triển hệ thống an sinh xã hội và phúc lợi công cộng."
+    ],
+    "answer_index": 2,
+    "explanation": "Nhà nước giải quyết bằng công cụ kinh tế, luật pháp và chính sách xã hội, không dùng biện pháp bạo lực."
+  },
+  {
+    "id": "mln-c4k-19",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Đâu là một ví dụ về mâu thuẫn giữa lợi ích cá nhân (doanh nghiệp) và lợi ích xã hội?",
+    "options": [
+      "Doanh nghiệp cải tiến công nghệ để tiết kiệm năng lượng.",
+      "Doanh nghiệp xả chất thải chưa qua xử lý ra môi trường nhằm cắt giảm chi phí sản xuất, tăng lợi nhuận.",
+      "Doanh nghiệp tăng lương và đóng bảo hiểm đầy đủ cho công nhân.",
+      "Doanh nghiệp tham gia ủng hộ quỹ vì người nghèo tại địa phương."
+    ],
+    "answer_index": 1,
+    "explanation": "Xả thải lén giúp doanh nghiệp giảm chi phí nhưng xâm phạm nghiêm trọng lợi ích xã hội."
+  },
+  {
+    "id": "mln-c4k-21",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Yếu tố nào quyết định bản chất và phương thức thực hiện các quan hệ lợi ích kinh tế trong một chế độ xã hội?",
+    "options": [
+      "Điều kiện khí hậu, tự nhiên.",
+      "Trình độ dân trí và văn hóa đọc.",
+      "Quan hệ sở hữu về tư liệu sản xuất thống trị.",
+      "Số lượng các hiệp định thương mại tự do đã ký kết."
+    ],
+    "answer_index": 2,
+    "explanation": "Quan hệ sở hữu về tư liệu sản xuất quyết định quan hệ phân phối và dòng chảy lợi ích kinh tế."
+  },
+  {
+    "id": "mln-c4k-23",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Việc phát triển \"Kinh tế tập thể\" với nòng cốt là các Hợp tác xã kiểu mới trong nền kinh tế Việt Nam hiện nay nhằm mục đích gì?",
+    "options": [
+      "Xóa bỏ hoàn toàn hình thức kinh tế hộ gia đình.",
+      "Liên kết các hộ sản xuất nhỏ lẻ, nâng cao năng lực cạnh tranh, tương trợ lẫn nhau và cùng phát triển trong cơ chế thị trường.",
+      "Chuyển đổi toàn bộ các hợp tác xã thành doanh nghiệp tư nhân tư bản chủ nghĩa.",
+      "Chỉ nhằm mục đích thu thuế cho ngân sách nhà nước."
+    ],
+    "answer_index": 1,
+    "explanation": "Hợp tác xã kiểu mới liên kết, hỗ trợ các hộ sản xuất nhỏ lẻ để không bị chèn ép trên thị trường."
+  },
+  {
+    "id": "mln-c4k-25",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Vai trò kinh tế của Nhà nước pháp quyền XHCN Việt Nam khác với Nhà nước tư sản ở điểm nào khi can thiệp vào thị trường?",
+    "options": [
+      "Nhà nước Việt Nam không sử dụng công cụ thuế và ngân sách.",
+      "Nhà nước Việt Nam quản lý kinh tế nhằm thực hiện các mục tiêu chính trị - xã hội, bảo đảm lợi ích của đại đa số nhân dân lao động và hướng tới chủ nghĩa xã hội.",
+      "Nhà nước Việt Nam chỉ tập trung bảo vệ lợi ích của các tập đoàn tài chính lớn.",
+      "Nhà nước Việt Nam không thừa nhận các quy luật khách quan của thị trường."
+    ],
+    "answer_index": 1,
+    "explanation": "Nhà nước Việt Nam quản lý kinh tế nhằm bảo vệ lợi ích đại đa số nhân dân lao động và hướng tới CNXH."
+  },
+  {
+    "id": "mln-c4b-02",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Mục tiêu tổng quát của nền kinh tế thị trường định hướng XHCN ở Việt Nam là gì?",
+    "options": [
+      "Chỉ tập trung phát triển lực lượng sản xuất.",
+      "Đạt tốc độ tăng trưởng kinh tế cao nhất khu vực.",
+      "Thực hiện \"dân giàu, nước mạnh, dân chủ, công bằng, văn minh\".",
+      "Trở thành nền kinh tế tư bản chủ nghĩa hiện đại."
+    ],
+    "answer_index": 2,
+    "explanation": "Mục tiêu là phát triển lực lượng sản xuất, nâng cao đời sống, thực hiện dân giàu, nước mạnh, dân chủ, công bằng, văn minh."
+  },
+  {
+    "id": "mln-c4b-04",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Kinh tế tư nhân được xác định có vai trò gì trong nền kinh tế thị trường định hướng XHCN?",
+    "options": [
+      "Giữ vai trò chủ đạo.",
+      "Là một động lực quan trọng nhất của nền kinh tế.",
+      "Là thành phần kinh tế phụ trợ.",
+      "Là nền tảng duy nhất của kinh tế quốc dân."
+    ],
+    "answer_index": 1,
+    "explanation": "Kinh tế tư nhân được xác định là một động lực quan trọng nhất của nền kinh tế."
+  },
+  {
+    "id": "mln-c4b-06",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Hình thức phân phối chủ yếu trong nền kinh tế thị trường định hướng XHCN là gì?",
+    "options": [
+      "Phân phối cào bằng cho tất cả mọi người.",
+      "Phân phối theo mức đóng góp vốn là chủ yếu.",
+      "Phân phối hoàn toàn thông qua hệ thống phúc lợi xã hội.",
+      "Phân phối theo kết quả lao động và hiệu quả kinh tế là chủ yếu."
+    ],
+    "answer_index": 3,
+    "explanation": "Phân phối theo kết quả lao động và hiệu quả kinh tế là hình thức chủ yếu."
+  },
+  {
+    "id": "mln-c4b-08",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Tính tất yếu khách quan của việc phát triển KTTT định hướng XHCN ở Việt Nam bao gồm lý do nào dưới đây?",
+    "options": [
+      "Phù hợp với nguyện vọng mong muốn dân giàu, nước mạnh, dân chủ, công bằng, văn minh của nhân dân.",
+      "Do các nước tư bản áp đặt nhằm khai thác tài nguyên.",
+      "Để thay thế hoàn toàn kinh tế tự nhiên sang nền kinh tế bao cấp.",
+      "Do yêu cầu bắt buộc của các tổ chức tài chính quốc tế."
+    ],
+    "answer_index": 0,
+    "explanation": "Mô hình phù hợp với quy luật khách quan và nguyện vọng của nhân dân."
+  },
+  {
+    "id": "mln-c4b-10",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "\"Điểm nghẽn của điểm nghẽn\" trong nền kinh tế Việt Nam hiện nay xuất phát từ nguyên nhân nào?",
+    "options": [
+      "Thiếu hụt nghiêm trọng nguồn vốn đầu tư trực tiếp nước ngoài.",
+      "Năng suất lao động của người dân quá thấp.",
+      "Hệ thống thể chế chưa đầy đủ, kém hiệu lực, hiệu quả, thiếu các yếu tố thị trường.",
+      "Trình độ khoa học công nghệ hoàn toàn lạc hậu."
+    ],
+    "answer_index": 2,
+    "explanation": "Thể chế chưa đồng bộ, kém hiệu lực, thiếu các yếu tố thị trường được coi là \"điểm nghẽn của điểm nghẽn\"."
+  },
+  {
+    "id": "mln-c4b-12",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Lợi ích kinh tế được định nghĩa là gì?",
+    "options": [
+      "Là những giá trị văn hóa, tinh thần con người đạt được.",
+      "Là lợi ích vật chất thu được khi thực hiện các hoạt động kinh tế của con người.",
+      "Là quyền lực chính trị mà các chủ thể kinh tế tranh giành.",
+      "Là sự chia đều của cải cho tất cả mọi người trong xã hội."
+    ],
+    "answer_index": 1,
+    "explanation": "Lợi ích kinh tế là lợi ích vật chất thu được khi thực hiện các hoạt động kinh tế."
+  },
+  {
+    "id": "mln-c4b-14",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Biểu hiện lợi ích kinh tế của chủ doanh nghiệp và người lao động lần lượt là gì?",
+    "options": [
+      "Doanh thu và tiền thưởng.",
+      "Lợi nhuận và thu nhập.",
+      "Thị phần và phúc lợi xã hội.",
+      "Vốn đầu tư và tiền lương cơ bản."
+    ],
+    "answer_index": 1,
+    "explanation": "Lợi ích của chủ doanh nghiệp trước hết là lợi nhuận, còn của người lao động là thu nhập."
+  },
+  {
+    "id": "mln-c4b-16",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Tại sao các quan hệ lợi ích kinh tế lại có sự thống nhất với nhau?",
+    "options": [
+      "Vì pháp luật quy định các chủ thể không được cạnh tranh.",
+      "Vì Nhà nước bắt buộc các chủ thể phải chia đều lợi nhuận.",
+      "Vì một chủ thể có thể là bộ phận cấu thành của chủ thể khác và hành động vì mục tiêu chung.",
+      "Vì nền kinh tế không có sự tham gia của thành phần tư nhân."
+    ],
+    "answer_index": 2,
+    "explanation": "Một chủ thể có thể là bộ phận cấu thành của chủ thể khác và hành động vì mục tiêu chung."
+  },
+  {
+    "id": "mln-c4b-18",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Theo bài học, có bao nhiêu nhân tố ảnh hưởng tới quan hệ lợi ích kinh tế?",
+    "options": [
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "answer_index": 2,
+    "explanation": "Có 4 nhân tố: trình độ lực lượng sản xuất, địa vị của chủ thể, chính sách phân phối thu nhập, hội nhập kinh tế quốc tế."
+  },
+  {
+    "id": "mln-c4b-20",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Lợi ích kinh tế được thực hiện qua những phương thức cơ bản nào?",
+    "options": [
+      "Theo nguyên tắc thị trường; và theo chính sách của nhà nước cùng vai trò của các tổ chức xã hội.",
+      "Bằng mệnh lệnh hành chính tuyệt đối từ cấp trên.",
+      "Phân phối đều cho mọi người dựa trên sự đóng góp tự nguyện.",
+      "Chủ yếu thông qua cơ chế bao cấp của nhà nước."
+    ],
+    "answer_index": 0,
+    "explanation": "Hai phương thức: theo nguyên tắc thị trường; và theo chính sách của nhà nước cùng vai trò các tổ chức xã hội."
+  },
+  {
+    "id": "mln-c4b-22",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Để hỗ trợ và bảo vệ lợi ích chính đáng của các chủ thể kinh tế, về mặt hạ tầng và luật pháp Nhà nước cần làm gì?",
+    "options": [
+      "Xây dựng môi trường pháp luật thông thoáng và đầu tư xây dựng kết cấu hạ tầng của nền kinh tế.",
+      "Bao cấp vốn hoàn toàn cho các doanh nghiệp làm ăn thua lỗ.",
+      "Trực tiếp ấn định mức giá bán cho tất cả mọi mặt hàng trên thị trường.",
+      "Hạn chế xây dựng đường sá để ưu tiên bảo vệ môi trường."
+    ],
+    "answer_index": 0,
+    "explanation": "Xây dựng môi trường pháp luật thông thoáng và đầu tư kết cấu hạ tầng của nền kinh tế."
+  },
+  {
+    "id": "mln-c4b-24",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Đối với các hoạt động làm giàu hợp pháp của người dân, Nhà nước thể hiện vai trò gì?",
+    "options": [
+      "Khuyến khích, tạo điều kiện và giúp đỡ họ bằng mọi biện pháp.",
+      "Hạn chế các hoạt động này để tránh tình trạng phân hóa giàu nghèo quá mức.",
+      "Can thiệp trực tiếp để thu hồi toàn bộ lợi nhuận.",
+      "Không quan tâm vì đó là việc của thị trường."
+    ],
+    "answer_index": 0,
+    "explanation": "Nhà nước khuyến khích, tạo điều kiện và giúp đỡ các hoạt động làm giàu hợp pháp."
+  },
+  {
+    "id": "mln-c5-01",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Khái niệm nào sau đây phản ánh đúng về Cách mạng công nghiệp?",
+    "options": [
+      "Quá trình thay đổi chế độ chính trị.",
+      "Sự thay đổi căn bản về lực lượng sản xuất nhờ tiến bộ khoa học và công nghệ.",
+      "Quá trình mở rộng thị trường quốc tế.",
+      "Quá trình đô thị hóa."
+    ],
+    "answer_index": 1,
+    "explanation": "Cách mạng công nghiệp là sự thay đổi căn bản nền sản xuất dựa trên thành tựu khoa học – công nghệ."
+  },
+  {
+    "id": "mln-c5-03",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Đặc trưng nổi bật của Cách mạng công nghiệp lần thứ hai là gì?",
+    "options": [
+      "Điện và dây chuyền sản xuất hàng loạt.",
+      "Robot thông minh.",
+      "Internet.",
+      "Trí tuệ nhân tạo."
+    ],
+    "answer_index": 0,
+    "explanation": "CMCN 2.0 gắn với sử dụng điện và sản xuất hàng loạt theo dây chuyền."
+  },
+  {
+    "id": "mln-c5-05",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Công nghệ tiêu biểu của Cách mạng công nghiệp 4.0 là gì?",
+    "options": [
+      "Máy kéo.",
+      "Dây chuyền lắp ráp.",
+      "AI, IoT và Big Data.",
+      "Máy hơi nước."
+    ],
+    "answer_index": 2,
+    "explanation": "CMCN 4.0 nổi bật với AI, IoT, Big Data, điện toán đám mây và robot thông minh."
+  },
+  {
+    "id": "mln-c5-07",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Hiện đại hóa được hiểu là gì?",
+    "options": [
+      "Xây dựng nhiều nhà máy.",
+      "Đổi mới công nghệ và phương thức quản lý theo trình độ tiên tiến.",
+      "Chỉ nhập khẩu máy móc.",
+      "Chỉ phát triển đô thị."
+    ],
+    "answer_index": 1,
+    "explanation": "Hiện đại hóa là đổi mới công nghệ và cách quản lý, ứng dụng thành tựu khoa học vào mọi lĩnh vực."
+  },
+  {
+    "id": "mln-c5-09",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Động lực quan trọng nhất của công nghiệp hóa trong giai đoạn hiện nay là gì?",
+    "options": [
+      "Tài nguyên thiên nhiên.",
+      "Khoa học và công nghệ.",
+      "Lao động phổ thông.",
+      "Đất đai."
+    ],
+    "answer_index": 1,
+    "explanation": "Khoa học – công nghệ và đổi mới sáng tạo là động lực quan trọng nhất."
+  },
+  {
+    "id": "mln-c5-11",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Một trong những nội dung quan trọng của công nghiệp hóa ở Việt Nam là gì?",
+    "options": [
+      "Giảm đầu tư giáo dục.",
+      "Phát triển nguồn nhân lực.",
+      "Hạn chế nghiên cứu khoa học.",
+      "Giảm ứng dụng công nghệ."
+    ],
+    "answer_index": 1,
+    "explanation": "Nguồn nhân lực chất lượng cao giúp nâng cao năng lực cạnh tranh của nền kinh tế hiện đại."
+  },
+  {
+    "id": "mln-c5-13",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Hội nhập kinh tế quốc tế là gì?",
+    "options": [
+      "Đóng cửa nền kinh tế.",
+      "Tham gia vào các quan hệ kinh tế quốc tế trên cơ sở hợp tác.",
+      "Chỉ nhập khẩu.",
+      "Chỉ xuất khẩu."
+    ],
+    "answer_index": 1,
+    "explanation": "Hội nhập kinh tế quốc tế là mở rộng hợp tác với các quốc gia và tổ chức quốc tế để cùng phát triển."
+  },
+  {
+    "id": "mln-c5-15",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Lợi ích lớn nhất của hội nhập kinh tế quốc tế là gì?",
+    "options": [
+      "Thu hẹp thị trường.",
+      "Mở rộng thị trường và thu hút đầu tư.",
+      "Giảm xuất khẩu.",
+      "Giảm việc làm."
+    ],
+    "answer_index": 1,
+    "explanation": "Hội nhập giúp hàng hóa tiếp cận nhiều thị trường hơn và thu hút vốn đầu tư nước ngoài."
+  },
+  {
+    "id": "mln-c5-17",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Việt Nam hội nhập kinh tế quốc tế nhằm mục tiêu gì?",
+    "options": [
+      "Phát triển kinh tế nhanh và bền vững.",
+      "Hạn chế thương mại.",
+      "Đóng cửa nền kinh tế.",
+      "Giảm hợp tác quốc tế."
+    ],
+    "answer_index": 0,
+    "explanation": "Hội nhập nhằm tận dụng nguồn lực bên ngoài, thúc đẩy tăng trưởng và phát triển bền vững."
+  },
+  {
+    "id": "mln-c5-19",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "CMCN 4.0 tạo cơ hội cho Việt Nam thông qua điều gì?",
+    "options": [
+      "Chuyển đổi số và đổi mới sáng tạo.",
+      "Tăng lao động thủ công.",
+      "Giảm ứng dụng công nghệ.",
+      "Chỉ khai thác tài nguyên."
+    ],
+    "answer_index": 0,
+    "explanation": "Chuyển đổi số giúp nâng cao hiệu quả quản lý, sản xuất và phát triển mô hình kinh doanh mới."
+  },
+  {
+    "id": "mln-c5-21",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Việc tham gia các hiệp định thương mại tự do (FTA) giúp Việt Nam điều gì?",
+    "options": [
+      "Thu hẹp xuất khẩu.",
+      "Mở rộng thị trường và tăng sức cạnh tranh.",
+      "Giảm đầu tư nước ngoài.",
+      "Đóng cửa nền kinh tế."
+    ],
+    "answer_index": 1,
+    "explanation": "FTA giúp giảm thuế quan, mở rộng thị trường xuất khẩu và thu hút nhà đầu tư quốc tế."
+  },
+  {
+    "id": "mln-c5-23",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Trong CMCN 4.0, dữ liệu (Big Data) được xem là gì?",
+    "options": [
+      "Nguồn tài nguyên mới.",
+      "Không có giá trị.",
+      "Chỉ phục vụ giải trí.",
+      "Chỉ phục vụ giáo dục."
+    ],
+    "answer_index": 0,
+    "explanation": "Dữ liệu lớn là nguồn tài nguyên quan trọng giúp đưa ra quyết định chính xác, tối ưu sản xuất kinh doanh."
+  },
+  {
+    "id": "mln-c5-25",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "medium",
+    "content": "Quan điểm đúng về công nghiệp hóa, hiện đại hóa ở Việt Nam hiện nay là gì?",
+    "options": [
+      "Chỉ phát triển công nghiệp nặng.",
+      "Phát triển nhanh và bền vững trên cơ sở khoa học - công nghệ, đổi mới sáng tạo và phát triển nguồn nhân lực.",
+      "Chỉ dựa vào khai thác tài nguyên.",
+      "Chỉ phát triển dịch vụ."
+    ],
+    "answer_index": 1,
+    "explanation": "CNH-HĐH phải dựa trên khoa học – công nghệ, đổi mới sáng tạo, chuyển đổi số và phát triển nguồn nhân lực."
+  },
+  {
+    "id": "mln-c5-27",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Đâu là mục tiêu quan trọng của hội nhập kinh tế quốc tế?",
+    "options": [
+      "Hạn chế cạnh tranh.",
+      "Tăng cường hợp tác và phát triển kinh tế.",
+      "Giảm xuất khẩu.",
+      "Đóng cửa thị trường."
+    ],
+    "answer_index": 1,
+    "explanation": "Hội nhập nhằm mở rộng hợp tác, thu hút đầu tư, mở rộng thị trường và thúc đẩy tăng trưởng."
+  },
+  {
+    "id": "mln-c5-29",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Đâu là lợi thế của Việt Nam trong quá trình hội nhập kinh tế quốc tế?",
+    "options": [
+      "Không có nguồn lao động.",
+      "Nguồn lao động trẻ và thị trường rộng.",
+      "Không tham gia FTA.",
+      "Chỉ sản xuất nông nghiệp."
+    ],
+    "answer_index": 1,
+    "explanation": "Việt Nam có lực lượng lao động trẻ, năng động và thị trường gần 100 triệu dân."
+  },
+  {
+    "id": "mln-c5-31",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Theo quan điểm của Đảng, nguồn lực quan trọng nhất của sự phát triển là gì?",
+    "options": [
+      "Tài nguyên thiên nhiên.",
+      "Con người.",
+      "Máy móc.",
+      "Vốn đầu tư nước ngoài."
+    ],
+    "answer_index": 1,
+    "explanation": "Con người vừa là mục tiêu vừa là động lực của sự phát triển."
+  },
+  {
+    "id": "mln-c5-33",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Một trong những yêu cầu của nguồn nhân lực thời kỳ CMCN 4.0 là gì?",
+    "options": [
+      "Chỉ biết lao động chân tay.",
+      "Có khả năng học tập suốt đời.",
+      "Không cần ngoại ngữ.",
+      "Không cần kỹ năng số."
+    ],
+    "answer_index": 1,
+    "explanation": "Công nghệ thay đổi nhanh đòi hỏi người lao động liên tục học tập và cập nhật kiến thức."
+  },
+  {
+    "id": "mln-c5-35",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Cuộc CMCN 4.0 làm thay đổi mạnh mẽ nhất lĩnh vực nào?",
+    "options": [
+      "Quản lý và sản xuất thông minh.",
+      "Sản xuất thủ công.",
+      "Canh tác truyền thống.",
+      "Lao động giản đơn."
+    ],
+    "answer_index": 0,
+    "explanation": "CMCN 4.0 hướng tới nhà máy thông minh, quản trị thông minh và nền kinh tế số."
+  },
+  {
+    "id": "mln-c5-37",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Đâu là yếu tố góp phần nâng cao năng lực cạnh tranh quốc gia?",
+    "options": [
+      "Giảm chất lượng giáo dục.",
+      "Đổi mới sáng tạo.",
+      "Hạn chế nghiên cứu.",
+      "Giảm đầu tư khoa học."
+    ],
+    "answer_index": 1,
+    "explanation": "Đổi mới sáng tạo tạo ra sản phẩm và công nghệ mới, nâng cao năng suất và khả năng cạnh tranh."
+  },
+  {
+    "id": "mln-c5-39",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Một trong những nguy cơ khi hội nhập kinh tế quốc tế là gì?",
+    "options": [
+      "Gia tăng cạnh tranh.",
+      "Không có cạnh tranh.",
+      "Không chịu tác động bên ngoài.",
+      "Giảm giao thương."
+    ],
+    "answer_index": 0,
+    "explanation": "Doanh nghiệp trong nước phải cạnh tranh trực tiếp với doanh nghiệp quốc tế về chất lượng và giá cả."
+  },
+  {
+    "id": "mln-c5-41",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Một trong những mục tiêu của chuyển đổi số là gì?",
+    "options": [
+      "Giảm hiệu quả quản lý.",
+      "Nâng cao hiệu quả hoạt động của nền kinh tế.",
+      "Tăng thủ tục hành chính.",
+      "Giảm ứng dụng CNTT."
+    ],
+    "answer_index": 1,
+    "explanation": "Chuyển đổi số giúp tối ưu quy trình, tiết kiệm chi phí và nâng cao hiệu quả quản lý."
+  },
+  {
+    "id": "mln-c5-43",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Một trong những lợi ích của FTA là gì?",
+    "options": [
+      "Tăng hàng rào thuế quan.",
+      "Giảm thuế và mở rộng thị trường.",
+      "Giảm xuất khẩu.",
+      "Hạn chế thương mại."
+    ],
+    "answer_index": 1,
+    "explanation": "FTA giúp giảm thuế nhập khẩu, tạo điều kiện thuận lợi cho xuất khẩu."
+  },
+  {
+    "id": "mln-c5-45",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Một trong những nhiệm vụ của Nhà nước trong hội nhập là gì?",
+    "options": [
+      "Hoàn thiện thể chế kinh tế.",
+      "Đóng cửa nền kinh tế.",
+      "Giảm hợp tác quốc tế.",
+      "Hạn chế doanh nghiệp."
+    ],
+    "answer_index": 0,
+    "explanation": "Nhà nước cần xây dựng hệ thống pháp luật minh bạch và phù hợp với thông lệ quốc tế."
+  },
+  {
+    "id": "mln-c5-47",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Việc nâng cao chất lượng giáo dục góp phần trực tiếp vào điều gì?",
+    "options": [
+      "Phát triển nguồn nhân lực.",
+      "Giảm năng suất lao động.",
+      "Giảm chất lượng sản phẩm.",
+      "Hạn chế hội nhập."
+    ],
+    "answer_index": 0,
+    "explanation": "Giáo dục là nền tảng để đào tạo nguồn nhân lực chất lượng cao phục vụ CNH-HĐH."
+  },
+  {
+    "id": "mln-c5-49",
+    "type": "mcq",
+    "subject": "Kinh tế",
+    "difficulty": "easy",
+    "content": "Mục tiêu cuối cùng của công nghiệp hóa, hiện đại hóa là gì?",
+    "options": [
+      "Xây dựng nền kinh tế hiện đại và nâng cao đời sống nhân dân.",
+      "Chỉ tăng sản lượng công nghiệp.",
+      "Chỉ tăng xuất khẩu.",
+      "Chỉ phát triển đô thị."
+    ],
+    "answer_index": 0,
+    "explanation": "CNH-HĐH hướng tới nền kinh tế hiện đại, nâng cao chất lượng cuộc sống và phát triển bền vững."
+  }
+]

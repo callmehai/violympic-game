@@ -280,7 +280,11 @@ export const gameService: GameService = {
     // nên reload giữa chừng KHÔNG bị xáo lại → resume vẫn đúng.
     const board = genBoard((Math.random() * 0x100000000) >>> 0);
     const ids = questionService.allActiveIds();
-    const order = seededShuffle(ids, (Math.random() * 0x100000000) >>> 0);
+    const shuffled = seededShuffle(ids, (Math.random() * 0x100000000) >>> 0);
+    // Mỗi phiên chỉ lấy N câu đầu (đã trộn ngẫu nhiên) → mỗi người 1 bộ đề khác nhau,
+    // không bắt chơi hết cả ngân hàng. questionsPerSession <= 0 nghĩa là phát hết.
+    const limit = config.questionsPerSession;
+    const order = limit > 0 ? shuffled.slice(0, limit) : shuffled;
     const prog: SessionProgress = {
       questionOrder: order,
       cursor: 0,

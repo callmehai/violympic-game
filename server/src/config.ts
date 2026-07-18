@@ -56,6 +56,8 @@ export const config: GameConfig = {
   fastAnswerMs: num('FAST_ANSWER_MS', 10000),
   fastAnswerBonus: num('FAST_ANSWER_BONUS', 5),
   wrongTimePenaltyS: num('WRONG_TIME_PENALTY_S', 0),
+  // Mỗi phiên chỉ random N câu (mặc định 18). Đặt 0 để phát hết bộ đề.
+  questionsPerSession: num('QUESTIONS_PER_SESSION', 18),
 
   boardDistribution: {
     chest: 1,

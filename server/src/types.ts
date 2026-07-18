@@ -232,6 +232,8 @@ export interface PublicGameConfig {
 }
 
 export interface GameConfig extends PublicGameConfig {
+  // Số câu hỏi tối đa phát ra trong 1 phiên Game 1 (0 = phát hết bộ đề). Server-side.
+  questionsPerSession: number;
   port: number;
   appSecret: string;
   adminKey: string;
