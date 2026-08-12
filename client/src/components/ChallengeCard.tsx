@@ -294,7 +294,7 @@ function OrderInput({ challenge, feedback, disabled, onAnswer }: Props) {
               <span
                 className={`grid h-8 w-8 shrink-0 place-items-center rounded-lg text-sm font-bold ${
                   isPicked
-                    ? 'bg-accent text-shade'
+                    ? 'bg-accent text-[color:var(--on-accent)]'
                     : 'bg-ink/10 text-ink/50'
                 }`}
               >
