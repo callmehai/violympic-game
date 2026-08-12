@@ -6,8 +6,27 @@
  */
 
 // ===================== Domain enums =====================
-export type Subject = 'Toán' | 'Văn' | 'Anh' | 'Sinh' | 'Sử' | 'Địa' | 'Kinh tế';
-export const SUBJECTS: Subject[] = ['Toán', 'Văn', 'Anh', 'Sinh', 'Sử', 'Địa', 'Kinh tế'];
+// Nhãn môn hiển thị trên thẻ câu hỏi. Thêm mục mới khi nạp bộ đề môn khác
+// (vd 'Tư tưởng HCM') — importer chặn subject lạ nên thiếu mục là import lỗi.
+export type Subject =
+  | 'Toán'
+  | 'Văn'
+  | 'Anh'
+  | 'Sinh'
+  | 'Sử'
+  | 'Địa'
+  | 'Kinh tế'
+  | 'Tư tưởng HCM';
+export const SUBJECTS: Subject[] = [
+  'Toán',
+  'Văn',
+  'Anh',
+  'Sinh',
+  'Sử',
+  'Địa',
+  'Kinh tế',
+  'Tư tưởng HCM',
+];
 
 export type Difficulty = 'easy' | 'medium' | 'hard';
 export const DIFFICULTIES: Difficulty[] = ['easy', 'medium', 'hard'];
