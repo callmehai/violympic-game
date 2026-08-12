@@ -11,6 +11,7 @@
     "seed": "npm --prefix server run seed",
     "build": "npm --prefix server run build && npm --prefix client run build",
     "typecheck": "npm --prefix server run typecheck && npm --prefix client run typecheck",
+    "ontap:sync": "cp ontap/index.html client/public/ontap/index.html",
     "start": "npm --prefix server start"
   },
   "devDependencies": {
