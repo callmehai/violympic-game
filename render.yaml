@@ -11,7 +11,11 @@ services:
     # Cài đủ devDeps (typescript/vite/tsx) để build, rồi build server + client.
     buildCommand: npm install && npm --prefix server install --include=dev && npm --prefix client install --include=dev && npm run build
     # Seed (idempotent — chỉ upsert SV/câu hỏi, KHÔNG xoá điểm) rồi chạy server.
-    startCommand: cd server && node dist/seed.cli.js && node dist/index.js
+    # Bộ đề lấy theo env Q1_FILE/Q2_FILE → đổi bộ câu hỏi chỉ cần đổi env, KHÔNG sửa code.
+    # LƯU Ý: lệnh này chạy lại MỖI LẦN restart/redeploy, và import dùng
+    # `ON CONFLICT … SET active = 1`. Nếu Q1_FILE/Q2_FILE còn trỏ bộ cũ thì bộ cũ sẽ
+    # được bật lại giữa buổi → luôn trỏ đúng bộ của buổi đang chạy.
+    startCommand: cd server && node dist/seed.cli.js ../seed/accounts.csv ../seed/$Q1_FILE ../seed/$Q2_FILE && node dist/index.js
     healthCheckPath: /api/health
     autoDeploy: true
     # Ổ đĩa lưu DB SQLite để điểm KHÔNG mất khi restart/redeploy (cần plan trả phí).
@@ -26,6 +30,18 @@ services:
         generateValue: true
       - key: ADMIN_KEY           # tự nhập trong dashboard (vd Vhai2005) — không commit vào repo.
         sync: false
+      # Giao diện: treasure (bản gốc) | philoverse (bên thuê).
+      # Đổi giá trị này → Render tự build lại → MỌI máy đổi theo (~2-3 phút).
+      # Xem trước không cần deploy: thêm ?theme=philoverse vào URL.
+      - key: VITE_THEME
+        value: treasure
+      # Bộ đề của buổi đang chạy (tên file trong thư mục seed/).
+      - key: Q1_FILE
+        value: mln-game1-treasure.json
+      - key: Q2_FILE
+        value: mln-game2-mountain.json
+      # Đổi EVENT_ID cho mỗi buổi/mỗi bên thuê → bảng xếp hạng tách riêng,
+      # điểm của buổi cũ vẫn còn nguyên trong DB.
       - key: EVENT_ID
         value: violympic-2026-06
       - key: EVENT_DATE

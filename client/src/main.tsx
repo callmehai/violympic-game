@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import './index.css';
+import { applyTheme } from './theme';
+
+// Gắn theme TRƯỚC khi render để không nháy giao diện cũ trong tích tắc.
+applyTheme();
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

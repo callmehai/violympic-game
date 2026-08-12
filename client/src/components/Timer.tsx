@@ -77,13 +77,13 @@ export default function Timer({ timeLeftS, totalS, onExpire, paused = false }: T
   const pct = totalS > 0 ? Math.max(0, Math.min(100, (remaining / totalS) * 100)) : 0;
   const danger = remaining < 20;
   const warn = !danger && remaining < 60;
-  const color = paused ? 'text-treasure-gem' : danger ? 'text-treasure-danger' : warn ? 'text-orange-400' : 'text-white';
-  const barColor = paused ? 'bg-treasure-gem/60' : danger ? 'bg-treasure-danger' : warn ? 'bg-orange-400' : 'bg-treasure-gem';
+  const color = paused ? 'text-info' : danger ? 'text-bad' : warn ? 'text-alert-400' : 'text-ink';
+  const barColor = paused ? 'bg-info/60' : danger ? 'bg-bad' : warn ? 'bg-alert-400' : 'bg-info';
 
   return (
     <div className="panel px-4 py-3">
       <div className="flex items-center justify-between">
-        <span className="text-sm font-semibold text-white/70">
+        <span className="text-sm font-semibold text-ink/70">
           {paused ? '⏸️ Tạm dừng — đang xem đáp án' : '⏳ Thời gian còn lại'}
         </span>
         <span
@@ -94,7 +94,7 @@ export default function Timer({ timeLeftS, totalS, onExpire, paused = false }: T
           {fmt(remaining)}
         </span>
       </div>
-      <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-black/40">
+      <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-shade/40">
         <div
           className={`h-full rounded-full transition-all duration-1000 ease-linear ${barColor}`}
           style={{ width: `${pct}%` }}

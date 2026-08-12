@@ -36,15 +36,15 @@ export default function ChallengeCard({ challenge, feedback, disabled, onAnswer 
   return (
     <div className="panel space-y-4 p-5">
       <div className="flex items-center gap-2">
-        <span className="rounded-full bg-treasure-gem/20 px-2.5 py-1 text-xs font-bold text-treasure-gem">
+        <span className="rounded-full bg-info/20 px-2.5 py-1 text-xs font-bold text-info">
           {TYPE_LABEL[challenge.type] ?? challenge.type}
         </span>
         {challenge.subject && (
-          <span className="rounded-full bg-white/10 px-2.5 py-1 text-xs font-semibold text-white/70">
+          <span className="rounded-full bg-ink/10 px-2.5 py-1 text-xs font-semibold text-ink/70">
             {challenge.subject}
           </span>
         )}
-        <span className="ml-auto text-sm font-semibold text-treasure-gold">
+        <span className="ml-auto text-sm font-semibold text-accent">
           +{challenge.points}đ
         </span>
       </div>
@@ -56,7 +56,7 @@ export default function ChallengeCard({ challenge, feedback, disabled, onAnswer 
         frozen={!!feedback}
       />
 
-      <h2 className="text-lg font-bold leading-snug text-white">{challenge.content}</h2>
+      <h2 className="text-lg font-bold leading-snug text-ink">{challenge.content}</h2>
 
       {challenge.type === 'mcq' && (
         <McqInput challenge={challenge} feedback={feedback} disabled={disabled} onAnswer={onAnswer} />
@@ -75,14 +75,14 @@ export default function ChallengeCard({ challenge, feedback, disabled, onAnswer 
         <div
           className={`animate-pop rounded-xl border px-4 py-3 text-sm font-semibold ${
             feedback.is_correct
-              ? 'border-emerald-400/40 bg-emerald-500/15 text-emerald-200'
-              : 'border-rose-400/50 bg-rose-500/15 text-rose-200'
+              ? 'border-ok-400/40 bg-ok-500/15 text-ok-200'
+              : 'border-bad-400/50 bg-bad-500/15 text-bad-200'
           }`}
         >
           <div className="mb-1 font-bold">
             {feedback.is_correct ? '✅ Chính xác!' : '❌ Chưa đúng'}
           </div>
-          {feedback.explanation && <div className="text-white/80">{feedback.explanation}</div>}
+          {feedback.explanation && <div className="text-ink/80">{feedback.explanation}</div>}
         </div>
       )}
     </div>
@@ -124,20 +124,20 @@ function SpeedBar({
   return (
     <div
       className={`rounded-xl border px-3 py-2 ${
-        active ? 'border-treasure-gem/40 bg-treasure-gem/10' : 'border-white/10 bg-black/20'
+        active ? 'border-info/40 bg-info/10' : 'border-ink/10 bg-shade/20'
       }`}
     >
       <div className="mb-1 flex items-center justify-between text-xs">
-        <span className="font-semibold text-white/70">⚡ Trả lời nhanh để được thưởng</span>
+        <span className="font-semibold text-ink/70">⚡ Trả lời nhanh để được thưởng</span>
         <span
-          className={`font-display font-extrabold ${active ? 'text-treasure-gem' : 'text-white/40'}`}
+          className={`font-display font-extrabold ${active ? 'text-info' : 'text-ink/40'}`}
         >
           {active ? `+${bonus}đ` : frozen ? 'đã chốt' : 'hết thưởng'}
         </span>
       </div>
-      <div className="h-2 overflow-hidden rounded-full bg-black/40">
+      <div className="h-2 overflow-hidden rounded-full bg-shade/40">
         <div
-          className="h-full rounded-full bg-gradient-to-r from-treasure-gem to-emerald-400"
+          className="h-full rounded-full bg-gradient-to-r from-info to-ok-400"
           style={{ width: `${frac * 100}%` }}
         />
       </div>
@@ -153,12 +153,12 @@ function McqInput({ challenge, feedback, disabled, onAnswer }: Props) {
   return (
     <div className="grid gap-2.5">
       {opts.map((opt, i) => {
-        let cls = 'border-white/15 bg-black/30 hover:border-treasure-gold hover:bg-black/40';
+        let cls = 'border-ink/15 bg-shade/30 hover:border-accent hover:bg-shade/40';
         if (feedback) {
           if (i === feedback.correct_index)
-            cls = 'border-emerald-400 bg-emerald-500/20 text-emerald-100';
-          else if (i === selected) cls = 'border-rose-400 bg-rose-500/20 text-rose-100';
-          else cls = 'border-white/10 bg-black/20 opacity-60';
+            cls = 'border-ok-400 bg-ok-500/20 text-ok-100';
+          else if (i === selected) cls = 'border-bad-400 bg-bad-500/20 text-bad-100';
+          else cls = 'border-ink/10 bg-shade/20 opacity-60';
         }
         return (
           <button
@@ -171,7 +171,7 @@ function McqInput({ challenge, feedback, disabled, onAnswer }: Props) {
             }}
             className={`flex items-center gap-3 rounded-xl border px-4 py-3 text-left font-semibold transition active:scale-[0.99] disabled:cursor-not-allowed ${cls}`}
           >
-            <span className="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-white/10 text-sm font-bold">
+            <span className="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-ink/10 text-sm font-bold">
               {labels[i]}
             </span>
             <span>{opt}</span>
@@ -186,10 +186,10 @@ function McqInput({ challenge, feedback, disabled, onAnswer }: Props) {
 function TrueFalseInput({ feedback, disabled, onAnswer }: Omit<Props, 'challenge'>) {
   const [selected, setSelected] = useState<boolean | null>(null);
   function tone(forVal: boolean): string {
-    if (!feedback) return 'border-white/15 bg-black/30 hover:border-treasure-gold';
-    if (feedback.correct_value === forVal) return 'border-emerald-400 bg-emerald-500/20 text-emerald-100';
-    if (selected === forVal) return 'border-rose-400 bg-rose-500/20 text-rose-100';
-    return 'border-white/10 bg-black/20 opacity-60';
+    if (!feedback) return 'border-ink/15 bg-shade/30 hover:border-accent';
+    if (feedback.correct_value === forVal) return 'border-ok-400 bg-ok-500/20 text-ok-100';
+    if (selected === forVal) return 'border-bad-400 bg-bad-500/20 text-bad-100';
+    return 'border-ink/10 bg-shade/20 opacity-60';
   }
   return (
     <div className="grid grid-cols-2 gap-3">
@@ -230,7 +230,7 @@ function FillInput({ challenge, feedback, disabled, onAnswer }: Props) {
           onChange={(e) => setText(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && submit()}
         />
-        {challenge.suffix && <span className="font-semibold text-white/70">{challenge.suffix}</span>}
+        {challenge.suffix && <span className="font-semibold text-ink/70">{challenge.suffix}</span>}
       </div>
       {!feedback && (
         <button
@@ -243,8 +243,8 @@ function FillInput({ challenge, feedback, disabled, onAnswer }: Props) {
         </button>
       )}
       {feedback && !feedback.is_correct && feedback.correct_text && (
-        <div className="rounded-xl border border-emerald-400/40 bg-emerald-500/10 px-4 py-2 text-sm">
-          Đáp án đúng: <b className="text-emerald-200">{feedback.correct_text}</b>
+        <div className="rounded-xl border border-ok-400/40 bg-ok-500/10 px-4 py-2 text-sm">
+          Đáp án đúng: <b className="text-ok-200">{feedback.correct_text}</b>
         </div>
       )}
     </div>
@@ -271,7 +271,7 @@ function OrderInput({ challenge, feedback, disabled, onAnswer }: Props) {
 
   return (
     <div className="space-y-3">
-      <p className="text-xs text-white/50">
+      <p className="text-xs text-ink/50">
         👆 Chạm lần lượt các ô theo đúng thứ tự (1 → {items.length}). Chạm lại để bỏ chọn.
       </p>
       <div className="space-y-2">
@@ -287,15 +287,15 @@ function OrderInput({ challenge, feedback, disabled, onAnswer }: Props) {
               style={{ touchAction: 'manipulation' }}
               className={`flex w-full select-none items-center gap-3 rounded-xl border px-3 py-3 text-left font-semibold transition active:scale-[0.99] disabled:cursor-not-allowed ${
                 isPicked
-                  ? 'border-treasure-gold bg-treasure-gold/15 text-white'
-                  : 'border-white/15 bg-black/30 hover:border-treasure-gold hover:bg-black/40'
+                  ? 'border-accent bg-accent/15 text-ink'
+                  : 'border-ink/15 bg-shade/30 hover:border-accent hover:bg-shade/40'
               }`}
             >
               <span
                 className={`grid h-8 w-8 shrink-0 place-items-center rounded-lg text-sm font-bold ${
                   isPicked
-                    ? 'bg-treasure-gold text-black'
-                    : 'bg-white/10 text-white/50'
+                    ? 'bg-accent text-shade'
+                    : 'bg-ink/10 text-ink/50'
                 }`}
               >
                 {isPicked ? order + 1 : '•'}
@@ -316,9 +316,9 @@ function OrderInput({ challenge, feedback, disabled, onAnswer }: Props) {
         </button>
       )}
       {feedback && !feedback.is_correct && feedback.correct_order && (
-        <div className="rounded-xl border border-emerald-400/40 bg-emerald-500/10 px-4 py-2 text-sm">
+        <div className="rounded-xl border border-ok-400/40 bg-ok-500/10 px-4 py-2 text-sm">
           Thứ tự đúng:{' '}
-          <b className="text-emerald-200">{feedback.correct_order.join('  →  ')}</b>
+          <b className="text-ok-200">{feedback.correct_order.join('  →  ')}</b>
         </div>
       )}
     </div>

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { apiDownload, apiFetch, ApiError } from '../api/client';
 import { API, type AdminEventState, type GameId, type LeaderboardEntry } from '../api/contract';
 import { useAuth } from '../store/auth';
+import { useBranding } from '../themes/branding';
 
 /** Tải blob xuống máy bằng thẻ <a> tạm. */
 function download(blob: Blob, filename: string) {
@@ -63,13 +64,13 @@ function AdminLogin() {
   }
 
   return (
-    <div className="min-h-screen bg-treasure-bg flex items-center justify-center p-4">
+    <div className="min-h-screen bg-canvas flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-6">
-          <h1 className="text-3xl font-extrabold text-treasure-gold">
+          <h1 className="text-3xl font-extrabold text-accent">
             ⛏️ Quản trị kho báu
           </h1>
-          <p className="mt-2 text-treasure-gem font-semibold">Đăng nhập bằng admin key 🔑</p>
+          <p className="mt-2 text-info font-semibold">Đăng nhập bằng admin key 🔑</p>
         </div>
 
         <form onSubmit={handleSubmit} className="panel p-6 space-y-4">
@@ -93,7 +94,7 @@ function AdminLogin() {
           {error && (
             <div
               role="alert"
-              className="rounded-lg bg-treasure-danger/20 border border-treasure-danger px-3 py-2 text-sm text-treasure-danger font-semibold animate-shake"
+              className="rounded-lg bg-bad/20 border border-bad px-3 py-2 text-sm text-bad font-semibold animate-shake"
             >
               {error}
             </div>
@@ -105,11 +106,11 @@ function AdminLogin() {
         </form>
 
         <div className="mt-5 flex items-center justify-center gap-4 text-sm">
-          <Link to="/leaderboard" className="text-treasure-gold hover:underline">
+          <Link to="/leaderboard" className="text-accent hover:underline">
             🏆 Xem bảng xếp hạng
           </Link>
-          <span className="text-treasure-gem/40">•</span>
-          <Link to="/login" className="text-treasure-gem hover:underline">
+          <span className="text-info/40">•</span>
+          <Link to="/login" className="text-info hover:underline">
             Về đăng nhập
           </Link>
         </div>
@@ -125,8 +126,8 @@ function Feedback({ ok, msg }: { ok: boolean; msg: string }) {
       role="status"
       className={
         ok
-          ? 'rounded-lg bg-emerald-500/15 border border-emerald-500/50 px-3 py-2 text-sm text-emerald-300 font-semibold'
-          : 'rounded-lg bg-treasure-danger/20 border border-treasure-danger px-3 py-2 text-sm text-treasure-danger font-semibold animate-shake'
+          ? 'rounded-lg bg-ok-500/15 border border-ok-500/50 px-3 py-2 text-sm text-ok-300 font-semibold'
+          : 'rounded-lg bg-bad/20 border border-bad px-3 py-2 text-sm text-bad font-semibold animate-shake'
       }
     >
       {msg}
@@ -166,13 +167,13 @@ function EventCard({
   return (
     <section className="panel p-5 space-y-4">
       <div className="flex items-center justify-between gap-3">
-        <h2 className="text-lg font-bold text-treasure-gold">🗓️ Trạng thái sự kiện</h2>
+        <h2 className="text-lg font-bold text-accent">🗓️ Trạng thái sự kiện</h2>
         <button type="button" className="btn btn-ghost text-sm py-1.5" onClick={reload} disabled={loading}>
           {loading ? 'Đang tải…' : '↻ Làm mới'}
         </button>
       </div>
 
-      {!state && loading && <p className="text-sm text-treasure-gem/80">Đang tải trạng thái…</p>}
+      {!state && loading && <p className="text-sm text-info/80">Đang tải trạng thái…</p>}
 
       {state && (
         <>
@@ -183,7 +184,7 @@ function EventCard({
               label="Trạng thái"
               value={
                 <span
-                  className={state.open ? 'text-emerald-400 font-bold' : 'text-treasure-danger font-bold'}
+                  className={state.open ? 'text-ok-400 font-bold' : 'text-bad font-bold'}
                 >
                   {state.open ? '● Mở' : '● Đóng'}
                 </span>
@@ -228,8 +229,8 @@ function EventCard({
 
 function Info({ label, value }: { label: string; value: React.ReactNode }) {
   return (
-    <div className="rounded-lg bg-black/20 border border-white/10 px-3 py-2">
-      <div className="text-xs text-treasure-gem/70">{label}</div>
+    <div className="rounded-lg bg-shade/20 border border-ink/10 px-3 py-2">
+      <div className="text-xs text-info/70">{label}</div>
       <div className="font-semibold break-words">{value}</div>
     </div>
   );
@@ -237,9 +238,9 @@ function Info({ label, value }: { label: string; value: React.ReactNode }) {
 
 function Stat({ label, value }: { label: string; value: number }) {
   return (
-    <div className="rounded-lg bg-treasure-wood/40 border border-white/10 px-2 py-3">
-      <div className="text-2xl font-extrabold text-treasure-gold">{value}</div>
-      <div className="text-xs text-treasure-gem/80">{label}</div>
+    <div className="rounded-lg bg-wood/40 border border-ink/10 px-2 py-3">
+      <div className="text-2xl font-extrabold text-accent">{value}</div>
+      <div className="text-xs text-info/80">{label}</div>
     </div>
   );
 }
@@ -287,13 +288,13 @@ function ImportCard({
 
   return (
     <section className="panel p-5 space-y-3">
-      <h2 className="text-lg font-bold text-treasure-gold">
+      <h2 className="text-lg font-bold text-accent">
         {icon} {title}
       </h2>
       <input
         type="file"
         accept={accept}
-        className="input cursor-pointer file:mr-3 file:rounded-lg file:border-0 file:bg-treasure-gold file:px-3 file:py-1.5 file:text-[#3a2a06] file:font-semibold"
+        className="input cursor-pointer file:mr-3 file:rounded-lg file:border-0 file:bg-accent file:px-3 file:py-1.5 file:text-[color:var(--on-accent)] file:font-semibold"
         onChange={(e) => {
           setFile(e.target.files?.[0] ?? null);
           setMsg(null);
@@ -348,8 +349,8 @@ function AddStudentCard({ onDone }: { onDone?: () => void }) {
 
   return (
     <section className="panel space-y-3 p-5">
-      <h2 className="text-lg font-bold text-treasure-gold">➕ Thêm nhanh 1 sinh viên</h2>
-      <p className="text-sm text-treasure-gem/80">
+      <h2 className="text-lg font-bold text-accent">➕ Thêm nhanh 1 sinh viên</h2>
+      <p className="text-sm text-info/80">
         Nhập tên + MSSV. Nếu MSSV chưa có → tạo tài khoản mới (mật khẩu = MSSV); nếu đã có → báo lỗi.
       </p>
       <input
@@ -418,7 +419,7 @@ function ActionCard({
 
   return (
     <section className="panel p-5 space-y-3">
-      <h2 className="text-lg font-bold text-treasure-gold">
+      <h2 className="text-lg font-bold text-accent">
         {icon} {title}
       </h2>
       <button type="button" className="btn btn-gold w-full" onClick={run} disabled={busy}>
@@ -513,9 +514,9 @@ function PlayersCard() {
   }
 
   return (
-    <section className="panel p-5 space-y-3 md:col-span-2 border-treasure-danger/40">
+    <section className="panel p-5 space-y-3 md:col-span-2 border-bad/40">
       <div className="flex flex-wrap items-center justify-between gap-2">
-        <h2 className="text-lg font-bold text-treasure-gold">
+        <h2 className="text-lg font-bold text-accent">
           ♻️ Người đã chơi ({players.length})
         </h2>
         <div className="flex gap-2">
@@ -529,7 +530,7 @@ function PlayersCard() {
           </button>
           <button
             type="button"
-            className="btn text-sm py-1.5 bg-treasure-danger text-white hover:brightness-110"
+            className="btn text-sm py-1.5 bg-bad text-ink hover:brightness-110"
             onClick={() => void resetAll()}
             disabled={busy === 'ALL' || players.length === 0}
           >
@@ -539,14 +540,14 @@ function PlayersCard() {
       </div>
 
       {/* Chọn game để xem/ reset */}
-      <div className="inline-flex rounded-xl bg-black/30 p-1">
+      <div className="inline-flex rounded-xl bg-shade/30 p-1">
         {GAME_TABS.map((t) => (
           <button
             key={t.id}
             type="button"
             onClick={() => setGame(t.id)}
             className={`rounded-lg px-3 py-1.5 text-sm font-bold transition ${
-              game === t.id ? 'bg-treasure-gold text-treasure-bg' : 'text-white/70 hover:text-white'
+              game === t.id ? 'bg-accent text-canvas' : 'text-ink/70 hover:text-ink'
             }`}
           >
             {t.label}
@@ -555,15 +556,15 @@ function PlayersCard() {
       </div>
 
       {/* Danh sách người đã chơi + nút reset từng người */}
-      <div className="max-h-72 divide-y divide-white/5 overflow-y-auto rounded-lg border border-white/10">
+      <div className="max-h-72 divide-y divide-ink/5 overflow-y-auto rounded-lg border border-ink/10">
         {players.length === 0 ? (
-          <div className="p-4 text-center text-sm text-white/50">Chưa có ai chơi.</div>
+          <div className="p-4 text-center text-sm text-ink/50">Chưa có ai chơi.</div>
         ) : (
           players.map((p) => (
             <div key={p.student_code} className="flex items-center justify-between gap-3 px-3 py-2">
               <div className="min-w-0">
-                <div className="truncate text-sm font-semibold text-white">{p.name}</div>
-                <div className="text-xs text-treasure-gem/70">
+                <div className="truncate text-sm font-semibold text-ink">{p.name}</div>
+                <div className="text-xs text-info/70">
                   {p.student_code} · {p.total}đ · {STATUS_VN[p.status] ?? p.status}
                 </div>
               </div>
@@ -638,15 +639,15 @@ function ClearQuestionsCard({
   }
 
   return (
-    <section className="panel p-5 space-y-3 border-treasure-danger/40">
-      <h2 className="text-lg font-bold text-treasure-gold">🗑️ {title}</h2>
-      <p className="text-sm text-treasure-gem/80">
+    <section className="panel p-5 space-y-3 border-bad/40">
+      <h2 className="text-lg font-bold text-accent">🗑️ {title}</h2>
+      <p className="text-sm text-info/80">
         Xoá toàn bộ ngân hàng câu hỏi. Dùng khi cần thay bộ đề mới mà không muốn câu hỏi cũ còn lẫn.
         Sau khi xoá cần Import lại.
       </p>
       <button
         type="button"
-        className="btn w-full bg-treasure-danger text-white hover:brightness-110"
+        className="btn w-full bg-bad text-ink hover:brightness-110"
         onClick={() => void handleClear()}
         disabled={busy}
       >
@@ -660,6 +661,7 @@ function ClearQuestionsCard({
 // ===================== Dashboard =====================
 function Dashboard() {
   const logout = useAuth((s) => s.logout);
+  const brand = useBranding();
   const [state, setState] = useState<AdminEventState | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -680,15 +682,15 @@ function Dashboard() {
   }, [loadState]);
 
   return (
-    <div className="min-h-screen bg-treasure-bg p-4 md:p-6">
+    <div className="min-h-screen bg-canvas p-4 md:p-6">
       <div className="mx-auto max-w-5xl space-y-5">
         {/* Header */}
         <header className="flex flex-wrap items-center justify-between gap-3">
           <div>
-            <h1 className="text-2xl md:text-3xl font-extrabold text-treasure-gold">
+            <h1 className="text-2xl md:text-3xl font-extrabold text-accent">
               ⛏️ Bảng điều khiển quản trị
             </h1>
-            <p className="text-sm text-treasure-gem/80">Đi tìm kho báu · Violympic 💎🏆</p>
+            <p className="text-sm text-info/80">Đi tìm kho báu · {brand.tagline}</p>
           </div>
           <div className="flex items-center gap-2">
             <Link to="/leaderboard" className="btn btn-ghost text-sm">

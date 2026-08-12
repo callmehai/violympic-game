@@ -40,12 +40,12 @@ export default function TreasureBoard({
   return (
     <div className="panel flex flex-col gap-3 p-5">
       <div className="flex items-center justify-between">
-        <span className="font-display text-lg font-extrabold text-treasure-gold">
+        <span className="font-display text-lg font-extrabold text-accent">
           ⛏️ Bãi kho báu
         </span>
         <span
           className={`rounded-full px-3 py-1 text-xs font-semibold ${
-            canDig ? 'animate-pop bg-treasure-gold/20 text-treasure-gold' : 'bg-white/10 text-white/50'
+            canDig ? 'animate-pop bg-accent/20 text-accent' : 'bg-ink/10 text-ink/50'
           }`}
         >
           {canDig ? 'Chọn ô để đào!' : 'Trả lời đúng để được đào'}
@@ -66,13 +66,13 @@ export default function TreasureBoard({
               <div
                 key={cell.index}
                 className={`relative flex aspect-square flex-col items-center justify-center rounded-xl border
-                  ${good ? 'border-emerald-400/40 bg-emerald-500/15' : ''}
-                  ${bad ? 'border-rose-400/40 bg-rose-500/15' : ''}
-                  ${!good && !bad ? 'border-white/10 bg-black/40' : ''}
+                  ${good ? 'border-ok-400/40 bg-ok-500/15' : ''}
+                  ${bad ? 'border-bad-400/40 bg-bad-500/15' : ''}
+                  ${!good && !bad ? 'border-ink/10 bg-shade/40' : ''}
                   ${isLast ? 'animate-pop' : ''}`}
               >
                 {isEmpty ? (
-                  <span className="text-[10px] font-semibold uppercase tracking-wide text-white/25">
+                  <span className="text-[10px] font-semibold uppercase tracking-wide text-ink/25">
                     trống
                   </span>
                 ) : (
@@ -81,7 +81,7 @@ export default function TreasureBoard({
                     {value !== 0 && (
                       <span
                         className={`mt-0.5 text-xs font-extrabold ${
-                          good ? 'text-emerald-300' : 'text-rose-300'
+                          good ? 'text-ok-300' : 'text-bad-300'
                         }`}
                       >
                         {fmtDelta(value)}
@@ -95,10 +95,10 @@ export default function TreasureBoard({
                   <span
                     className={`pointer-events-none absolute -top-2 left-1/2 z-10 -translate-x-1/2 animate-floatup whitespace-nowrap rounded-full px-2 py-0.5 font-display text-lg font-extrabold shadow-lg ${
                       lastDig.delta > 0
-                        ? 'bg-emerald-500/90 text-white'
+                        ? 'bg-ok-500/90 text-ink'
                         : lastDig.delta < 0
-                          ? 'bg-treasure-danger text-white'
-                          : 'bg-white/20 text-white'
+                          ? 'bg-bad text-ink'
+                          : 'bg-ink/20 text-ink'
                     }`}
                   >
                     {fmtDelta(lastDig.delta)}
@@ -115,11 +115,11 @@ export default function TreasureBoard({
               type="button"
               disabled={!canDig}
               onClick={() => canDig && onDig(cell.index)}
-              className={`flex aspect-square items-center justify-center rounded-xl border border-black/30
-                bg-gradient-to-b from-treasure-woodlt to-treasure-wood text-2xl transition
+              className={`flex aspect-square items-center justify-center rounded-xl border border-shade/30
+                bg-gradient-to-b from-woodlt to-wood text-2xl transition
                 ${
                   canDig
-                    ? 'cursor-pointer opacity-100 hover:scale-105 hover:brightness-110 hover:ring-2 hover:ring-treasure-gold'
+                    ? 'cursor-pointer opacity-100 hover:scale-105 hover:brightness-110 hover:ring-2 hover:ring-accent'
                     : 'cursor-default opacity-50'
                 }`}
               aria-label={`Ô ${cell.index + 1}`}
@@ -130,7 +130,7 @@ export default function TreasureBoard({
         })}
       </div>
 
-      <div className="text-center text-xs text-white/40">
+      <div className="text-center text-xs text-ink/40">
         {rows}×{cols} ô · 💎 +điểm · 💣 −điểm · 🏆 rương lớn
       </div>
     </div>

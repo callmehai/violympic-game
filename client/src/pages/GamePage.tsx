@@ -264,7 +264,7 @@ export default function GamePage() {
       <div className="flex min-h-screen items-center justify-center">
         <div className="panel animate-pop px-8 py-6 text-center">
           <div className="text-3xl">⛏️ 💎</div>
-          <div className="mt-2 font-display text-lg font-bold text-treasure-gold">
+          <div className="mt-2 font-display text-lg font-bold text-accent">
             Đang vào hang kho báu…
           </div>
         </div>
@@ -280,7 +280,7 @@ export default function GamePage() {
   return (
     <div className="mx-auto flex min-h-screen max-w-6xl flex-col gap-4 p-4">
       {toast && (
-        <div className="fixed left-1/2 top-4 z-50 -translate-x-1/2 animate-pop rounded-xl bg-treasure-danger px-4 py-2 text-sm font-semibold text-white shadow-lg">
+        <div className="fixed left-1/2 top-4 z-50 -translate-x-1/2 animate-pop rounded-xl bg-bad px-4 py-2 text-sm font-semibold text-ink shadow-lg">
           {toast}
         </div>
       )}
@@ -313,14 +313,14 @@ export default function GamePage() {
               onAnswer={handleAnswer}
             />
           ) : (
-            <div className="panel flex items-center justify-center p-8 text-white/60">
+            <div className="panel flex items-center justify-center p-8 text-ink/60">
               Đang tải câu hỏi…
             </div>
           )}
 
           {/* Nhắc đào khi vừa trả lời đúng */}
           {state.awaiting === 'dig' && !digResult && (
-            <div className="animate-pop rounded-xl border border-treasure-gold/40 bg-treasure-gold/10 px-4 py-3 text-center font-semibold text-treasure-gold">
+            <div className="animate-pop rounded-xl border border-accent/40 bg-accent/10 px-4 py-3 text-center font-semibold text-accent">
               ✅ Chính xác! Chọn 1 ô bên phải để đào kho báu 👉
             </div>
           )}
@@ -330,10 +330,10 @@ export default function GamePage() {
             <div
               className={`animate-pop rounded-xl border px-4 py-3 text-center font-bold ${
                 digResult.delta > 0
-                  ? 'border-emerald-400/40 bg-emerald-500/15 text-emerald-200'
+                  ? 'border-ok-400/40 bg-ok-500/15 text-ok-200'
                   : digResult.delta < 0
-                    ? 'border-rose-400/50 bg-rose-500/15 text-rose-200'
-                    : 'border-white/15 bg-white/5 text-white/70'
+                    ? 'border-bad-400/50 bg-bad-500/15 text-bad-200'
+                    : 'border-ink/15 bg-ink/5 text-ink/70'
               }`}
             >
               {digResult.cell_type === 'chest'
@@ -372,32 +372,32 @@ export default function GamePage() {
 
       {/* Overlay kết quả */}
       {result && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-shade/70 p-4">
           <div className="panel w-full max-w-md animate-pop p-8 text-center">
             <div className="text-5xl">🏆</div>
-            <h2 className="mt-2 font-display text-2xl font-extrabold text-treasure-gold">
+            <h2 className="mt-2 font-display text-2xl font-extrabold text-accent">
               Hoàn thành!
             </h2>
-            <p className="mt-1 text-white/70">Chúc mừng {profile?.full_name ?? 'bạn'}!</p>
+            <p className="mt-1 text-ink/70">Chúc mừng {profile?.full_name ?? 'bạn'}!</p>
 
             <div className="mt-5 grid grid-cols-3 gap-3">
-              <div className="rounded-xl bg-black/30 px-3 py-3">
-                <div className="font-display text-2xl font-extrabold text-treasure-gold">
+              <div className="rounded-xl bg-shade/30 px-3 py-3">
+                <div className="font-display text-2xl font-extrabold text-accent">
                   {result.score}
                 </div>
-                <div className="text-xs text-white/50">Điểm</div>
+                <div className="text-xs text-ink/50">Điểm</div>
               </div>
-              <div className="rounded-xl bg-black/30 px-3 py-3">
-                <div className="font-display text-2xl font-extrabold text-treasure-gem">
+              <div className="rounded-xl bg-shade/30 px-3 py-3">
+                <div className="font-display text-2xl font-extrabold text-info">
                   #{result.rank}
                 </div>
-                <div className="text-xs text-white/50">Xếp hạng</div>
+                <div className="text-xs text-ink/50">Xếp hạng</div>
               </div>
-              <div className="rounded-xl bg-black/30 px-3 py-3">
-                <div className="font-display text-2xl font-extrabold text-white">
+              <div className="rounded-xl bg-shade/30 px-3 py-3">
+                <div className="font-display text-2xl font-extrabold text-ink">
                   {fmtMs(result.time_spent_ms)}
                 </div>
-                <div className="text-xs text-white/50">Thời gian</div>
+                <div className="text-xs text-ink/50">Thời gian</div>
               </div>
             </div>
 

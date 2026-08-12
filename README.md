@@ -78,10 +78,56 @@ Sửa `server/.env` (xem `.env.example` để biết tất cả biến):
 | `EVENT_ID` / `EVENT_DATE` | Định danh sự kiện | violympic-2026-06 |
 | `ADMIN_KEY` | Khóa trang admin | ????? |
 | `APP_SECRET` | Bí mật ký JWT | (đổi khi chạy thật) |
+| `VITE_THEME` | Giao diện mặc định: `treasure` / `philoverse` | treasure |
+| `Q1_FILE` / `Q2_FILE` | Tên file bộ đề trong `seed/` (dùng bởi render.yaml) | mln-game1-treasure.json / mln-game2-mountain.json |
 
 Phân bổ ô bàn cờ và điểm theo độ khó nằm trong `server/src/config.ts`.
 Hai game dùng chung bảng `sessions` nhưng tách nhau bằng `event_id` (Game 2 có hậu tố `::mountain`) —
 xem `server/src/games.ts`. Nhờ vậy 1 SV chơi được cả 2 game và mỗi game có bảng xếp hạng riêng.
+
+## Giao diện (theme)
+
+Có **2 theme** dùng chung một trò chơi, một bộ luật, một code base:
+
+| Theme | Giao diện | Dùng cho |
+|---|---|---|
+| `treasure` | Rừng tối, vàng kho báu, font Baloo 2 | bản gốc |
+| `philoverse` | Ivory sáng, navy, gold, font Lora + Lexend | bên thuê (theo `DESIGN.md`) |
+
+**Xem trước ngay, không cần deploy:** thêm `?theme=philoverse` vào URL
+(vd `http://localhost:5173/?theme=philoverse`). Lựa chọn được ghi vào `localStorage`
+nên các lần sau vào link trần vẫn giữ theme đó. Về lại bản gốc: `?theme=treasure`.
+
+**Đổi theme cho TẤT CẢ máy:** đổi biến `VITE_THEME` (build-time). Trên Render:
+tab *Environment* → `VITE_THEME=philoverse` → Save → tự build lại (~2-3 phút).
+
+### Đổi sang một buổi/bên thuê khác
+
+Trên Render → *Environment*, đổi 4 biến rồi Save (1 lần cho cả buổi):
+
+```
+VITE_THEME = philoverse                  # giao diện
+EVENT_ID   = pv-2026-08-20               # bảng xếp hạng riêng, điểm buổi cũ vẫn còn
+Q1_FILE    = pv-game1-treasure.json      # bộ đề Game 1 (file trong seed/)
+Q2_FILE    = pv-game2-mountain.json      # bộ đề Game 2
+```
+
+Sau khi build xong, vào `/admin` bấm **Xoá tất cả câu hỏi** (cả 2 game) **trước khi buổi
+bắt đầu**. Bảng `questions` không có cột phân loại bộ đề, nên nếu không xoá thì bộ cũ vẫn
+`active = 1` và sinh viên sẽ nhận **lẫn** câu của bộ cũ. Xoá xong, lần restart kế tiếp
+seed sẽ tự nạp đúng bộ theo `Q1_FILE`/`Q2_FILE`.
+
+### Thêm theme mới
+
+1. Thêm một block biến trong `client/src/index.css`: `:root[data-theme='ten-moi'] { … }`
+   — copy block `philoverse` rồi đổi giá trị. **Không hardcode màu trong component.**
+2. Thêm tên vào `THEMES` trong `client/src/theme.ts`.
+3. Thêm logo/tên hiển thị vào `BRANDING` trong `client/src/themes/branding.ts`.
+
+Màu/font/radius của UI đều đi qua token (`bg-canvas`, `text-ink`, `bg-surface`, `text-accent`,
+`ok`/`bad`/`warn`/`alert`/`info`, `rounded-card`…) khai báo trong `client/tailwind.config.js`.
+Riêng phần **tranh vẽ** của mê cung (`MazeBoard.tsx`: vân gỗ, đá, gradient) giữ màu cố định
+cho cả 2 theme — nó là hình minh hoạ, không phải chrome.
 
 ## Build & deploy 1 máy
 

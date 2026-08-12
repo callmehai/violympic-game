@@ -32,42 +32,42 @@ export default function ScorePanel({
   return (
     <div className="panel flex flex-wrap items-center justify-between gap-4 px-5 py-4">
       <div className="flex items-center gap-3">
-        <span className="relative font-display text-3xl font-extrabold text-treasure-gold drop-shadow">
+        <span className="relative font-display text-3xl font-extrabold text-accent drop-shadow">
           🏆 {score}
           {delta && delta.value !== 0 && (
             <span
               key={delta.key}
               className={`pointer-events-none absolute -top-4 left-full ml-1 animate-floatup font-display text-2xl font-extrabold drop-shadow ${
-                delta.value > 0 ? 'text-emerald-300' : 'text-rose-400'
+                delta.value > 0 ? 'text-ok-300' : 'text-bad-400'
               }`}
             >
               {fmtDelta(delta.value)}
             </span>
           )}
         </span>
-        <span className="text-xs font-semibold uppercase tracking-wide text-white/50">điểm</span>
+        <span className="text-xs font-semibold uppercase tracking-wide text-ink/50">điểm</span>
       </div>
 
       <div className="flex min-w-0 flex-col items-center">
-        <span className="truncate text-lg font-bold text-white" title={name}>
+        <span className="truncate text-lg font-bold text-ink" title={name}>
           {name || 'Người chơi'}
         </span>
-        <span className="text-xs text-white/50">Đi tìm kho báu 💎</span>
+        <span className="text-xs text-ink/50">Đi tìm kho báu 💎</span>
       </div>
 
       <div className="flex items-center gap-5">
         <div className="flex flex-col items-center">
-          <span className="font-display text-xl font-extrabold text-treasure-gem">
+          <span className="font-display text-xl font-extrabold text-info">
             #{rank ?? '—'}
           </span>
-          <span className="text-xs text-white/50">Hạng</span>
+          <span className="text-xs text-ink/50">Hạng</span>
         </div>
-        <div className="h-8 w-px bg-white/15" />
+        <div className="h-8 w-px bg-ink/15" />
         <div className="flex flex-col items-center">
-          <span className="font-display text-xl font-extrabold text-white">
+          <span className="font-display text-xl font-extrabold text-ink">
             {correct}/{answered}
           </span>
-          <span className="text-xs text-white/50">Đúng (tổng {total} câu)</span>
+          <span className="text-xs text-ink/50">Đúng (tổng {total} câu)</span>
         </div>
       </div>
     </div>

@@ -3,19 +3,72 @@ export default {
   content: ['./index.html', './src/**/*.{ts,tsx}'],
   theme: {
     extend: {
+      // ---------------------------------------------------------------------
+      // Màu = TOKEN trỏ vào biến CSS, KHÔNG hardcode hex ở đây nữa.
+      // Giá trị thật của từng theme nằm trong src/index.css (block [data-theme=…]).
+      // Biến lưu dạng "R G B" (space-separated) để cú pháp opacity `/50` vẫn chạy.
+      //
+      // Ý nghĩa token:
+      //   canvas/surface  nền trang / nền panel
+      //   ink             chữ + viền chủ đạo (thay cho `white` cũ)
+      //   shade           lớp phủ tạo chiều sâu (thay cho `black` cũ)
+      //   accent          màu nhấn chính (vàng kho báu / gold PhiloVerse)
+      //   info            màu nhấn phụ; ok/bad/warn/alert = phản hồi đúng/sai/cảnh báo
+      //   wood/woodlt     khung gỗ
+      // Các số 100…900 giữ nguyên vai trò "đậm dần" như ramp Tailwind gốc.
+      // ---------------------------------------------------------------------
       colors: {
-        treasure: {
-          bg: '#1b2a1f',
-          panel: '#243a2a',
-          wood: '#7a4f2a',
-          woodlt: '#a8703f',
-          gold: '#f4c542',
-          gem: '#46c6ff',
-          danger: '#e2553d',
+        canvas: 'rgb(var(--c-canvas) / <alpha-value>)',
+        surface: 'rgb(var(--c-surface) / <alpha-value>)',
+        ink: 'rgb(var(--c-ink) / <alpha-value>)',
+        shade: 'rgb(var(--c-shade) / <alpha-value>)',
+        accent: 'rgb(var(--c-accent) / <alpha-value>)',
+        wood: 'rgb(var(--c-wood) / <alpha-value>)',
+        woodlt: 'rgb(var(--c-woodlt) / <alpha-value>)',
+
+        info: {
+          DEFAULT: 'rgb(var(--c-info) / <alpha-value>)',
+          400: 'rgb(var(--c-info-400) / <alpha-value>)',
+          500: 'rgb(var(--c-info-500) / <alpha-value>)',
+        },
+        ok: {
+          100: 'rgb(var(--c-ok-100) / <alpha-value>)',
+          200: 'rgb(var(--c-ok-200) / <alpha-value>)',
+          300: 'rgb(var(--c-ok-300) / <alpha-value>)',
+          400: 'rgb(var(--c-ok-400) / <alpha-value>)',
+          500: 'rgb(var(--c-ok-500) / <alpha-value>)',
+          700: 'rgb(var(--c-ok-700) / <alpha-value>)',
+        },
+        bad: {
+          DEFAULT: 'rgb(var(--c-bad) / <alpha-value>)',
+          100: 'rgb(var(--c-bad-100) / <alpha-value>)',
+          200: 'rgb(var(--c-bad-200) / <alpha-value>)',
+          300: 'rgb(var(--c-bad-300) / <alpha-value>)',
+          400: 'rgb(var(--c-bad-400) / <alpha-value>)',
+          500: 'rgb(var(--c-bad-500) / <alpha-value>)',
+        },
+        warn: {
+          50: 'rgb(var(--c-warn-50) / <alpha-value>)',
+          200: 'rgb(var(--c-warn-200) / <alpha-value>)',
+          300: 'rgb(var(--c-warn-300) / <alpha-value>)',
+          400: 'rgb(var(--c-warn-400) / <alpha-value>)',
+          500: 'rgb(var(--c-warn-500) / <alpha-value>)',
+          700: 'rgb(var(--c-warn-700) / <alpha-value>)',
+          900: 'rgb(var(--c-warn-900) / <alpha-value>)',
+        },
+        alert: {
+          300: 'rgb(var(--c-alert-300) / <alpha-value>)',
+          400: 'rgb(var(--c-alert-400) / <alpha-value>)',
         },
       },
       fontFamily: {
-        display: ['"Baloo 2"', 'system-ui', 'sans-serif'],
+        display: ['var(--font-heading)', 'system-ui', 'sans-serif'],
+        body: ['var(--font-body)', 'system-ui', 'sans-serif'],
+      },
+      borderRadius: {
+        // Radius theo token để theme tự quyết độ bo (DESIGN.md §5).
+        card: 'var(--radius-card)',
+        control: 'var(--radius-control)',
       },
       keyframes: {
         pop: {

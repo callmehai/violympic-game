@@ -136,12 +136,12 @@ export default function MazeBoard({ state, canMove, busy, pulse, onMove }: Props
           >
             <div className="relative grid h-full w-full place-items-center p-[8%]">
               {/* bóng đổ dưới chân */}
-              <span className="absolute bottom-[5%] left-1/2 h-[12%] w-[52%] -translate-x-1/2 rounded-[50%] bg-black/40 blur-[1px]" />
+              <span className="absolute bottom-[5%] left-1/2 h-[12%] w-[52%] -translate-x-1/2 rounded-[50%] bg-shade/40 blur-[1px]" />
 
               {/* ĐÚNG: vòng sáng loang + tia lấp lánh */}
               {fx && fx.correct && (
                 <>
-                  <span className="absolute left-1/2 top-1/2 h-3/4 w-3/4 -translate-x-1/2 -translate-y-1/2 animate-ripple rounded-full border-2 border-emerald-300/80" />
+                  <span className="absolute left-1/2 top-1/2 h-3/4 w-3/4 -translate-x-1/2 -translate-y-1/2 animate-ripple rounded-full border-2 border-ok-300/80" />
                   <span className="absolute -top-1 left-0 animate-sparkle text-sm">✨</span>
                   <span className="absolute -top-1 right-0 animate-sparkle text-sm" style={{ animationDelay: '0.15s' }}>⭐</span>
                 </>
@@ -165,11 +165,11 @@ export default function MazeBoard({ state, canMove, busy, pulse, onMove }: Props
         </div>
       </div>
 
-      <p className="mt-3 text-center text-xs leading-relaxed text-white/55">
-        Phím <b className="text-white/75">◀ ▲ ▼ ▶</b> hoặc bấm ô kề để đi · qua <b className="text-amber-300">cửa/bẫy</b> phải trả lời
+      <p className="mt-3 text-center text-xs leading-relaxed text-ink/55">
+        Phím <b className="text-ink/75">◀ ▲ ▼ ▶</b> hoặc bấm ô kề để đi · qua <b className="text-warn-300">cửa/bẫy</b> phải trả lời
         <br />
-        Số trên cửa = độ khó: <b className="text-emerald-300">1 dễ</b> · <b className="text-amber-300">2 TB</b> ·{' '}
-        <b className="text-rose-300">3 khó</b> · tới <b className="text-treasure-gem">💎</b> là thắng
+        Số trên cửa = độ khó: <b className="text-ok-300">1 dễ</b> · <b className="text-warn-300">2 TB</b> ·{' '}
+        <b className="text-bad-300">3 khó</b> · tới <b className="text-info">💎</b> là thắng
       </p>
     </div>
   );
@@ -224,9 +224,9 @@ function Cell({
       disabled={!onClick}
       onClick={onClick}
       style={{ backgroundImage: bg }}
-      className={`relative aspect-square w-full rounded-md border border-black/25 ${depth} transition ${
+      className={`relative aspect-square w-full rounded-md border border-shade/25 ${depth} transition ${
         clickable
-          ? 'cursor-pointer ring-2 ring-amber-200/0 hover:z-10 hover:ring-amber-200 hover:brightness-110'
+          ? 'cursor-pointer ring-2 ring-warn-200/0 hover:z-10 hover:ring-warn-200 hover:brightness-110'
           : 'cursor-default'
       }`}
     >
@@ -266,8 +266,8 @@ function Cell({
       {/* ===== trang trí SÀN ===== */}
       {pebble && (
         <>
-          <span className="pointer-events-none absolute left-[24%] top-[60%] h-1 w-1.5 rounded-full bg-amber-900/40" />
-          <span className="pointer-events-none absolute left-[62%] top-[34%] h-1 w-1 rounded-full bg-amber-900/35" />
+          <span className="pointer-events-none absolute left-[24%] top-[60%] h-1 w-1.5 rounded-full bg-warn-900/40" />
+          <span className="pointer-events-none absolute left-[62%] top-[34%] h-1 w-1 rounded-full bg-warn-900/35" />
         </>
       )}
       {mush && <span className="pointer-events-none absolute bottom-0.5 right-0.5 text-[11px]">🍄</span>}
@@ -308,7 +308,7 @@ function Cell({
         <>
           <BlockedGate />
           {level != null && (
-            <span className="pointer-events-none absolute right-0.5 top-0.5 font-display text-[10px] font-black text-white/55">
+            <span className="pointer-events-none absolute right-0.5 top-0.5 font-display text-[10px] font-black text-ink/55">
               {level}
             </span>
           )}
@@ -401,7 +401,7 @@ function Motes() {
       {spots.map((sp, i) => (
         <span
           key={i}
-          className={`absolute ${sp.size} animate-mote rounded-full bg-amber-200/80 shadow-[0_0_6px_2px_rgba(244,197,66,0.5)]`}
+          className={`absolute ${sp.size} animate-mote rounded-full bg-warn-200/80 shadow-[0_0_6px_2px_rgba(244,197,66,0.5)]`}
           style={{ left: sp.left, top: sp.top, animationDelay: sp.delay }}
         />
       ))}
