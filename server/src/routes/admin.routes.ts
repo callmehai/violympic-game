@@ -10,6 +10,7 @@ import { asyncHandler } from '../util/http';
 import { GameError } from '../util/errors';
 import { adminLogin, requireAdmin } from '../auth';
 import { leaderboardService } from '../services/leaderboard.service';
+import { getActiveTheme, setActiveTheme, THEMES } from '../services/theme.service';
 import { gameService } from '../services/game.service';
 import { mountainService } from '../services/mountain.service';
 import { GAME_MOUNTAIN, resolveGame, scopedEventId } from '../games';
@@ -194,8 +195,20 @@ adminRouter.get(
       open: isEventOpen(eventId),
       config: publicConfig(),
       counts: { students, questions, mountain_questions: mountainQuestions, sessions, finished },
+      theme: getActiveTheme(),
+      themes: [...THEMES],
     };
     res.json(state);
+  }),
+);
+
+// ---------- Đổi theme giao diện (áp dụng cho MỌI người chơi) ----------
+// Người chơi nhận theme mới ở lần tải trang kế tiếp; phiên đang chơi không bị gián đoạn.
+adminRouter.post(
+  '/theme',
+  asyncHandler((req, res) => {
+    const theme = setActiveTheme(req.body?.theme);
+    res.json({ theme });
   }),
 );
 

@@ -609,6 +609,106 @@ function PlayersCard() {
 }
 
 // ===================== Thẻ xoá toàn bộ câu hỏi (dùng chung 2 game) =====================
+// ===================== Đổi theme giao diện =====================
+
+/** Tên hiển thị + mô tả ngắn cho từng theme (khớp THEMES ở server). */
+const THEME_LABELS: Record<string, { name: string; desc: string }> = {
+  treasure: { name: '⛏️ Kho báu', desc: 'Rừng tối · vàng kho báu · font Baloo 2' },
+  philoverse: { name: '🦉 PhiloVerse', desc: 'Ivory sáng · navy · gold · Lora + Lexend' },
+};
+
+/**
+ * Đổi giao diện cho TOÀN BỘ người chơi. Theme lưu ở server (bảng settings) nên
+ * mọi máy đều nhận cùng một theme; không cần deploy lại.
+ */
+function ThemeCard({
+  state,
+  reload,
+}: {
+  state: AdminEventState | null;
+  reload: () => void;
+}) {
+  const [busy, setBusy] = useState<string | null>(null);
+  const [msg, setMsg] = useState<Msg>(null);
+
+  const current = state?.theme ?? '';
+  const options = state?.themes ?? [];
+
+  async function switchTo(theme: string) {
+    if (theme === current) return;
+    const label = THEME_LABELS[theme]?.name ?? theme;
+    if (
+      !window.confirm(
+        `Đổi giao diện sang "${label}" cho TẤT CẢ người chơi?\n\n` +
+          'Người đang chơi giữa phiên không bị gián đoạn — họ thấy giao diện mới ở lần tải trang sau.',
+      )
+    )
+      return;
+
+    setBusy(theme);
+    setMsg(null);
+    try {
+      await apiFetch<{ theme: string }>(API.adminTheme, { method: 'POST', body: { theme } });
+      setMsg({
+        ok: true,
+        text: `Đã đổi sang "${label}". Người chơi tải lại trang là thấy giao diện mới.`,
+      });
+      reload();
+    } catch (err) {
+      setMsg({ ok: false, text: errMsg(err, 'Đổi giao diện thất bại.') });
+    } finally {
+      setBusy(null);
+    }
+  }
+
+  return (
+    <section className="panel p-5 space-y-3">
+      <h2 className="text-lg font-bold text-accent">🎨 Giao diện</h2>
+      <p className="text-sm text-info/80">
+        Áp dụng cho <b>mọi người chơi</b>. Đổi xong người chơi chỉ cần tải lại trang — không cần
+        deploy lại.
+      </p>
+
+      <div className="space-y-2">
+        {options.map((t) => {
+          const label = THEME_LABELS[t] ?? { name: t, desc: '' };
+          const active = t === current;
+          return (
+            <button
+              key={t}
+              type="button"
+              onClick={() => void switchTo(t)}
+              disabled={busy !== null || active}
+              aria-current={active}
+              className={`flex w-full items-center gap-3 rounded-control border px-4 py-3 text-left transition disabled:cursor-not-allowed ${
+                active
+                  ? 'border-accent bg-accent/15'
+                  : 'border-ink/15 bg-shade/20 hover:border-accent hover:bg-shade/30'
+              }`}
+            >
+              <span className="min-w-0 flex-1">
+                <span className="block font-bold">{label.name}</span>
+                <span className="block text-xs text-info/80">{label.desc}</span>
+              </span>
+              {/* Không chỉ dựa vào màu để báo trạng thái (WCAG) — có cả chữ. */}
+              <span className={`shrink-0 text-xs font-bold ${active ? 'text-accent' : 'text-info'}`}>
+                {active ? '● ĐANG DÙNG' : busy === t ? 'Đang đổi…' : 'Chuyển sang'}
+              </span>
+            </button>
+          );
+        })}
+      </div>
+
+      <p className="text-xs text-info/60">
+        Muốn xem thử một theme mà không đổi của cả lớp: thêm <code>?theme=</code> vào URL (chỉ ảnh
+        hưởng tab đang mở).
+      </p>
+
+      {msg && <Feedback ok={msg.ok} msg={msg.text} />}
+    </section>
+  );
+}
+
 function ClearQuestionsCard({
   title,
   confirmText,
@@ -707,6 +807,8 @@ function Dashboard() {
 
         {/* Lưới các thẻ thao tác */}
         <div className="grid gap-5 md:grid-cols-2">
+          <ThemeCard state={state} reload={loadState} />
+
           <ImportCard
             title="Import sinh viên"
             icon="👥"

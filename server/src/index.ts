@@ -16,6 +16,7 @@ import { gameRouter } from './routes/game.routes';
 import { mountainRouter } from './routes/mountain.routes';
 import { leaderboardRouter } from './routes/leaderboard.routes';
 import { adminRouter } from './routes/admin.routes';
+import { getActiveTheme } from './services/theme.service';
 import { setupSocket, broadcastLeaderboard } from './socket';
 import { gameService, setLeaderboardNotifier } from './services/game.service';
 import { mountainService, setMountainNotifier } from './services/mountain.service';
@@ -34,9 +35,12 @@ app.get('/api/health', (_req, res) => {
   res.json({ ok: true, event: config.eventId });
 });
 
-// Luật chơi + cấu tạo bàn cờ Game 1 (public, cho màn sảnh).
+// Luật chơi + cấu tạo bàn cờ Game 1 (public, cho màn sảnh) + theme giao diện đang bật
+// (client đọc lúc mở trang — xem client/src/theme.ts). no-store để admin đổi theme là
+// lần tải trang kế tiếp thấy ngay.
 app.get('/api/config', (_req, res) => {
-  res.json(publicRules());
+  res.set('Cache-Control', 'no-store');
+  res.json({ ...publicRules(), theme: getActiveTheme() });
 });
 
 // Luật chơi Game 2 "Vượt Ải" (public).

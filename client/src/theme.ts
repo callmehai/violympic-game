@@ -1,53 +1,52 @@
 /**
- * theme.ts — chọn theme giao diện lúc runtime (THUẦN FE, không đụng server).
+ * theme.ts — chọn theme giao diện lúc mở trang.
  *
- * Thứ tự ưu tiên:
- *   1. ?theme=... trên URL   → dùng để xem trước ngay, KHÔNG cần deploy lại.
- *                              Chọn xong ghi vào localStorage nên các lần sau
- *                              vào link trần vẫn giữ theme đó.
- *   2. localStorage          → lựa chọn đã ghi ở bước 1.
- *   3. VITE_THEME            → mặc định của bản build (đặt trong env của Render).
- *                              Đổi env → Render tự build lại → TẤT CẢ máy đổi theo.
- *   4. 'treasure'            → bản gốc.
+ * SERVER LÀ NGUỒN SỰ THẬT: theme lưu trong bảng `settings` ở server, admin đổi
+ * tại /admin. Nhờ vậy mọi máy vào trong cùng một buổi đều nhận đúng một giao
+ * diện, và đổi theme KHÔNG cần redeploy.
  *
- * Thêm theme mới: khai báo màu trong src/index.css (block [data-theme='...']),
- * thêm tên vào THEMES và branding tương ứng trong themes/branding.ts.
+ * CỐ Ý không lưu localStorage: nếu lưu, máy nào từng xem theme khác sẽ dính
+ * theme đó về sau và không còn khớp với lựa chọn của admin nữa.
+ *
+ * ?theme=... chỉ để XEM THỬ trên đúng tab đang mở (không ghi lại, không ảnh
+ * hưởng người khác) — tiện khi cần soi giao diện trước khi bật cho cả lớp.
  */
+import { API } from './api/contract';
 import { BRANDING, type ThemeName } from './themes/branding';
 
 export const THEMES = ['treasure', 'philoverse'] as const;
 
-const STORAGE_KEY = 'vt_theme';
-const DEFAULT_THEME: ThemeName = 'treasure';
+const FALLBACK_THEME: ThemeName = 'treasure';
 
-function isTheme(v: string | null): v is ThemeName {
+function isTheme(v: string | null | undefined): v is ThemeName {
   return !!v && (THEMES as readonly string[]).includes(v);
 }
 
-/** Theme đang áp dụng (đọc lại logic ưu tiên ở trên). */
-export function resolveTheme(): ThemeName {
-  const fromUrl = new URLSearchParams(window.location.search).get('theme');
-  if (isTheme(fromUrl)) {
-    localStorage.setItem(STORAGE_KEY, fromUrl);
-    return fromUrl;
+/** Theme của cả hệ thống, hỏi server. Lỗi mạng → dùng FALLBACK_THEME. */
+async function fetchServerTheme(): Promise<ThemeName> {
+  try {
+    const res = await fetch(API.config, { headers: { Accept: 'application/json' } });
+    if (!res.ok) return FALLBACK_THEME;
+    const data = (await res.json()) as { theme?: string };
+    return isTheme(data.theme) ? data.theme : FALLBACK_THEME;
+  } catch {
+    return FALLBACK_THEME;
   }
-  // ?theme=xxx sai tên → bỏ qua, rơi xuống các mức dưới (không crash).
-
-  const stored = localStorage.getItem(STORAGE_KEY);
-  if (isTheme(stored)) return stored;
-
-  const fromEnv = import.meta.env.VITE_THEME as string | undefined;
-  if (isTheme(fromEnv ?? null)) return fromEnv as ThemeName;
-
-  return DEFAULT_THEME;
 }
 
 /**
  * Gắn theme vào <html> + đặt tiêu đề/favicon theo branding.
- * PHẢI gọi trước khi React render để không bị nháy theme cũ.
+ * PHẢI await trước khi React render — index.css ẩn body tới khi có data-theme
+ * nên không bao giờ nhìn thấy theme sai loé lên.
  */
-export function applyTheme(): ThemeName {
-  const theme = resolveTheme();
+export async function applyTheme(): Promise<ThemeName> {
+  // Bản trước từng lưu theme vào localStorage → dọn để máy cũ không giữ theme
+  // khác với lựa chọn của admin. (Có thể bỏ dòng này sau vài buổi.)
+  localStorage.removeItem('vt_theme');
+
+  const preview = new URLSearchParams(window.location.search).get('theme');
+  const theme = isTheme(preview) ? preview : await fetchServerTheme();
+
   document.documentElement.dataset.theme = theme;
 
   const brand = BRANDING[theme];

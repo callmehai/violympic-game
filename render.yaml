@@ -30,10 +30,9 @@ services:
         generateValue: true
       - key: ADMIN_KEY           # tự nhập trong dashboard (vd Vhai2005) — không commit vào repo.
         sync: false
-      # Giao diện: treasure (bản gốc) | philoverse (bên thuê).
-      # Đổi giá trị này → Render tự build lại → MỌI máy đổi theo (~2-3 phút).
-      # Xem trước không cần deploy: thêm ?theme=philoverse vào URL.
-      - key: VITE_THEME
+      # Giao diện dùng cho lần chạy ĐẦU TIÊN (khi bảng settings còn trống).
+      # Sau đó admin đổi theme ngay trong /admin → lưu vào DB, KHÔNG cần deploy lại.
+      - key: DEFAULT_THEME
         value: treasure
       # Bộ đề của buổi đang chạy (tên file trong thư mục seed/).
       - key: Q1_FILE

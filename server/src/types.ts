@@ -211,6 +211,10 @@ export interface AdminEventState {
     sessions: number;
     finished: number;
   };
+  /** Theme giao diện đang áp dụng cho mọi người chơi. */
+  theme: string;
+  /** Danh sách theme chọn được (để admin render dropdown). */
+  themes: string[];
 }
 
 // ===================== Config =====================
@@ -240,6 +244,8 @@ export interface GameConfig extends PublicGameConfig {
   eventId: string;
   eventDate: string;
   dbPath: string;
+  /** Theme dùng khi bảng `settings` chưa có bản ghi nào (lần chạy đầu). */
+  defaultTheme: string;
   // phân bổ ô bàn cờ (cho tổng số ô = rows*cols)
   boardDistribution: {
     chest: number;

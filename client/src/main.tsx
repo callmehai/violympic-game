@@ -5,13 +5,14 @@ import App from './App';
 import './index.css';
 import { applyTheme } from './theme';
 
-// Gắn theme TRƯỚC khi render để không nháy giao diện cũ trong tích tắc.
-applyTheme();
-
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </React.StrictMode>
-);
+// Hỏi server theme nào đang bật, gắn vào <html> RỒI mới render.
+// body bị ẩn tới khi có data-theme (xem index.css) nên không loé theme sai.
+applyTheme().finally(() => {
+  ReactDOM.createRoot(document.getElementById('root')!).render(
+    <React.StrictMode>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </React.StrictMode>
+  );
+});

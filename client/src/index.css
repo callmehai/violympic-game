@@ -136,6 +136,12 @@ body,
   height: 100%;
 }
 
+/* Theme đến từ server (bất đồng bộ) → ẩn nội dung tới khi biết theme nào,
+   tránh loé giao diện sai. theme.ts luôn gắn data-theme, kể cả khi fetch lỗi. */
+html:not([data-theme]) body {
+  visibility: hidden;
+}
+
 body {
   margin: 0;
   font-family: var(--font-body), system-ui, -apple-system, sans-serif;
