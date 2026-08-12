@@ -180,7 +180,7 @@ export default function MountainGamePage() {
       <div className="flex min-h-screen items-center justify-center">
         <div className="panel animate-pop px-8 py-6 text-center">
           <div className="text-3xl">🗺️</div>
-          <div className="mt-2 font-display text-lg font-bold text-treasure-gold">Đang vào mê cung…</div>
+          <div className="mt-2 font-display text-lg font-bold text-accent">Đang vào mê cung…</div>
         </div>
       </div>
     );
@@ -200,7 +200,7 @@ export default function MountainGamePage() {
   return (
     <div className="mx-auto flex min-h-screen max-w-5xl flex-col gap-4 p-4">
       {toast && (
-        <div className="fixed left-1/2 top-4 z-50 -translate-x-1/2 animate-pop rounded-xl bg-treasure-danger px-4 py-2 text-sm font-semibold text-white shadow-lg">
+        <div className="fixed left-1/2 top-4 z-50 -translate-x-1/2 animate-pop rounded-xl bg-bad px-4 py-2 text-sm font-semibold text-ink shadow-lg">
           {toast}
         </div>
       )}
@@ -208,19 +208,19 @@ export default function MountainGamePage() {
       {/* HUD */}
       <div className="panel relative flex items-center justify-between gap-3 p-4">
         <div className="min-w-0">
-          <div className="truncate text-sm text-white/60">{profile?.full_name ?? 'Người chơi'}</div>
-          <div className="font-display text-2xl font-extrabold text-treasure-gold">
+          <div className="truncate text-sm text-ink/60">{profile?.full_name ?? 'Người chơi'}</div>
+          <div className="font-display text-2xl font-extrabold text-accent">
             {maze.score}
-            <span className="ml-1 text-sm font-semibold text-white/50">điểm</span>
+            <span className="ml-1 text-sm font-semibold text-ink/50">điểm</span>
           </div>
         </div>
         <div className="text-center">
-          <div className="text-sm text-white/60">Cửa đã mở</div>
-          <div className="font-display text-xl font-extrabold text-emerald-300">{maze.gates_opened}</div>
+          <div className="text-sm text-ink/60">Cửa đã mở</div>
+          <div className="font-display text-xl font-extrabold text-ok-300">{maze.gates_opened}</div>
         </div>
         <div className="text-right">
-          <div className="text-sm text-white/60">Hạng</div>
-          <div className="font-display text-xl font-extrabold text-treasure-gem">
+          <div className="text-sm text-ink/60">Hạng</div>
+          <div className="font-display text-xl font-extrabold text-info">
             {maze.rank != null ? `#${maze.rank}` : '—'}
           </div>
         </div>
@@ -228,7 +228,7 @@ export default function MountainGamePage() {
           <span
             key={delta.key}
             className={`pointer-events-none absolute right-4 top-2 animate-floatup font-display text-xl font-extrabold ${
-              delta.value > 0 ? 'text-emerald-300' : 'text-rose-300'
+              delta.value > 0 ? 'text-ok-300' : 'text-bad-300'
             }`}
           >
             {delta.value > 0 ? `+${delta.value}` : delta.value}
@@ -278,7 +278,7 @@ export default function MountainGamePage() {
 
       {/* Overlay kết quả */}
       {result && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-shade/70 p-4">
           <div className="panel w-full max-w-md animate-pop p-8 text-center">
             <div className="relative mx-auto h-20 w-20">
               {result.reached && (
@@ -300,16 +300,16 @@ export default function MountainGamePage() {
                 {result.reached ? '💎' : '🪨'}
               </div>
             </div>
-            <h2 className="mt-2 font-display text-2xl font-extrabold text-treasure-gold">
+            <h2 className="mt-2 font-display text-2xl font-extrabold text-accent">
               {result.reached ? 'Tới kho báu!' : 'Kẹt đường rồi!'}
             </h2>
-            <p className="mt-1 text-white/70">
+            <p className="mt-1 text-ink/70">
               {result.reached ? `Giỏi lắm ${profile?.full_name ?? 'bạn'}!` : 'Không còn đường tới kho báu (hoặc hết giờ). Thử lại sau nhé!'}
             </p>
             <div className="mt-5 grid grid-cols-3 gap-3">
-              <Cell big={`${result.score}`} label="Điểm" tone="text-treasure-gold" />
-              <Cell big={`${result.gates_opened}`} label="Cổng mở" tone="text-treasure-gem" />
-              <Cell big={fmtMs(result.time_spent_ms)} label="Thời gian" tone="text-white" />
+              <Cell big={`${result.score}`} label="Điểm" tone="text-accent" />
+              <Cell big={`${result.gates_opened}`} label="Cổng mở" tone="text-info" />
+              <Cell big={fmtMs(result.time_spent_ms)} label="Thời gian" tone="text-ink" />
             </div>
             <div className="mt-6 flex gap-3">
               <button type="button" className="btn-gold flex-1" onClick={() => navigate('/leaderboard?game=mountain')}>
@@ -329,10 +329,10 @@ export default function MountainGamePage() {
 function HintPanel({ gatesOpened }: { gatesOpened: number }) {
   return (
     <div className="panel space-y-3 p-5">
-      <h3 className="font-display text-lg font-extrabold text-treasure-gold">🧭 Tìm đường tới 💎</h3>
-      <p className="text-sm text-white/70">
-        Dùng <b className="text-white">phím mũi tên</b> hoặc <b className="text-white">bấm ô kề</b> bên để đi.
-        Tới <b className="text-amber-300">cửa 🚪 / bẫy</b> sẽ có câu hỏi — đúng thì qua, sai thì nó khoá lại, phải vòng đường khác.
+      <h3 className="font-display text-lg font-extrabold text-accent">🧭 Tìm đường tới 💎</h3>
+      <p className="text-sm text-ink/70">
+        Dùng <b className="text-ink">phím mũi tên</b> hoặc <b className="text-ink">bấm ô kề</b> bên để đi.
+        Tới <b className="text-warn-300">cửa 🚪 / bẫy</b> sẽ có câu hỏi — đúng thì qua, sai thì nó khoá lại, phải vòng đường khác.
       </p>
       <div className="grid grid-cols-2 gap-2 text-xs">
         <Legend icon="🧱" text="Đá — không đi được" />
@@ -340,12 +340,12 @@ function HintPanel({ gatesOpened }: { gatesOpened: number }) {
         <Legend icon="💎" text="Kho báu — đích đến" />
         <Legend icon="🚩" text="Điểm xuất phát" />
       </div>
-      <div className="rounded-xl border border-white/10 bg-black/20 px-3 py-2 text-xs text-white/70">
-        Số trên cửa = độ khó câu hỏi: <b className="text-emerald-300">1 Dễ</b> · <b className="text-amber-300">2 Trung bình</b> ·{' '}
-        <b className="text-rose-300">3 Khó</b>. Càng về gần kho báu cửa càng khó.
+      <div className="rounded-xl border border-ink/10 bg-shade/20 px-3 py-2 text-xs text-ink/70">
+        Số trên cửa = độ khó câu hỏi: <b className="text-ok-300">1 Dễ</b> · <b className="text-warn-300">2 Trung bình</b> ·{' '}
+        <b className="text-bad-300">3 Khó</b>. Càng về gần kho báu cửa càng khó.
       </div>
-      <div className="rounded-xl border border-white/10 bg-black/20 px-3 py-2 text-sm text-white/70">
-        Đã mở <b className="text-treasure-gem">{gatesOpened}</b> cổng. Có <b className="text-white">3 lối</b> tới kho báu — chọn khéo nhé!
+      <div className="rounded-xl border border-ink/10 bg-shade/20 px-3 py-2 text-sm text-ink/70">
+        Đã mở <b className="text-info">{gatesOpened}</b> cổng. Có <b className="text-ink">3 lối</b> tới kho báu — chọn khéo nhé!
       </div>
     </div>
   );
@@ -353,20 +353,20 @@ function HintPanel({ gatesOpened }: { gatesOpened: number }) {
 
 function Legend({ icon, text, amber }: { icon: string; text: string; amber?: boolean }) {
   return (
-    <div className="flex items-center gap-2 rounded-lg bg-black/20 px-2 py-1.5">
-      <span className={`grid h-6 w-6 shrink-0 place-items-center rounded ${amber ? 'bg-amber-500/25 font-bold text-amber-300' : 'bg-white/5'}`}>
+    <div className="flex items-center gap-2 rounded-lg bg-shade/20 px-2 py-1.5">
+      <span className={`grid h-6 w-6 shrink-0 place-items-center rounded ${amber ? 'bg-warn-500/25 font-bold text-warn-300' : 'bg-ink/5'}`}>
         {icon}
       </span>
-      <span className="text-white/70">{text}</span>
+      <span className="text-ink/70">{text}</span>
     </div>
   );
 }
 
 function Cell({ big, label, tone }: { big: string; label: string; tone: string }) {
   return (
-    <div className="rounded-xl bg-black/30 px-3 py-3">
+    <div className="rounded-xl bg-shade/30 px-3 py-3">
       <div className={`font-display text-2xl font-extrabold ${tone}`}>{big}</div>
-      <div className="text-xs text-white/50">{label}</div>
+      <div className="text-xs text-ink/50">{label}</div>
     </div>
   );
 }

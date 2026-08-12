@@ -78,10 +78,66 @@ Sửa `server/.env` (xem `.env.example` để biết tất cả biến):
 | `EVENT_ID` / `EVENT_DATE` | Định danh sự kiện | violympic-2026-06 |
 | `ADMIN_KEY` | Khóa trang admin | ????? |
 | `APP_SECRET` | Bí mật ký JWT | (đổi khi chạy thật) |
+| `DEFAULT_THEME` | Giao diện cho lần chạy đầu (sau đó đổi trong /admin) | treasure |
+| `Q1_FILE` / `Q2_FILE` | Tên file bộ đề trong `seed/` (dùng bởi render.yaml) | mln-game1-treasure.json / mln-game2-mountain.json |
 
 Phân bổ ô bàn cờ và điểm theo độ khó nằm trong `server/src/config.ts`.
 Hai game dùng chung bảng `sessions` nhưng tách nhau bằng `event_id` (Game 2 có hậu tố `::mountain`) —
 xem `server/src/games.ts`. Nhờ vậy 1 SV chơi được cả 2 game và mỗi game có bảng xếp hạng riêng.
+
+## Giao diện (theme)
+
+Có **2 theme** dùng chung một trò chơi, một bộ luật, một code base:
+
+| Theme | Giao diện | Dùng cho |
+|---|---|---|
+| `treasure` | Rừng tối, vàng kho báu, font Baloo 2 | bản gốc |
+| `philoverse` | Ivory sáng, navy, gold, font Lora + Lexend | bên thuê (theo `DESIGN.md`) |
+
+**Đổi theme = 1 nút trong `/admin`** → thẻ **🎨 Giao diện** → bấm *Chuyển sang*.
+Theme lưu ở **server** (bảng `settings`), nên:
+
+- **Mọi máy đều nhận đúng một giao diện** — không phụ thuộc máy đó từng mở gì trước đó.
+- **Không cần deploy lại.** Người chơi chỉ cần tải lại trang.
+- Người đang chơi giữa phiên **không bị gián đoạn** — họ thấy giao diện mới ở lần tải trang sau.
+
+`DEFAULT_THEME` trong env chỉ dùng cho **lần chạy đầu tiên** (khi bảng `settings` còn trống).
+Sau khi admin bấm đổi một lần thì DB là nguồn sự thật, env không còn tác dụng.
+
+**Xem thử một theme mà không đổi của cả lớp:** thêm `?theme=philoverse` vào URL.
+Chỉ ảnh hưởng đúng tab đang mở, **không** ghi lại, **không** ảnh hưởng người khác.
+
+### Đổi sang một buổi/bên thuê khác
+
+1. `/admin` → **🎨 Giao diện** → chọn theme của bên đó.
+2. `/admin` → **Xoá tất cả câu hỏi** (cả 2 game), rồi **Import** bộ đề mới.
+   Bảng `questions` không có cột phân loại bộ đề, nên không xoá thì bộ cũ vẫn `active = 1`
+   và sinh viên sẽ nhận **lẫn** câu của bộ cũ.
+3. Trên Render → *Environment*, đổi 3 biến rồi Save (để lần restart sau seed đúng bộ,
+   và để bảng xếp hạng tách riêng):
+
+```
+EVENT_ID = pv-2026-08-20               # bảng xếp hạng riêng, điểm buổi cũ vẫn còn
+Q1_FILE  = pv-game1-treasure.json      # bộ đề Game 1 (file trong seed/)
+Q2_FILE  = pv-game2-mountain.json      # bộ đề Game 2
+```
+
+> ⚠️ Nếu bỏ bước 3, lần Render restart kế tiếp sẽ **seed lại bộ cũ** (import dùng
+> `ON CONFLICT … SET active = 1`) và bộ cũ sống lại giữa buổi, im lặng, không báo lỗi.
+
+### Thêm theme mới
+
+1. Thêm một block biến trong `client/src/index.css`: `:root[data-theme='ten-moi'] { … }`
+   — copy block `philoverse` rồi đổi giá trị. **Không hardcode màu trong component.**
+2. Thêm tên vào `THEMES` ở **cả hai chỗ**: `server/src/services/theme.service.ts` (server
+   validate danh sách này) và `client/src/theme.ts`.
+3. Thêm logo/tên hiển thị vào `BRANDING` trong `client/src/themes/branding.ts`,
+   và nhãn cho nút bấm vào `THEME_LABELS` trong `client/src/pages/AdminPage.tsx`.
+
+Màu/font/radius của UI đều đi qua token (`bg-canvas`, `text-ink`, `bg-surface`, `text-accent`,
+`ok`/`bad`/`warn`/`alert`/`info`, `rounded-card`…) khai báo trong `client/tailwind.config.js`.
+Riêng phần **tranh vẽ** của mê cung (`MazeBoard.tsx`: vân gỗ, đá, gradient) giữ màu cố định
+cho cả 2 theme — nó là hình minh hoạ, không phải chrome.
 
 ## Build & deploy 1 máy
 

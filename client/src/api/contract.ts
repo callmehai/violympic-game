@@ -126,6 +126,10 @@ export interface AdminEventState {
     sessions: number;
     finished: number;
   };
+  /** Theme giao diện đang áp dụng cho mọi người chơi. */
+  theme: string;
+  /** Danh sách theme chọn được. */
+  themes: string[];
 }
 
 export interface RulesDTO {
@@ -258,6 +262,7 @@ export const API = {
   adminMountainImport: '/api/admin/mountain-questions/import',
   adminMountainClear: '/api/admin/mountain-questions/clear',
   adminEvent: '/api/admin/event',
+  adminTheme: '/api/admin/theme',
   adminEventOpen: '/api/admin/event/open',
   adminEventClose: '/api/admin/event/close',
   adminResultsExport: '/api/admin/results/export',

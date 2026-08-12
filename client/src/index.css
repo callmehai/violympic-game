@@ -2,8 +2,132 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+/* ===========================================================================
+   THEME = một block biến CSS. Đổi theme = đổi data-theme trên <html>
+   (xem src/theme.ts). Mọi màu/font/radius của UI đi qua các biến dưới đây;
+   component KHÔNG hardcode màu.
+
+   Biến màu lưu dạng "R G B" (space-separated, không phải hex) để Tailwind
+   ghép được với opacity: bg-surface/80, text-ink/50, …
+   =========================================================================== */
+
+/* --- Theme 1: "treasure" — bản gốc (rừng tối, Baloo 2). Giá trị copy y nguyên
+       hex cũ để giao diện không lệch một pixel. --------------------------- */
+:root,
+:root[data-theme='treasure'] {
+  --c-canvas: 27 42 31; /* #1b2a1f */
+  --c-surface: 36 58 42; /* #243a2a */
+  --c-ink: 255 255 255; /* trước đây là `white` */
+  --c-shade: 0 0 0; /* trước đây là `black` */
+  --c-accent: 244 197 66; /* #f4c542 vàng kho báu */
+  --c-wood: 122 79 42; /* #7a4f2a */
+  --c-woodlt: 168 112 63; /* #a8703f */
+
+  --c-info: 70 198 255; /* #46c6ff kim cương */
+  --c-info-400: 56 189 248; /* sky-400 */
+  --c-info-500: 14 165 233; /* sky-500 */
+
+  --c-ok-100: 209 250 229; /* emerald-100 … */
+  --c-ok-200: 167 243 208;
+  --c-ok-300: 110 231 183;
+  --c-ok-400: 52 211 153;
+  --c-ok-500: 16 185 129;
+  --c-ok-700: 4 120 87;
+
+  --c-bad: 226 85 61; /* #e2553d */
+  --c-bad-100: 255 228 230; /* rose-100 … */
+  --c-bad-200: 254 205 211;
+  --c-bad-300: 253 164 175;
+  --c-bad-400: 251 113 133;
+  --c-bad-500: 244 63 94;
+
+  --c-warn-50: 255 251 235; /* amber-50 … */
+  --c-warn-200: 253 230 138;
+  --c-warn-300: 252 211 77;
+  --c-warn-400: 251 191 36;
+  --c-warn-500: 245 158 11;
+  --c-warn-700: 180 83 9;
+  --c-warn-900: 120 53 15;
+
+  --c-alert-300: 253 186 116; /* orange-300 */
+  --c-alert-400: 251 146 60; /* orange-400 */
+
+  --font-heading: 'Baloo 2';
+  --font-body: 'Baloo 2';
+
+  --radius-card: 1rem; /* = rounded-2xl cũ */
+  --radius-control: 0.75rem; /* = rounded-xl cũ */
+
+  /* Nền trang + màu chữ body + màu chữ trên nút accent */
+  --page-bg:
+    radial-gradient(1200px 600px at 50% -10%, #2e4a35 0%, transparent 60%),
+    linear-gradient(180deg, #1b2a1f 0%, #15211a 100%);
+  --body-fg: #f3f6ef;
+  --on-accent: #3a2a06;
+
   color-scheme: dark;
+}
+
+/* --- Theme 2: "philoverse" — theo DESIGN.md (ivory sáng, navy, gold,
+       Lora + Lexend). ----------------------------------------------------- */
+:root[data-theme='philoverse'] {
+  --c-canvas: 250 248 243; /* #FAF8F3 background */
+  --c-surface: 255 255 255; /* #FFFFFF surface */
+  --c-ink: 30 41 59; /* #1E293B text-primary */
+  --c-shade: 139 111 71; /* #8B6F47 — lớp phủ ấm, nhạt trên nền ivory */
+  /* Gold của DESIGN.md (#D4A017) chỉ đạt ~2.5:1 khi làm CHỮ trên nền ivory →
+     fail WCAG AA. Token này vừa làm nền nút vừa làm chữ nhấn (43 chỗ) nên phải
+     chọn sắc gold đậm hơn: #85610A ≈ 5.3:1 trên #FAF8F3, và vẫn tương phản tốt
+     với chữ ivory khi dùng làm nền nút. Xem DESIGN.md §2.2 (phải kiểm AA thật). */
+  --c-accent: 133 97 10; /* #85610A gold đậm */
+  /* "wood" là nền thẻ đáp án / hàng tiêu đề bảng. Trên nền tối nó là gỗ nâu đậm;
+     trên nền ivory phải thành tông kem nhạt, nếu không chữ trên đó sẽ chìm. */
+  --c-wood: 226 216 199; /* #E2D8C7 kem nhạt */
+  --c-woodlt: 209 195 172; /* #D1C3AC đậm hơn cho hover */
+
+  --c-info: 3 105 161; /* #0369A1 xanh đủ tương phản (~4.9:1) trên ivory */
+  --c-info-400: 14 165 233;
+  --c-info-500: 2 132 199;
+
+  /* Ramp trên nền SÁNG phải đảo chiều: số nhỏ = nhạt (dùng làm nền),
+     số lớn = đậm (dùng làm chữ). Các sắc độ 100–300 vốn dùng cho CHỮ trên nền
+     tối nên ở đây phải đậm lại, nếu không sẽ mất chữ. */
+  --c-ok-100: 4 120 87; /* → chữ xanh đậm */
+  --c-ok-200: 4 120 87;
+  --c-ok-300: 6 95 70;
+  --c-ok-400: 16 185 129; /* → viền/nền vẫn tươi */
+  --c-ok-500: 5 150 105;
+  --c-ok-700: 209 250 229; /* vai trò nền nhạt bị đảo về đây */
+
+  --c-bad: 190 60 45;
+  --c-bad-100: 159 18 57;
+  --c-bad-200: 159 18 57;
+  --c-bad-300: 136 19 55;
+  --c-bad-400: 225 29 72;
+  --c-bad-500: 190 18 60;
+
+  --c-warn-50: 30 41 59; /* vai trò "chữ trên nền wood" → navy cho dễ đọc */
+  --c-warn-200: 146 64 14;
+  --c-warn-300: 146 64 14;
+  --c-warn-400: 212 160 23;
+  --c-warn-500: 180 83 9;
+  --c-warn-700: 253 230 138;
+  --c-warn-900: 255 251 235;
+
+  --c-alert-300: 154 52 18;
+  --c-alert-400: 234 88 12;
+
+  --font-heading: 'Lora', Georgia, serif;
+  --font-body: 'Lexend', Inter, system-ui, sans-serif;
+
+  --radius-card: 20px; /* DESIGN.md --radius-lg */
+  --radius-control: 12px; /* DESIGN.md --radius-md */
+
+  --page-bg: #faf8f3;
+  --body-fg: #1e293b;
+  --on-accent: #faf8f3; /* DESIGN.md .btn-pill-primary */
+
+  color-scheme: light;
 }
 
 html,
@@ -12,35 +136,64 @@ body,
   height: 100%;
 }
 
+/* Theme đến từ server (bất đồng bộ) → ẩn nội dung tới khi biết theme nào,
+   tránh loé giao diện sai. theme.ts luôn gắn data-theme, kể cả khi fetch lỗi. */
+html:not([data-theme]) body {
+  visibility: hidden;
+}
+
 body {
   margin: 0;
-  font-family: 'Baloo 2', system-ui, -apple-system, sans-serif;
-  background:
-    radial-gradient(1200px 600px at 50% -10%, #2e4a35 0%, transparent 60%),
-    linear-gradient(180deg, #1b2a1f 0%, #15211a 100%);
-  color: #f3f6ef;
+  font-family: var(--font-body), system-ui, -apple-system, sans-serif;
+  background: var(--page-bg);
+  color: var(--body-fg);
   -webkit-font-smoothing: antialiased;
+}
+
+/* Focus nhìn thấy được bằng bàn phím (DESIGN.md §8). */
+:focus-visible {
+  outline: 3px solid rgb(var(--c-accent));
+  outline-offset: 2px;
 }
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 font-semibold
+    @apply inline-flex items-center justify-center gap-2 rounded-control px-4 py-2 font-semibold
       transition active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed select-none;
   }
   .btn-gold {
-    @apply btn bg-treasure-gold text-[#3a2a06] hover:brightness-105 shadow-lg;
+    @apply btn bg-accent hover:brightness-105 shadow-lg;
+    color: var(--on-accent);
   }
   .btn-wood {
-    @apply btn bg-treasure-wood text-amber-50 hover:bg-treasure-woodlt shadow;
+    @apply btn bg-wood text-warn-50 hover:bg-woodlt shadow;
   }
   .btn-ghost {
-    @apply btn bg-white/10 text-white hover:bg-white/20;
+    @apply btn bg-ink/10 text-ink hover:bg-ink/20;
   }
   .panel {
-    @apply rounded-2xl bg-treasure-panel/80 backdrop-blur border border-white/10 shadow-xl;
+    @apply rounded-card bg-surface/80 backdrop-blur border border-ink/10 shadow-xl;
   }
   .input {
-    @apply w-full rounded-xl bg-black/30 border border-white/15 px-4 py-2.5 text-white
-      placeholder-white/40 outline-none focus:border-treasure-gold;
+    @apply w-full rounded-control bg-shade/30 border border-ink/15 px-4 py-2.5 text-ink
+      placeholder-ink/40 outline-none focus:border-accent;
   }
+}
+
+/* --- Tinh chỉnh riêng cho nền sáng -------------------------------------
+   Các mức opacity ở trên được chọn cho nền tối (bg-shade/30 = ô lõm đen mờ,
+   border-ink/10 = viền trắng mờ). Trên nền ivory chúng quá nặng/quá mờ, nên
+   override tại đây thay vì sửa lại từng component. */
+:root[data-theme='philoverse'] .panel {
+  @apply bg-surface border-ink/10;
+  box-shadow: rgba(15, 23, 42, 0.04) 0 10px 40px -10px;
+}
+:root[data-theme='philoverse'] .input {
+  @apply bg-surface border-ink/20;
+}
+:root[data-theme='philoverse'] .btn-ghost {
+  @apply bg-ink/5 text-ink;
+}
+:root[data-theme='philoverse'] .btn-ghost:hover {
+  @apply bg-ink/10;
 }

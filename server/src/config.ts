@@ -47,6 +47,8 @@ export const config: GameConfig = {
   eventId: str('EVENT_ID', 'violympic-2026-06'),
   eventDate: str('EVENT_DATE', '2026-06-25'),
   dbPath: path.resolve(process.cwd(), str('DB_PATH', './data/violympic.db')),
+  // Chỉ là giá trị khởi tạo. Sau khi admin bấm đổi theme thì DB là nguồn sự thật.
+  defaultTheme: str('DEFAULT_THEME', 'treasure'),
 
   rows,
   cols,

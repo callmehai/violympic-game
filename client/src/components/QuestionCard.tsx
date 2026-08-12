@@ -30,9 +30,9 @@ const DIFF_LABEL: Record<string, string> = {
 };
 
 const DIFF_CLASS: Record<string, string> = {
-  easy: 'bg-emerald-500/20 text-emerald-300',
-  medium: 'bg-amber-500/20 text-amber-300',
-  hard: 'bg-rose-500/20 text-rose-300',
+  easy: 'bg-ok-500/20 text-ok-300',
+  medium: 'bg-warn-500/20 text-warn-300',
+  hard: 'bg-bad-500/20 text-bad-300',
 };
 
 export default function QuestionCard({
@@ -76,29 +76,29 @@ export default function QuestionCard({
     <div className="panel flex flex-col gap-4 p-5">
       {/* Header: môn + độ khó + số thứ tự */}
       <div className="flex flex-wrap items-center gap-2">
-        <span className="rounded-full bg-treasure-gem/20 px-3 py-1 text-sm font-bold text-treasure-gem">
+        <span className="rounded-full bg-info/20 px-3 py-1 text-sm font-bold text-info">
           {question.subject}
         </span>
         <span
           className={`rounded-full px-3 py-1 text-xs font-semibold ${
-            DIFF_CLASS[question.difficulty] ?? 'bg-white/10 text-white'
+            DIFF_CLASS[question.difficulty] ?? 'bg-ink/10 text-ink'
           }`}
         >
           {DIFF_LABEL[question.difficulty] ?? question.difficulty}
         </span>
-        <span className="ml-auto text-sm font-semibold text-white/60">
+        <span className="ml-auto text-sm font-semibold text-ink/60">
           Câu {question.index}/{question.total}
         </span>
       </div>
 
       {/* Điểm tiềm năng + thanh thưởng tốc độ (ẩn sau khi đã trả lời) */}
       {!answered && (
-        <div className="rounded-xl border border-white/10 bg-black/20 px-4 py-3">
+        <div className="rounded-xl border border-ink/10 bg-shade/20 px-4 py-3">
           <div className="flex items-center justify-between">
-            <span className="text-sm font-semibold text-white/70">Trả lời đúng được</span>
+            <span className="text-sm font-semibold text-ink/70">Trả lời đúng được</span>
             <span
               className={`font-display text-2xl font-extrabold tabular-nums transition-colors ${
-                speedActive ? 'text-treasure-gem' : 'text-treasure-gold'
+                speedActive ? 'text-info' : 'text-accent'
               }`}
             >
               +{potential}đ
@@ -110,7 +110,7 @@ export default function QuestionCard({
               <div className="flex items-center justify-between text-xs">
                 <span
                   className={
-                    speedActive ? 'font-bold text-treasure-gem' : 'font-semibold text-white/40'
+                    speedActive ? 'font-bold text-info' : 'font-semibold text-ink/40'
                   }
                 >
                   {speedActive
@@ -119,15 +119,15 @@ export default function QuestionCard({
                 </span>
                 <span
                   className={`tabular-nums ${
-                    speedActive ? 'font-bold text-treasure-gem' : 'text-white/40'
+                    speedActive ? 'font-bold text-info' : 'text-ink/40'
                   }`}
                 >
                   {(speedMsLeft / 1000).toFixed(1)}s
                 </span>
               </div>
-              <div className="mt-1 h-2.5 w-full overflow-hidden rounded-full bg-black/40">
+              <div className="mt-1 h-2.5 w-full overflow-hidden rounded-full bg-shade/40">
                 <div
-                  className="h-full rounded-full bg-gradient-to-r from-treasure-gem to-treasure-gold transition-[width] duration-100 ease-linear"
+                  className="h-full rounded-full bg-gradient-to-r from-info to-accent transition-[width] duration-100 ease-linear"
                   style={{ width: `${speedPct}%` }}
                 />
               </div>
@@ -137,7 +137,7 @@ export default function QuestionCard({
       )}
 
       {/* Nội dung câu hỏi */}
-      <div className="text-lg font-semibold leading-relaxed text-white">{question.content}</div>
+      <div className="text-lg font-semibold leading-relaxed text-ink">{question.content}</div>
 
       {/* Đáp án */}
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -145,14 +145,14 @@ export default function QuestionCard({
           const isCorrectChoice = feedback && i === feedback.correct_index;
           const isWrongPick = feedback && i === feedback.selected && !feedback.is_correct;
 
-          let cls = 'bg-treasure-wood/60 hover:bg-treasure-woodlt hover:scale-[1.02] text-amber-50';
+          let cls = 'bg-wood/60 hover:bg-woodlt hover:scale-[1.02] text-warn-50';
           if (feedback) {
             if (isCorrectChoice) {
-              cls = 'bg-emerald-500/80 text-white ring-2 ring-emerald-300';
+              cls = 'bg-ok-500/80 text-ink ring-2 ring-ok-300';
             } else if (isWrongPick) {
-              cls = 'bg-treasure-danger/80 text-white ring-2 ring-rose-300 animate-shake';
+              cls = 'bg-bad/80 text-ink ring-2 ring-bad-300 animate-shake';
             } else {
-              cls = 'bg-white/5 text-white/50';
+              cls = 'bg-ink/5 text-ink/50';
             }
           }
 
@@ -165,7 +165,7 @@ export default function QuestionCard({
               className={`flex items-center gap-3 rounded-xl px-4 py-4 text-left text-base font-semibold
                 transition disabled:cursor-not-allowed ${cls}`}
             >
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-black/30 font-display text-lg font-extrabold">
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-shade/30 font-display text-lg font-extrabold">
                 {LABELS[i] ?? i + 1}
               </span>
               <span className="min-w-0 break-words">{opt}</span>
@@ -179,8 +179,8 @@ export default function QuestionCard({
         <div
           className={`animate-pop rounded-xl border px-4 py-3 text-sm ${
             feedback.is_correct
-              ? 'border-emerald-400/40 bg-emerald-500/10 text-emerald-200'
-              : 'border-rose-400/40 bg-rose-500/10 text-rose-200'
+              ? 'border-ok-400/40 bg-ok-500/10 text-ok-200'
+              : 'border-bad-400/40 bg-bad-500/10 text-bad-200'
           }`}
         >
           <span className="font-bold">

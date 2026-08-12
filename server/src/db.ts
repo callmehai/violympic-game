@@ -81,6 +81,12 @@ export function migrate(): void {
       active       INTEGER NOT NULL DEFAULT 1
     );
 
+    -- Cấu hình đổi được lúc đang chạy, không cần redeploy (hiện dùng cho: theme giao diện).
+    CREATE TABLE IF NOT EXISTS settings (
+      key   TEXT PRIMARY KEY,
+      value TEXT NOT NULL
+    );
+
     CREATE INDEX IF NOT EXISTS idx_sessions_event_status ON sessions(event_id, status);
     CREATE INDEX IF NOT EXISTS idx_sessions_event_score  ON sessions(event_id, score DESC);
     CREATE INDEX IF NOT EXISTS idx_questions_active       ON questions(active);
@@ -101,6 +107,22 @@ export function getStudentByCode(code: string): StudentRow | undefined {
   return db
     .prepare('SELECT * FROM students WHERE student_code = ? COLLATE NOCASE')
     .get(code.trim()) as StudentRow | undefined;
+}
+
+/** Đọc 1 setting; trả về `fallback` nếu chưa có. */
+export function getSetting(key: string, fallback: string): string {
+  const row = db.prepare('SELECT value FROM settings WHERE key = ?').get(key) as
+    | { value: string }
+    | undefined;
+  return row ? row.value : fallback;
+}
+
+/** Ghi 1 setting (upsert). */
+export function setSetting(key: string, value: string): void {
+  db.prepare(
+    `INSERT INTO settings (key, value) VALUES (@key, @value)
+     ON CONFLICT(key) DO UPDATE SET value = excluded.value`,
+  ).run({ key, value });
 }
 
 /** Tiện ích: lấy trạng thái mở/đóng event (mặc định coi như mở nếu chưa có bản ghi). */

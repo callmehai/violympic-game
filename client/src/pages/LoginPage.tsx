@@ -3,9 +3,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import { apiFetch, ApiError } from '../api/client';
 import { API, type LoginResponse } from '../api/contract';
 import { useAuth } from '../store/auth';
+import { useBranding } from '../themes/branding';
 
 export default function LoginPage() {
   const navigate = useNavigate();
+  const brand = useBranding();
   const isAuthed = useAuth((s) => s.isAuthed);
   const setSession = useAuth((s) => s.setSession);
 
@@ -54,14 +56,14 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-treasure-bg flex items-center justify-center p-4">
+    <div className="min-h-screen bg-canvas flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         {/* Hero */}
         <div className="text-center mb-6">
-          <h1 className="text-4xl font-extrabold text-treasure-gold">
+          <h1 className="text-4xl font-extrabold text-accent">
             ⛏️ Đi tìm kho báu
           </h1>
-          <p className="mt-2 text-treasure-gem text-lg font-semibold">Violympic 💎🏆</p>
+          <p className="mt-2 text-info text-lg font-semibold">{brand.tagline}</p>
         </div>
 
         {/* Form panel */}
@@ -102,7 +104,7 @@ export default function LoginPage() {
           {error && (
             <div
               role="alert"
-              className="rounded-lg bg-treasure-danger/20 border border-treasure-danger px-3 py-2 text-sm text-treasure-danger font-semibold animate-shake"
+              className="rounded-lg bg-bad/20 border border-bad px-3 py-2 text-sm text-bad font-semibold animate-shake"
             >
               {error}
             </div>
@@ -112,33 +114,18 @@ export default function LoginPage() {
             {loading ? 'Đang đăng nhập…' : 'Đăng nhập'}
           </button>
 
-          <p className="text-center text-xs text-treasure-gem/80">
+          <p className="text-center text-xs text-info/80">
             Đăng nhập bằng MSSV và mật khẩu được phát cho bạn.
           </p>
         </form>
 
-        {/* Chế độ ôn tập — trang tĩnh, không cần đăng nhập */}
-        <a
-          href="/ontap/"
-          className="panel mt-4 flex items-center gap-3 p-4 hover:border-treasure-gold transition"
-        >
-          <span className="text-3xl">📚</span>
-          <span className="min-w-0">
-            <span className="block font-bold text-treasure-gold">Ôn tập MLN122 — 526 câu</span>
-            <span className="block text-xs text-treasure-gem/80">
-              Không cần đăng nhập, không đếm giờ. Bấm đáp án để xem đúng/sai.
-            </span>
-          </span>
-          <span className="ml-auto text-treasure-gem">→</span>
-        </a>
-
         {/* Liên kết phụ */}
         <div className="mt-5 flex items-center justify-center gap-4 text-sm">
-          <Link to="/leaderboard" className="text-treasure-gold hover:underline">
+          <Link to="/leaderboard" className="text-accent hover:underline">
             🏆 Xem bảng xếp hạng
           </Link>
-          <span className="text-treasure-gem/40">•</span>
-          <Link to="/admin" className="text-treasure-gem hover:underline">
+          <span className="text-info/40">•</span>
+          <Link to="/admin" className="text-info hover:underline">
             Quản trị
           </Link>
         </div>

@@ -6,10 +6,12 @@
  */
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../store/auth';
+import { useBranding } from '../themes/branding';
 
 export default function HomePage() {
   const navigate = useNavigate();
   const { profile, logout } = useAuth();
+  const brand = useBranding();
 
   function handleLogout() {
     logout();
@@ -17,10 +19,10 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen bg-treasure-bg text-white">
+    <div className="min-h-screen bg-canvas text-ink">
       <header className="flex flex-wrap items-center justify-between gap-3 px-6 py-4">
-        <h1 className="font-display text-2xl font-extrabold text-treasure-gold">
-          🎮 Violympic Mini Games
+        <h1 className="font-display text-2xl font-extrabold text-accent">
+          {brand.logo} {brand.appName}
         </h1>
         <div className="flex items-center gap-2">
           <Link to="/leaderboard" className="btn btn-ghost">
@@ -35,12 +37,12 @@ export default function HomePage() {
       <main className="mx-auto w-full max-w-4xl px-4 pb-12">
         {profile && (
           <p className="mb-6 text-center text-lg">
-            Xin chào, <span className="font-bold text-treasure-gem">{profile.full_name}</span>{' '}
-            <span className="text-white/50">({profile.student_code})</span>
+            Xin chào, <span className="font-bold text-info">{profile.full_name}</span>{' '}
+            <span className="text-ink/50">({profile.student_code})</span>
           </p>
         )}
 
-        <h2 className="mb-5 text-center font-display text-xl font-extrabold text-white/90">
+        <h2 className="mb-5 text-center font-display text-xl font-extrabold text-ink/90">
           Chọn trò chơi 👇
         </h2>
 
@@ -56,7 +58,7 @@ export default function HomePage() {
               'Mỗi câu đúng được đào 1 ô',
               'Đua điểm + thời gian',
             ]}
-            accent="from-amber-500/20 to-amber-700/10 border-amber-400/40"
+            accent="from-warn-500/20 to-warn-700/10 border-warn-400/40"
             cta="Vào hang ⛏️"
           />
           <GameCard
@@ -70,7 +72,7 @@ export default function HomePage() {
               '3 lối đi · sai 1 câu là phải đổi tuyến',
               'Tới kho báu sớm + ít sai = điểm thưởng lớn 💎',
             ]}
-            accent="from-sky-500/20 to-emerald-700/10 border-sky-400/40"
+            accent="from-info-500/20 to-ok-700/10 border-info-400/40"
             cta="Vào mê cung 🗺️"
           />
         </div>
@@ -106,18 +108,18 @@ function GameCard({
     >
       <div className="flex items-center justify-between">
         <span className="text-5xl transition group-hover:scale-110">{emoji}</span>
-        <span className="rounded-full bg-black/30 px-3 py-1 text-xs font-bold text-treasure-gold">
+        <span className="rounded-full bg-shade/30 px-3 py-1 text-xs font-bold text-accent">
           {tag}
         </span>
       </div>
       <div>
-        <h3 className="font-display text-2xl font-extrabold text-white">{title}</h3>
-        <p className="mt-1 text-sm text-white/70">{tagline}</p>
+        <h3 className="font-display text-2xl font-extrabold text-ink">{title}</h3>
+        <p className="mt-1 text-sm text-ink/70">{tagline}</p>
       </div>
-      <ul className="space-y-1 text-sm text-white/80">
+      <ul className="space-y-1 text-sm text-ink/80">
         {bullets.map((b) => (
           <li key={b} className="flex gap-2">
-            <span className="text-treasure-gem">›</span>
+            <span className="text-info">›</span>
             <span>{b}</span>
           </li>
         ))}

@@ -82,18 +82,18 @@ export default function LeaderboardPage() {
   }, [connected]);
 
   return (
-    <div className="min-h-screen bg-treasure-bg p-4 sm:p-6">
+    <div className="min-h-screen bg-canvas p-4 sm:p-6">
       <div className="mx-auto w-full max-w-3xl">
         <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
           <div>
-            <h1 className="text-3xl font-extrabold text-treasure-gold">🏆 Bảng xếp hạng</h1>
+            <h1 className="text-3xl font-extrabold text-accent">🏆 Bảng xếp hạng</h1>
             <div className="mt-1 flex items-center gap-2 text-sm">
               <span
                 className={`inline-block h-2.5 w-2.5 rounded-full ${
-                  connected ? 'animate-pop bg-treasure-gem' : 'bg-orange-400'
+                  connected ? 'animate-pop bg-info' : 'bg-alert-400'
                 }`}
               />
-              <span className={connected ? 'text-treasure-gem' : 'text-orange-300'}>
+              <span className={connected ? 'text-info' : 'text-alert-300'}>
                 {connected ? 'Live' : 'Đang cập nhật…'}
               </span>
             </div>
@@ -114,14 +114,14 @@ export default function LeaderboardPage() {
         </div>
 
         {/* Tab chọn game */}
-        <div className="mb-4 inline-flex rounded-xl bg-black/30 p-1">
+        <div className="mb-4 inline-flex rounded-xl bg-shade/30 p-1">
           {GAME_TABS.map((t) => (
             <button
               key={t.id}
               type="button"
               onClick={() => setGame(t.id)}
               className={`rounded-lg px-4 py-2 text-sm font-bold transition ${
-                game === t.id ? 'bg-treasure-gold text-treasure-bg' : 'text-white/70 hover:text-white'
+                game === t.id ? 'bg-accent text-canvas' : 'text-ink/70 hover:text-ink'
               }`}
             >
               {t.label}
@@ -132,14 +132,14 @@ export default function LeaderboardPage() {
         {error && (
           <div
             role="alert"
-            className="mb-4 rounded-lg border border-treasure-danger bg-treasure-danger/20 px-3 py-2 text-sm font-semibold text-treasure-danger animate-shake"
+            className="mb-4 rounded-lg border border-bad bg-bad/20 px-3 py-2 text-sm font-semibold text-bad animate-shake"
           >
             {error}
           </div>
         )}
 
         {loading && rows.length === 0 ? (
-          <div className="panel p-8 text-center text-treasure-gem/70">Đang tải bảng xếp hạng…</div>
+          <div className="panel p-8 text-center text-info/70">Đang tải bảng xếp hạng…</div>
         ) : (
           <RankTable rows={rows} meCode={meCode} />
         )}
