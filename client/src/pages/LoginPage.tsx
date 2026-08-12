@@ -119,21 +119,6 @@ export default function LoginPage() {
           </p>
         </form>
 
-        {/* Chế độ ôn tập — trang tĩnh, không cần đăng nhập */}
-        <a
-          href="/ontap/"
-          className="panel mt-4 flex items-center gap-3 p-4 hover:border-accent transition"
-        >
-          <span className="text-3xl">📚</span>
-          <span className="min-w-0">
-            <span className="block font-bold text-accent">Ôn tập MLN122 — 526 câu</span>
-            <span className="block text-xs text-info/80">
-              Không cần đăng nhập, không đếm giờ. Bấm đáp án để xem đúng/sai.
-            </span>
-          </span>
-          <span className="ml-auto text-info">→</span>
-        </a>
-
         {/* Liên kết phụ */}
         <div className="mt-5 flex items-center justify-center gap-4 text-sm">
           <Link to="/leaderboard" className="text-accent hover:underline">
